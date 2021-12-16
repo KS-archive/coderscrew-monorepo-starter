@@ -1,0 +1,14 @@
+{
+  "name": "@ccms/cli",
+  "version": "0.0.0",
+  "private": true,
+  "bin": {
+    "cli": "src/index.js"
+  },
+  "scripts": {
+    "clean": "cli clean"
+  },
+  "dependencies": {
+    "commander": "8.3.0"
+  }
+}

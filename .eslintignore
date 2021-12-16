@@ -1,0 +1,16 @@
+# Logs
+*.log
+
+# Dependencies
+node_modules
+yarn.lock
+pnpm-lock.json
+
+# OS
+.DS_Store
+
+# Cache
+*.tsbuildinfo
+
+# Output files
+dist

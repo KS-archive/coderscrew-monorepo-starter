@@ -1,0 +1,14 @@
+{
+  "name": "@ccms/eslint-plugin",
+  "version": "0.0.0",
+  "main": "./src/index.js",
+  "sideEffects": false,
+  "private": true,
+  "scripts": {
+    "clean": "cli clean"
+  },
+  "dependencies": {
+    "colorette": "2.0.16",
+    "loglevel": "1.8.0"
+  }
+}

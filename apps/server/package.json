@@ -1,0 +1,19 @@
+{
+  "name": "@ccms/server",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "node scripts/dev.js",
+    "build": "tsup src/index.ts --format cjs",
+    "start": "node dist/index.js",
+    "clean": "cli clean"
+  },
+  "dependencies": {
+    "@ccms/utils": "*",
+    "express": "4.17.1"
+  },
+  "devDependencies": {
+    "@types/express": "4.17.13",
+    "nodemon": "2.0.15"
+  }
+}
