@@ -1,7 +1,7 @@
 const { spawnSync } = require('child_process');
 
 async function action() {
-  const command = `rm -rf .turbo && rm -rf node_modules && rm -rf dist`;
+  const command = `turbo run clean && rm -rf node_modules`;
 
   spawnSync(command, { stdio: 'inherit', shell: true, encoding: 'utf-8' });
 }

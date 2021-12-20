@@ -16,11 +16,10 @@
     "node": "16.13.1"
   },
   "scripts": {
-    "cli": "cli",
     "w": "cli w",
+    "clean": "cli clean",
     "build": "turbo run build",
-    "lint": "eslint --cache \"**/*.{js,ts,tsx}\"",
-    "clean": "turbo run clean && rm -rf node_modules"
+    "lint": "eslint --cache \"**/*.{js,ts,tsx}\""
   },
   "devDependencies": {
     "@ccms/cli": "*",

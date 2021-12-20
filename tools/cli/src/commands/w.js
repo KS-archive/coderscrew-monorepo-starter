@@ -23,8 +23,8 @@ const validateWorkspaces = (workspaces) => {
 function action(workspaces, script) {
   validateWorkspaces(workspaces);
 
-  const scopes = workspaces.map((workspace) => `${packagePrefix}/${workspace}`);
-  const command = `turbo run ${script} --scope=${scopes.join(',')} --include-dependencies`;
+  const scopes = workspaces.map((workspace) => `--scope=${packagePrefix}/${workspace}`);
+  const command = `turbo run ${script} ${scopes.join(' ')} --include-dependencies`;
 
   spawnSync(command, { stdio: 'inherit', shell: true, encoding: 'utf-8' });
 }

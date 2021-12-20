@@ -6,7 +6,7 @@
     "cli": "src/index.js"
   },
   "scripts": {
-    "clean": "cli clean"
+    "clean": "rm -rf .turbo && rm -rf node_modules"
   },
   "dependencies": {
     "commander": "8.3.0"

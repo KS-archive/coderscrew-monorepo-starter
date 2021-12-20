@@ -5,7 +5,7 @@
   "sideEffects": false,
   "private": true,
   "scripts": {
-    "clean": "cli clean"
+    "clean": "rm -rf .turbo && rm -rf node_modules"
   },
   "dependencies": {
     "colorette": "2.0.16",

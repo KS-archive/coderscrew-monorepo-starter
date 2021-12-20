@@ -6,7 +6,7 @@
     "dev": "node scripts/dev.js",
     "build": "tsup src/index.ts --format cjs",
     "start": "node dist/index.js",
-    "clean": "cli clean"
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
   },
   "dependencies": {
     "@ccms/utils": "*",

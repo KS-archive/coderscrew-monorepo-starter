@@ -6,7 +6,7 @@
     "dev": "vite --clearScreen false",
     "build": "vite build",
     "start": "vite preview",
-    "clean": "cli clean"
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
   },
   "dependencies": {
     "@ccms/utils": "*",
