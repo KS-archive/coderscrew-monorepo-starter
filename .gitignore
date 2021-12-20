@@ -20,3 +20,6 @@ package-lock.json
 # Output files
 dist
 dist-ssr
+
+# Generated files
+.docusaurus
