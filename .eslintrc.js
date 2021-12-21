@@ -1,22 +1,18 @@
 const path = require('path');
-const fg = require('fast-glob');
-
-const { packagePrefix, workspaces } = require('./package.json');
+const { workspacesUtils } = require('@ccms/config');
 
 const testFiles = ['**/?(*.)+(spec|test).ts?(x)'];
 const nodePackages = ['apps/server/**'];
 const browserPackages = ['apps/client/**'];
 const commonJSFiles = ['*.js', '*.cjs'];
-const configFiles = ['.eslintrc.js', '**/vite.config.ts'];
+const configFiles = ['.eslintrc.js', '**/vite.config.ts', 'config.js'];
 const storybookStories = ['*.stories.tsx'];
 const componentFiles = ['*.tsx'];
 const devDependencies = [...configFiles, ...storybookStories, 'tools/**'];
 
-const tsConfigProjects = ['tsconfig.eslint.json', ...workspaces.map((workspace) => `${workspace}*/tsconfig.json`)];
-const workspacePaths = fg
-  .sync(workspaces, { onlyDirectories: true })
-  .map((workspace) => path.resolve(__dirname, workspace));
-const packageDir = [__dirname, ...workspacePaths];
+const workspacePrefix = workspacesUtils.getWorkspacePrefix();
+const tsConfigProjects = [path.resolve('tsconfig.eslint.json'), ...workspacesUtils.getTsConfigPaths()];
+const packageDir = [__dirname, ...workspacesUtils.getFullPaths()];
 
 module.exports = {
   root: true,
@@ -64,8 +60,8 @@ module.exports = {
       {
         groups: [
           ['^\\u0000'], // Side effects.
-          ['^react', `^(?!${packagePrefix}.*$)@?\\w`], // Packages from node_modules. React-related packages first.
-          [`^${packagePrefix}.`], // Monorepo packages.
+          ['^react', `^(?!${workspacePrefix}.*$)@?\\w`], // Packages from node_modules. React-related packages first.
+          [`^${workspacePrefix}.`], // Monorepo packages.
           ['^[^.]'], // Absolute imports.
           ['^\\.'], // Relative imports.
         ],

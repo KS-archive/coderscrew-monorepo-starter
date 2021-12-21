@@ -5,6 +5,7 @@ importers:
   .:
     specifiers:
       '@ccms/cli': '*'
+      '@ccms/config': '*'
       '@ccms/eslint-plugin': '*'
       '@types/eslint': 8.2.1
       '@types/node': 17.0.1
@@ -36,6 +37,7 @@ importers:
       typescript: 4.5.4
     devDependencies:
       '@ccms/cli': link:tools/cli
+      '@ccms/config': link:tools/config
       '@ccms/eslint-plugin': link:tools/eslint-plugin
       '@types/eslint': 8.2.1
       '@types/node': 17.0.1
@@ -121,9 +123,17 @@ importers:
 
   tools/cli:
     specifiers:
+      '@ccms/config': '*'
       commander: 8.3.0
     dependencies:
+      '@ccms/config': link:../config
       commander: 8.3.0
+
+  tools/config:
+    specifiers:
+      fast-glob: 3.2.7
+    dependencies:
+      fast-glob: 3.2.7
 
   tools/eslint-plugin:
     specifiers:

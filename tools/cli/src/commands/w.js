@@ -1,30 +1,13 @@
 const { spawnSync } = require('child_process');
 const { Argument } = require('commander');
-
-const { packagePrefix } = require('../../../../package.json');
-const { getWorkspacesPaths } = require('../utils');
-
-const validateWorkspaces = (workspaces) => {
-  const availableWorkspaces = getWorkspacesPaths().map((workspaceDir) => workspaceDir.split('/')[1]);
-
-  const workspaceErrors = workspaces.flatMap((workspaceName) =>
-    availableWorkspaces.includes(workspaceName)
-      ? []
-      : [`Workspace ${workspaceName} doesn't exist. Available workspaces are ${availableWorkspaces.join(',')}`]
-  );
-
-  if (workspaceErrors.length > 0) {
-    // eslint-disable-next-line no-console
-    workspaceErrors.forEach(console.error);
-    throw new Error("You provide at least one name of a workspace that doesn't exist");
-  }
-};
+const { workspacesUtils } = require('@ccms/config');
 
 function action(workspaces, script) {
-  validateWorkspaces(workspaces);
-
-  const scopes = workspaces.map((workspace) => `--scope=${packagePrefix}/${workspace}`);
-  const command = `turbo run ${script} ${scopes.join(' ')} --include-dependencies`;
+  const scopes = workspacesUtils
+    .findManyOrThrow(workspaces)
+    .map((workspace) => `--scope=${workspace.moduleName}`)
+    .join(' ');
+  const command = `turbo run ${script} ${scopes} --include-dependencies`;
 
   spawnSync(command, { stdio: 'inherit', shell: true, encoding: 'utf-8' });
 }
