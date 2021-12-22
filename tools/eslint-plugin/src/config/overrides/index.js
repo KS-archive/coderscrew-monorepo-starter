@@ -1,5 +1,3 @@
-const defaultExport = ['**/vite.config.ts'];
-
 /**
  * @type {import('eslint').Linter.ConfigOverride[]}
  */
@@ -9,10 +7,5 @@ module.exports = [
   require('./server'),
   require('./components'),
   require('./commonjs'),
-  {
-    files: defaultExport,
-    rules: {
-      'import/no-default-export': 0,
-    },
-  },
+  require('./default-export'),
 ];

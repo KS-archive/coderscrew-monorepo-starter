@@ -1,6 +1,6 @@
 const { workspacesUtils } = require('@ccms/config');
 
-const devDependencies = ['tools/**', '**/vite.config.ts'];
+const devDependencies = ['tools/**', '**/scripts/**', '**/*.config.ts', '**/*.spec.ts'];
 const workspacePrefix = workspacesUtils.getWorkspacePrefix();
 const packageDir = [process.cwd(), ...workspacesUtils.getFullPaths()];
 

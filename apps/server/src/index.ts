@@ -1,16 +1,17 @@
-import express from 'express';
+import { NestFactory } from '@nestjs/core';
 
 import { increment } from '@ccms/utils';
 
-import { log } from '@/utils/log';
+import { STR } from '@/utils/str';
 
-const app = express();
-const port = increment(3001);
+import { AppModule } from './app.module';
 
-app.get('/', (_, res) => {
-  res.send('Hello World!');
-});
+async function bootstrap() {
+  const app = await NestFactory.create(AppModule);
 
-app.listen(port, () => {
-  log(`Example app listening at http://localhost:${port}`);
-});
+  // eslint-disable-next-line no-console
+  console.log(increment(10), STR);
+
+  await app.listen(3000);
+}
+bootstrap();

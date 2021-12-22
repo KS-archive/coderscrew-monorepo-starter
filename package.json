@@ -53,6 +53,12 @@
       "dev": {
         "cache": false
       },
+      "start": {
+        "cache": false
+      },
+      "test": {
+        "cache": false
+      },
       "build": {
         "outputs": [
           "dist/**"

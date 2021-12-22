@@ -2,7 +2,7 @@
  * @type {import('eslint').Linter.ConfigOverride}
  */
 module.exports = {
-  files: ['**/?(*.)+(spec|test).ts?(x)'],
+  files: ['**/?(*.)+spec.ts?(x)'],
   env: { jest: true, node: true },
   extends: [
     'plugin:jest/recommended',
