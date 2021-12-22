@@ -1,3 +1,6 @@
+const fs = require('fs');
+const path = require('path');
+
 const Workspace = require('./workspace');
 const { WORKSPACE_FOLDERS, WORKSPACE_PREFIX } = require('./constants');
 
@@ -13,23 +16,16 @@ class WorkspacesUtils {
   // eslint-disable-next-line class-methods-use-this
   getWorkspacePrefix = () => WORKSPACE_PREFIX;
 
-  /**
-   * @returns {string[]}
-   */
   getFullPaths = () => {
     return this.#workspaces.map((w) => w.fullPath);
   };
 
-  /**
-   * @returns {string[]}
-   */
   getTsConfigPaths = () => {
     return this.#workspaces.map((w) => w.tsConfigPath).filter(Boolean);
   };
 
   /**
    * @param {string} workspaceName
-   * @returns {Workspace}
    */
   findOneOrThrow = (workspaceName) => {
     const result = this.#workspaces.find((w) => w.match(workspaceName));
@@ -43,10 +39,24 @@ class WorkspacesUtils {
 
   /**
    * @param {string[]} workspaceNames
-   * @returns {Workspace[]}
    */
   findManyOrThrow = (workspaceNames) => {
     return workspaceNames.map(this.findOneOrThrow);
+  };
+
+  /**
+   * @param {string} packageJsonAbsolutePath
+   */
+  getRelatedWorkspacesRelativePaths = (packageJsonAbsolutePath) => {
+    const packageJsonContent = fs.readFileSync(packageJsonAbsolutePath, { encoding: 'utf-8' });
+
+    const { dependencies, devDependencies } = JSON.parse(packageJsonContent);
+
+    return Object.keys({ ...dependencies, ...devDependencies })
+      .filter((dependencyName) => dependencyName.startsWith(WORKSPACE_PREFIX))
+      .map(this.findOneOrThrow)
+      .filter((workspace) => workspace.isPackage)
+      .map((workspace) => path.relative(packageJsonAbsolutePath, workspace.fullPath));
   };
 }
 

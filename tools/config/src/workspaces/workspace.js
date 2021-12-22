@@ -1,7 +1,7 @@
 const path = require('path');
 const fs = require('fs');
 
-const { WORKSPACE_PREFIX } = require('./constants');
+const { WORKSPACE_PREFIX, PACKAGES_FOLDER } = require('./constants');
 
 class Workspace {
   #absolutePath;
@@ -35,6 +35,13 @@ class Workspace {
     return fs.existsSync(tsConfigPath) ? tsConfigPath : null;
   }
 
+  get isPackage() {
+    return this.fullPath.includes(path.join(PACKAGES_FOLDER, this.directoryName));
+  }
+
+  /**
+   * @param {string} name
+   */
   match = (name) => {
     return [this.fullPath, this.projectPath, this.directoryName, this.moduleName].includes(name);
   };
