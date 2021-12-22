@@ -1,0 +1,15 @@
+{
+  "recommendations": [
+    "codezombiech.gitignore",
+    "cssho.vscode-svgviewer",
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "mgmcdermott.vscode-language-babel",
+    "mikestead.dotenv",
+    "ms-azuretools.vscode-docker",
+    "naumovs.color-highlight",
+    "redhat.vscode-yaml",
+    "silvenon.mdx",
+    "streetsidesoftware.code-spell-checker"
+  ]
+}
