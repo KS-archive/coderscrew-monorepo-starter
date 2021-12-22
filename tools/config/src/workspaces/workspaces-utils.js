@@ -16,13 +16,15 @@ class WorkspacesUtils {
   // eslint-disable-next-line class-methods-use-this
   getWorkspacePrefix = () => WORKSPACE_PREFIX;
 
-  getFullPaths = () => {
-    return this.#workspaces.map((w) => w.fullPath);
-  };
+  getFullPaths = () => this.#workspaces.map((w) => w.fullPath);
 
-  getTsConfigPaths = () => {
-    return this.#workspaces.map((w) => w.tsConfigPath).filter(Boolean);
-  };
+  getDirectoryNames = () => this.#workspaces.map((w) => w.directoryName);
+
+  getTsConfigPaths = () => this.#workspaces.map((w) => w.tsConfigPath).filter(Boolean);
+
+  getApps = () => this.#workspaces.filter((w) => w.isApp);
+
+  getPackages = () => this.#workspaces.filter((w) => w.isPackage);
 
   /**
    * @param {string} workspaceName
@@ -40,9 +42,7 @@ class WorkspacesUtils {
   /**
    * @param {string[]} workspaceNames
    */
-  findManyOrThrow = (workspaceNames) => {
-    return workspaceNames.map(this.findOneOrThrow);
-  };
+  findManyOrThrow = (workspaceNames) => workspaceNames.map(this.findOneOrThrow);
 
   /**
    * @param {string} packageJsonAbsolutePath

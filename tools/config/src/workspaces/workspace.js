@@ -1,7 +1,7 @@
 const path = require('path');
 const fs = require('fs');
 
-const { WORKSPACE_PREFIX, PACKAGES_FOLDER } = require('./constants');
+const { WORKSPACE_PREFIX, PACKAGES_FOLDER, APPS_FOLDER } = require('./constants');
 
 class Workspace {
   #absolutePath;
@@ -37,6 +37,10 @@ class Workspace {
 
   get isPackage() {
     return this.fullPath.includes(path.join(PACKAGES_FOLDER, this.directoryName));
+  }
+
+  get isApp() {
+    return this.fullPath.includes(path.join(APPS_FOLDER, this.directoryName));
   }
 
   /**
