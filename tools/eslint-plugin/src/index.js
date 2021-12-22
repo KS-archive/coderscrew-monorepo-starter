@@ -19,8 +19,8 @@ module.exports = {
         'plugin:prettier/recommended', // this config should be at the end as it overwrites other ones
       ],
       settings: {
-        jest: { version: require('jest/package.json').version },
-        react: { version: require('react/package.json').version },
+        jest: { version: require('../package.json').devDependencies.jest },
+        react: { version: require('../package.json').devDependencies.react },
       },
       rules: require('./config/rules'),
       overrides: require('./config/overrides'),

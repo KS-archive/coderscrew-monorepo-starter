@@ -9,13 +9,18 @@
     "clean": "rm -rf .turbo & docusaurus clear && rm -rf node_modules"
   },
   "dependencies": {
-    "@docusaurus/core": "2.0.0-beta.13",
-    "@docusaurus/preset-classic": "2.0.0-beta.13",
+    "@algolia/client-search": "4.11.0",
+    "@docusaurus/core": "2.0.0-beta.14",
+    "@docusaurus/preset-classic": "2.0.0-beta.14",
     "@mdx-js/react": "1.6.22",
     "clsx": "1.1.1",
     "prism-react-renderer": "1.2.1",
     "react": "17.0.2",
     "react-dom": "17.0.2"
+  },
+  "devDependencies": {
+    "@types/react": "17.0.37",
+    "webpack": "5.65.0"
   },
   "browserslist": {
     "production": [
