@@ -6,6 +6,9 @@ const { WORKSPACE_PREFIX } = require('./constants');
 class Workspace {
   #absolutePath;
 
+  /**
+   * @param {string} absolutePath
+   */
   constructor(absolutePath) {
     this.#absolutePath = absolutePath;
   }

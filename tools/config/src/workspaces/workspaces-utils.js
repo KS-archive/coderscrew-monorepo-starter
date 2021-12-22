@@ -13,14 +13,24 @@ class WorkspacesUtils {
   // eslint-disable-next-line class-methods-use-this
   getWorkspacePrefix = () => WORKSPACE_PREFIX;
 
+  /**
+   * @returns {string[]}
+   */
   getFullPaths = () => {
     return this.#workspaces.map((w) => w.fullPath);
   };
 
+  /**
+   * @returns {string[]}
+   */
   getTsConfigPaths = () => {
     return this.#workspaces.map((w) => w.tsConfigPath).filter(Boolean);
   };
 
+  /**
+   * @param {string} workspaceName
+   * @returns {Workspace}
+   */
   findOneOrThrow = (workspaceName) => {
     const result = this.#workspaces.find((w) => w.match(workspaceName));
 
@@ -31,6 +41,10 @@ class WorkspacesUtils {
     return result;
   };
 
+  /**
+   * @param {string[]} workspaceNames
+   * @returns {Workspace[]}
+   */
   findManyOrThrow = (workspaceNames) => {
     return workspaceNames.map(this.findOneOrThrow);
   };

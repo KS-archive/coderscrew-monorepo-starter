@@ -5,17 +5,12 @@ importers:
   .:
     specifiers:
       '@ccms/cli': '*'
-      '@ccms/config': '*'
       '@ccms/eslint-plugin': '*'
       '@types/eslint': 8.2.1
       '@types/node': 17.0.1
       '@typescript-eslint/eslint-plugin': 5.7.0
       '@typescript-eslint/parser': 5.7.0
       eslint: 8.5.0
-      eslint-config-airbnb: 19.0.2
-      eslint-config-airbnb-typescript: 16.1.0
-      eslint-config-prettier: 8.3.0
-      eslint-import-resolver-typescript: 2.5.0
       eslint-plugin-eslint-comments: 3.2.0
       eslint-plugin-import: 2.25.3
       eslint-plugin-jest: 25.3.0
@@ -28,7 +23,6 @@ importers:
       eslint-plugin-react-hooks: 4.3.0
       eslint-plugin-simple-import-sort: 7.0.0
       eslint-plugin-testing-library: 5.0.1
-      fast-glob: 3.2.7
       jest: 27.4.5
       prettier: 2.5.1
       react: 17.0.2
@@ -37,30 +31,24 @@ importers:
       typescript: 4.5.4
     devDependencies:
       '@ccms/cli': link:tools/cli
-      '@ccms/config': link:tools/config
       '@ccms/eslint-plugin': link:tools/eslint-plugin
       '@types/eslint': 8.2.1
       '@types/node': 17.0.1
       '@typescript-eslint/eslint-plugin': 5.7.0_a6f6159640504abdd3de077f8bcadb33
       '@typescript-eslint/parser': 5.7.0_eslint@8.5.0+typescript@4.5.4
       eslint: 8.5.0
-      eslint-config-airbnb: 19.0.2_2bfcc90f43b63abd3b12680f33ec7e54
-      eslint-config-airbnb-typescript: 16.1.0_deec940e98af5cf7289a16c8fdaf98c9
-      eslint-config-prettier: 8.3.0_eslint@8.5.0
-      eslint-import-resolver-typescript: 2.5.0_f385d671d5f1c72a868db745a891bc1f
       eslint-plugin-eslint-comments: 3.2.0_eslint@8.5.0
       eslint-plugin-import: 2.25.3_eslint@8.5.0
       eslint-plugin-jest: 25.3.0_58307b40d1d9560143b85525831a9181
       eslint-plugin-jest-dom: 3.9.2_eslint@8.5.0
       eslint-plugin-jest-formatting: 3.1.0_eslint@8.5.0
       eslint-plugin-jsx-a11y: 6.5.1_eslint@8.5.0
-      eslint-plugin-prettier: 4.0.0_94e1b6d3ce6ea916847122712570e9ae
+      eslint-plugin-prettier: 4.0.0_eslint@8.5.0+prettier@2.5.1
       eslint-plugin-promise: 6.0.0_eslint@8.5.0
       eslint-plugin-react: 7.27.1_eslint@8.5.0
       eslint-plugin-react-hooks: 4.3.0_eslint@8.5.0
       eslint-plugin-simple-import-sort: 7.0.0_eslint@8.5.0
       eslint-plugin-testing-library: 5.0.1_eslint@8.5.0+typescript@4.5.4
-      fast-glob: 3.2.7
       jest: 27.4.5
       prettier: 2.5.1
       react: 17.0.2
@@ -137,11 +125,20 @@ importers:
 
   tools/eslint-plugin:
     specifiers:
+      '@ccms/config': '*'
       colorette: 2.0.16
-      loglevel: 1.8.0
+      eslint-config-airbnb: 19.0.2
+      eslint-config-airbnb-typescript: 16.1.0
+      eslint-config-prettier: 8.3.0
+      eslint-import-resolver-typescript: 2.5.0
     dependencies:
       colorette: 2.0.16
-      loglevel: 1.8.0
+    devDependencies:
+      '@ccms/config': link:../config
+      eslint-config-airbnb: 19.0.2_2bfcc90f43b63abd3b12680f33ec7e54
+      eslint-config-airbnb-typescript: 16.1.0_deec940e98af5cf7289a16c8fdaf98c9
+      eslint-config-prettier: 8.3.0_eslint@8.5.0
+      eslint-import-resolver-typescript: 2.5.0_f385d671d5f1c72a868db745a891bc1f
 
 packages:
 
@@ -5564,7 +5561,7 @@ packages:
       minimatch: 3.0.4
     dev: true
 
-  /eslint-plugin-prettier/4.0.0_94e1b6d3ce6ea916847122712570e9ae:
+  /eslint-plugin-prettier/4.0.0_eslint@8.5.0+prettier@2.5.1:
     resolution: {integrity: sha512-98MqmCJ7vJodoQK359bqQWaxOE0CS8paAz/GgjaZLyex4TTk3g9HugoO89EqWCrFiOqn9EVvcoo7gZzONCWVwQ==}
     engines: {node: '>=6.0.0'}
     peerDependencies:
@@ -5576,7 +5573,6 @@ packages:
         optional: true
     dependencies:
       eslint: 8.5.0
-      eslint-config-prettier: 8.3.0_eslint@8.5.0
       prettier: 2.5.1
       prettier-linter-helpers: 1.0.0
     dev: true
@@ -7945,11 +7941,6 @@ packages:
 
   /lodash/4.17.21:
     resolution: {integrity: sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==}
-
-  /loglevel/1.8.0:
-    resolution: {integrity: sha512-G6A/nJLRgWOuuwdNuA6koovfEV1YpqqAG4pRUlFaz3jj2QNZ8M4vBqnVA+HBTmU/AMNUtlOsMmSpF6NyOjztbA==}
-    engines: {node: '>= 0.6.0'}
-    dev: false
 
   /loose-envify/1.4.0:
     resolution: {integrity: sha512-lyuxPGr/Wfhrlem2CL/UcnUc1zcqKAImBDzukY7Y5F/yQiNdko6+fRLevlw1HgMySw7f611UIY408EtxRSoK3Q==}
