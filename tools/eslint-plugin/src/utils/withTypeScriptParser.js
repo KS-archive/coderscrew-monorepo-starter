@@ -1,7 +1,7 @@
 const path = require('path');
 const { workspacesUtils } = require('@ccms/config');
 
-const tsConfigProjects = [path.resolve(process.cwd(), 'tsconfig.eslint.json'), ...workspacesUtils.getTsConfigPaths()];
+const tsConfigProjects = [...workspacesUtils.getTsConfigPaths(), path.resolve(process.cwd(), 'tsconfig.eslint.json')];
 
 /**
  * @param {import('eslint').Linter.Config} eslintConfig

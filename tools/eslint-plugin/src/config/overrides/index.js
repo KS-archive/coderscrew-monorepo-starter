@@ -8,4 +8,5 @@ module.exports = [
   require('./components'),
   require('./commonjs'),
   require('./default-export'),
+  require('./typescript'),
 ];
