@@ -19,7 +19,7 @@ module.exports = (program) => {
   program
     .command('lint')
     .description('Runs linter across all files.')
-    .addOption(new Option('--no-cache', 'Clear ESLint cache before running the script.').default(false))
-    .addOption(new Option('--timing [count]', 'Show timing for [count] longest rules.').default(50))
+    .addOption(new Option('--no-cache', 'Clear ESLint cache before running the script.'))
+    .addOption(new Option('--timing [count]', 'Show timing for [count] longest rules.'))
     .action(action);
 };

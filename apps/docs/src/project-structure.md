@@ -32,7 +32,7 @@ Workspaces are placed in three directories depending on their purpose in the ove
 
 **apps** - applications and websites that are deployed separately. They can depend on other workspaces but cannot be used as a dependency.
 
-**tools** - internal tools used by developers and CI/CD to enhance the project development. They can both depend on other workspaces and be used as a dependency.
+**tools** - internal tools created to enhance the project development. They are CommonJS packages that can be used/imported only in the Node.js environment.
 
 **packages** - code shared across many workspaces. They can both depend on other workspaces and be used as a dependency.
 
@@ -44,7 +44,9 @@ Workspaces are placed in three directories depending on their purpose in the ove
 
 **docs** - documentation of the project built with Docusaurus.
 
-**server** - API server build with Node.js.
+**server** - API server built with NestJS.
+
+**website** - static website built with Next.js.
 
 ##### Packages
 
@@ -53,6 +55,8 @@ Workspaces are placed in three directories depending on their purpose in the ove
 ##### Tools
 
 **cli** - command line interface created to simplify our work with the project.
+
+**config** - configuration utilities used across other tools and package-specific scripts.
 
 **eslint-plugin** - plugin used as a way to add our custom rules to ESLint.
 
