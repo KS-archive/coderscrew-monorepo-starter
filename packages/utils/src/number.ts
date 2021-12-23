@@ -1,5 +1,5 @@
 import { INCREMENT_AMOUNT } from '@/constants/numbers';
 
-export const increment = (num: number) => num + INCREMENT_AMOUNT;
+export const increment = (value: number) => value + INCREMENT_AMOUNT;
 
-export const decrement = (num: number) => num - 20;
+export const decrement = (value: number) => value - 20;

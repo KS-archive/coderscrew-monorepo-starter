@@ -32,7 +32,7 @@ class Workspace {
   get tsConfigPath() {
     const tsConfigPath = path.resolve(this.fullPath, 'tsconfig.json');
 
-    return fs.existsSync(tsConfigPath) ? tsConfigPath : null;
+    return fs.existsSync(tsConfigPath) ? tsConfigPath : undefined;
   }
 
   get isPackage() {

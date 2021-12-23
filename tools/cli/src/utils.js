@@ -9,9 +9,4 @@ const runCommand = (command) => {
   spawnSync(command, { stdio: 'inherit', shell: true, encoding: 'utf-8' });
 };
 
-/**
- * @param {import('commander').Command} program
- */
-const getRemainingArgs = (program) => program.args.slice(program.processedArgs.length);
-
-module.exports = { runCommand, getRemainingArgs };
+module.exports = { runCommand };

@@ -42,7 +42,7 @@ class WorkspacesUtils {
   /**
    * @param {string[]} workspaceNames
    */
-  findManyOrThrow = (workspaceNames) => workspaceNames.map(this.findOneOrThrow);
+  findManyOrThrow = (workspaceNames) => workspaceNames.map((workspaceName) => this.findOneOrThrow(workspaceName));
 
   /**
    * @param {string} packageJsonAbsolutePath
@@ -54,7 +54,7 @@ class WorkspacesUtils {
 
     return Object.keys({ ...dependencies, ...devDependencies })
       .filter((dependencyName) => dependencyName.startsWith(WORKSPACE_PREFIX))
-      .map(this.findOneOrThrow)
+      .map((element) => this.findOneOrThrow(element))
       .filter((workspace) => workspace.isPackage)
       .map((workspace) => path.relative(packageJsonAbsolutePath, workspace.fullPath));
   };

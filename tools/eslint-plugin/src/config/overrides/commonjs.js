@@ -8,5 +8,6 @@ module.exports = {
     // ESM-related lint rules should be disabled for CommonJS files.
     'global-require': 0,
     '@typescript-eslint/no-var-requires': 0,
+    'unicorn/prefer-module': 0,
   },
 };

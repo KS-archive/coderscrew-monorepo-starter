@@ -1,3 +1,4 @@
+// eslint-disable-next-line unicorn/prevent-abbreviations
 const { Argument } = require('commander');
 const { workspacesUtils } = require('@ccms/config');
 const { runCommand } = require('../utils');

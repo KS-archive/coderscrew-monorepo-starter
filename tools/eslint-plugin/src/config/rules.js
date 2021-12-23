@@ -1,8 +1,8 @@
 const { workspacesUtils } = require('@ccms/config');
 
-const devDependencies = ['tools/**', '**/scripts/**', '**/*.config.ts', '**/*.spec.ts'];
+const devDependencies = ['tools/**', '**/scripts/**', '**/*.config.ts', '**/*.spec.ts', '.eslintrc.js'];
 const workspacePrefix = workspacesUtils.getWorkspacePrefix();
-const packageDir = [process.cwd(), ...workspacesUtils.getFullPaths()];
+const packageDirectory = [process.cwd(), ...workspacesUtils.getFullPaths()];
 
 module.exports = {
   // Tracks progress of linting.
@@ -77,5 +77,17 @@ module.exports = {
   '@typescript-eslint/explicit-module-boundary-types': 0,
 
   // Additional config to allow dev dependencies in some files.
-  'import/no-extraneous-dependencies': [2, { devDependencies, packageDir }],
+  'import/no-extraneous-dependencies': [2, { devDependencies, packageDir: packageDirectory }],
+
+  // Customizes abbreviations allowed for variables.
+  'unicorn/prevent-abbreviations': [
+    2,
+    {
+      replacements: {
+        res: false,
+        req: false,
+        env: false,
+      },
+    },
+  ],
 };

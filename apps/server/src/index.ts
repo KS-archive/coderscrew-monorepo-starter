@@ -2,7 +2,7 @@ import { NestFactory } from '@nestjs/core';
 
 import { increment } from '@ccms/utils';
 
-import { STR } from '@/utils/str';
+import { STR } from '@/utils/string.utils';
 
 import { AppModule } from './app.module';
 
@@ -15,7 +15,7 @@ async function bootstrap() {
   await app.listen(3000);
 }
 
-bootstrap().catch((ex) => {
+bootstrap().catch((error) => {
   // eslint-disable-next-line no-console
-  console.error(ex);
+  console.error(error);
 });
