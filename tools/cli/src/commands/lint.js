@@ -2,7 +2,7 @@ const { Option } = require('commander');
 const { runCommand } = require('../utils');
 
 async function action(options) {
-  let command = 'eslint "**/*.{js,ts,tsx}"';
+  let command = 'eslint --format=pretty "**/*.{js,ts,tsx}"';
 
   if (options.cache) {
     command = `${command} --cache`;
