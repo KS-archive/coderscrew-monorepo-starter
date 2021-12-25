@@ -9,8 +9,6 @@ import logo from './logo.svg';
 export const App = () => {
   const [count, setCount] = useState(0);
 
-  console.log('test';
-
   return (
     <div className="App">
       <header className="App-header">
