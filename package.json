@@ -16,6 +16,7 @@
     "node": "16.13.1"
   },
   "devDependencies": {
+    "@artsy/lint-changed": "5.0.2",
     "@ccms/cli": "*",
     "@ccms/eslint-plugin": "*",
     "@rushstack/eslint-patch": "1.1.0",
@@ -40,5 +41,20 @@
         ]
       }
     }
+  },
+  "lint-changed": {
+    "lint-changed-base-branch": "main",
+    "*.js": [
+      "eslint",
+      "prettier -c"
+    ],
+    "*.ts": [
+      "tslint",
+      "prettier -c"
+    ],
+    "*.tsx": [
+      "tslint",
+      "prettier -c"
+    ]
   }
 }

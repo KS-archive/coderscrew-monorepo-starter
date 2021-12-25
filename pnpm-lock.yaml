@@ -4,6 +4,7 @@ importers:
 
   .:
     specifiers:
+      '@artsy/lint-changed': 5.0.2
       '@ccms/cli': '*'
       '@ccms/eslint-plugin': '*'
       '@rushstack/eslint-patch': 1.1.0
@@ -14,6 +15,7 @@ importers:
       turbo: 1.0.22
       typescript: 4.5.4
     devDependencies:
+      '@artsy/lint-changed': 5.0.2
       '@ccms/cli': link:tools/cli
       '@ccms/eslint-plugin': link:tools/eslint-plugin
       '@rushstack/eslint-patch': 1.1.0
@@ -441,6 +443,18 @@ packages:
       rxjs: 6.6.7
     transitivePeerDependencies:
       - chokidar
+    dev: true
+
+  /@artsy/lint-changed/5.0.2:
+    resolution: {integrity: sha512-00RL0v4qcwOxUMHQpG/F9o6231wIWZwsWDBpTNTloC7YJSxQLLC8k1dhVACrb2p76ToxnpC05Dgiqjz8oH4sqQ==}
+    engines: {node: '>=12'}
+    hasBin: true
+    dependencies:
+      await-to-js: 2.1.1
+      commander: 8.3.0
+      kleur: 3.0.3
+      micromatch: 4.0.4
+      p-limit: 2.3.0
     dev: true
 
   /@babel/code-frame/7.12.11:
@@ -4232,6 +4246,11 @@ packages:
     resolution: {integrity: sha512-DMD0KiN46eipeziST1LPP/STfDU0sufISXmjSgvVsoU2tqxctQeASejWcfNtxYKqETM1UxQ8sp2OrSBWpHY6sw==}
     engines: {node: '>= 0.4'}
 
+  /await-to-js/2.1.1:
+    resolution: {integrity: sha512-CHBC6gQGCIzjZ09tJ+XmpQoZOn4GdWePB4qUweCaKNJ0D3f115YdhmYVTZ4rMVpiJ3cFzZcTYK1VMYEICV4YXw==}
+    engines: {node: '>=6.0.0'}
+    dev: true
+
   /axe-core/4.3.5:
     resolution: {integrity: sha512-WKTW1+xAzhMS5dJsxWkliixlO/PqC4VhmO9T4juNYcaTg9jzWiJsou6m5pxWYGfigWbwzJWeFY6z47a+4neRXA==}
     engines: {node: '>=4'}
@@ -5045,7 +5064,6 @@ packages:
   /commander/8.3.0:
     resolution: {integrity: sha512-OkTL9umf+He2DZkUq8f8J9of7yL6RJKI24dVITBmNfZBmri9zYZQrKkuXiKhyfPSu8tUhnVBB1iKXevvnlR4Ww==}
     engines: {node: '>= 12'}
-    dev: false
 
   /commondir/1.0.1:
     resolution: {integrity: sha1-3dgA2gxmEnOTzKWVDqloo6rxJTs=}
