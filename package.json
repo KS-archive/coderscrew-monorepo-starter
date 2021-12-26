@@ -15,7 +15,13 @@
   "volta": {
     "node": "16.13.1"
   },
+  "scripts": {
+    "lint": "eslint \"**/*.{js,ts,tsx}\"",
+    "lint:fix": "yarn lint --fix",
+    "lint:changed": "lint-changed"
+  },
   "devDependencies": {
+    "@artsy/lint-changed": "5.0.2",
     "@ccms/cli": "*",
     "@ccms/eslint-plugin": "*",
     "@rushstack/eslint-patch": "1.1.0",
@@ -28,6 +34,7 @@
   },
   "turbo": {
     "pipeline": {
+      "lint": {},
       "dev": {
         "cache": false
       },
@@ -40,5 +47,17 @@
         ]
       }
     }
+  },
+  "lint-changed": {
+    "lint-changed-base-branch": "main",
+    "*.js": [
+      "pnpm eslint"
+    ],
+    "*.ts": [
+      "pnpm eslint"
+    ],
+    "*.tsx": [
+      "pnpm eslint"
+    ]
   }
 }
