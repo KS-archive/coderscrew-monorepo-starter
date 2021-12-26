@@ -50,3 +50,6 @@ out
 
 # Vercel
 .vercel
+
+# Env variables
+.env

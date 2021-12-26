@@ -1,8 +1,10 @@
 const { Argument } = require('commander');
 const { workspacesUtils } = require('@ccms/config');
-const { runCommand } = require('../utils');
+const { runCommand, loadEnvVariables } = require('../utils');
 
 function action(workspaces) {
+  loadEnvVariables();
+
   if (workspaces.length === 0) {
     runCommand('turbo run build');
 

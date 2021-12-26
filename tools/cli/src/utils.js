@@ -1,4 +1,9 @@
 const { spawnSync } = require('child_process');
+const path = require('path');
+
+const loadEnvVariables = () => {
+  require('dotenv').config({ path: path.resolve(process.cwd(), '.env') });
+};
 
 /**
  * @param {string} command
@@ -9,4 +14,4 @@ const runCommand = (command) => {
   spawnSync(command, { stdio: 'inherit', shell: true, encoding: 'utf-8' });
 };
 
-module.exports = { runCommand };
+module.exports = { runCommand, loadEnvVariables };
