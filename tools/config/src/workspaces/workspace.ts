@@ -1,28 +1,32 @@
-const path = require('path');
-const fs = require('fs');
+import fs from 'fs';
+import path from 'path';
+import url from 'url';
 
-const { WORKSPACE_PREFIX, PACKAGES_FOLDER, APPS_FOLDER } = require('./constants');
+import { APPS_FOLDER, PACKAGES_FOLDER, WORKSPACE_PREFIX } from './constants';
 
-class Workspace {
-  #absolutePath;
+export class Workspace {
+  private _absolutePath: string;
 
-  /**
-   * @param {string} absolutePath
-   */
-  constructor(absolutePath) {
-    this.#absolutePath = absolutePath;
+  constructor(absolutePath: string) {
+    this._absolutePath = absolutePath;
   }
 
   get fullPath() {
-    return this.#absolutePath;
+    return this._absolutePath;
   }
 
   get projectPath() {
-    return path.relative(__dirname, this.fullPath);
+    return path.relative(path.dirname(url.fileURLToPath(import.meta.url)), this.fullPath);
   }
 
   get directoryName() {
-    return this.fullPath.split('/').pop();
+    const directory = this.fullPath.split('/').pop();
+
+    if (!directory) {
+      throw new Error(`No directory found at the end of path ${this.fullPath}`);
+    }
+
+    return directory;
   }
 
   get moduleName() {
@@ -43,12 +47,7 @@ class Workspace {
     return this.fullPath.includes(path.join(APPS_FOLDER, this.directoryName));
   }
 
-  /**
-   * @param {string} name
-   */
-  match = (name) => {
+  match = (name: string) => {
     return [this.fullPath, this.projectPath, this.directoryName, this.moduleName].includes(name);
   };
 }
-
-module.exports = Workspace;

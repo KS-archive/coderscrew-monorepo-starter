@@ -82,6 +82,9 @@ module.exports = {
   // Additional config to allow dev dependencies in some files.
   'import/no-extraneous-dependencies': [2, { devDependencies, packageDir: packageDirectory }],
 
+  // Workspaces transpiled to CommonJS have problems with node protocol in require statements.
+  'unicorn/prefer-node-protocol': [0],
+
   // Customizes abbreviations allowed for variables.
   'unicorn/prevent-abbreviations': [
     2,
@@ -90,6 +93,7 @@ module.exports = {
         res: false,
         req: false,
         env: false,
+        dev: false,
       },
     },
   ],

@@ -1,7 +1,10 @@
-const { workspacesUtils } = require('@ccms/config');
-const { runCommand, loadEnvVariables, getRemainingArguments } = require('../utils');
+import { Command } from 'commander';
 
-function action() {
+import { workspacesUtils } from '@ccms/config';
+
+import { getRemainingArguments, loadEnvVariables, runCommand } from '../utils';
+
+function action(this: Command) {
   loadEnvVariables();
 
   const serverModuleName = workspacesUtils.findOneOrThrow('server').moduleName;
@@ -9,7 +12,7 @@ function action() {
   runCommand(`pnpm run --filter=${serverModuleName} mikro-orm -- ${getRemainingArguments(this)}`);
 }
 
-module.exports = (program) => {
+export const ormCommand = (program: Command) => {
   program
     .command('orm')
     .description('Runs orm-related scripts inside the server workspace.')

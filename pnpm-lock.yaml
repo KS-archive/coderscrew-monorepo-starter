@@ -177,16 +177,22 @@ importers:
       '@ccms/config': '*'
       commander: 8.3.0
       dotenv: 10.0.0
+      tsup: 5.11.9
     dependencies:
       '@ccms/config': link:../config
       commander: 8.3.0
       dotenv: 10.0.0
+    devDependencies:
+      tsup: 5.11.9_typescript@4.5.4
 
   tools/config:
     specifiers:
       fast-glob: 3.2.7
+      tsup: 5.11.9
     dependencies:
       fast-glob: 3.2.7
+    devDependencies:
+      tsup: 5.11.9_typescript@4.5.4
 
   tools/eslint-plugin:
     specifiers:

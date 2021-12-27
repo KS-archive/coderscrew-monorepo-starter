@@ -1,18 +1,29 @@
-const { Argument, Option } = require('commander');
-const { workspacesUtils } = require('@ccms/config');
-const { runCommand } = require('../utils');
+import { Argument, Command, Option } from 'commander';
+
+import { workspacesUtils } from '@ccms/config';
+
+import { runCommand } from '../utils';
+
+interface Arguments {
+  workspace: string;
+  dependencies: string[];
+}
+
+interface Options {
+  dev: boolean;
+}
 
 const PROJECT_ROOT_KEY = 'root';
 
-const getRootCommand = (dependencies) => `pnpm add -w ${dependencies}`;
+const getRootCommand = (dependencies: Arguments['dependencies']) => `pnpm add -w ${dependencies.join(' ')}`;
 
-const getWorkspaceCommand = (dependencies, workspace) => {
+const getWorkspaceCommand = (dependencies: Arguments['dependencies'], workspace: Arguments['workspace']) => {
   const workspaceName = workspacesUtils.findOneOrThrow(workspace).moduleName;
 
   return `pnpm add ${dependencies.join(' ')} --filter=${workspaceName}`;
 };
 
-function action(workspace, dependencies, options) {
+function action(workspace: Arguments['workspace'], dependencies: Arguments['dependencies'], options: Options) {
   let command =
     workspace === PROJECT_ROOT_KEY ? getRootCommand(dependencies) : getWorkspaceCommand(dependencies, workspace);
 
@@ -23,7 +34,7 @@ function action(workspace, dependencies, options) {
   runCommand(command);
 }
 
-module.exports = (program) => {
+export const addCommand = (program: Command) => {
   program
     .command('add')
     .description('Adds dependencies to a specified workspace.')

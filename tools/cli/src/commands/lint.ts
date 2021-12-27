@@ -1,7 +1,13 @@
-const { Option } = require('commander');
-const { runCommand } = require('../utils');
+import { Command, Option } from 'commander';
 
-async function action(options) {
+import { runCommand } from '../utils';
+
+interface Options {
+  cache: boolean;
+  timing: number;
+}
+
+function action(options: Options) {
   let command = 'eslint --format=pretty "**/*.{js,ts,tsx}"';
 
   if (options.cache) {
@@ -15,11 +21,11 @@ async function action(options) {
   runCommand(command);
 }
 
-module.exports = (program) => {
+export const lintCommand = (program: Command) => {
   program
     .command('lint')
     .description('Runs linter across all files.')
     .addOption(new Option('--no-cache', 'Clear ESLint cache before running the script.'))
-    .addOption(new Option('--timing [count]', 'Show timing for [count] longest rules.'))
+    .addOption(new Option('--timing [count]', 'Show timing for [count] longest rules.').argParser(Number))
     .action(action);
 };

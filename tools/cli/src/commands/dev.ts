@@ -1,9 +1,18 @@
-// eslint-disable-next-line unicorn/prevent-abbreviations
-const { Argument, Option } = require('commander');
-const { workspacesUtils } = require('@ccms/config');
-const { runCommand, loadEnvVariables } = require('../utils');
+import { Argument, Command, Option } from 'commander';
 
-function action(workspaces, options) {
+import { workspacesUtils } from '@ccms/config';
+
+import { loadEnvVariables, runCommand } from '../utils';
+
+interface Arguments {
+  workspaces: string[];
+}
+
+interface Options {
+  turbo: boolean;
+}
+
+function action(workspaces: Arguments['workspaces'], options: Options) {
   loadEnvVariables();
 
   if (options.turbo) {
@@ -35,7 +44,7 @@ function action(workspaces, options) {
   }
 }
 
-module.exports = (program) => {
+export const devCommand = (program: Command) => {
   program
     .command('dev')
     .description('Runs specified workspaces in local development mode.')

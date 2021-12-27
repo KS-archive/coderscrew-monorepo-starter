@@ -1,8 +1,14 @@
-const { Argument } = require('commander');
-const { workspacesUtils } = require('@ccms/config');
-const { runCommand, loadEnvVariables } = require('../utils');
+import { Argument, Command } from 'commander';
 
-function action(workspaces) {
+import { workspacesUtils } from '@ccms/config';
+
+import { loadEnvVariables, runCommand } from '../utils';
+
+interface Arguments {
+  workspaces: string[];
+}
+
+function action(workspaces: Arguments['workspaces']) {
   loadEnvVariables();
 
   if (workspaces.length === 0) {
@@ -19,7 +25,7 @@ function action(workspaces) {
   runCommand(`turbo run build ${scopes} --include-dependencies`);
 }
 
-module.exports = (program) => {
+export const buildCommand = (program: Command) => {
   program
     .command('build')
     .description('Builds specified workspaces and their dependencies.')
@@ -27,9 +33,7 @@ module.exports = (program) => {
       new Argument(
         '[workspaces...]',
         'Names of the workspaces to build. Leave empty to build all dependencies.'
-      ).choices(
-        [...workspacesUtils.getApps(), ...workspacesUtils.getPackages()].map((workspace) => workspace.directoryName)
-      )
+      ).choices(workspacesUtils.getDirectoryNames())
     )
     .action(action);
 };

@@ -1,12 +1,20 @@
-const { Argument } = require('commander');
-const { workspacesUtils } = require('@ccms/config');
-const { runCommand } = require('../utils');
+import type { Command } from 'commander';
+import { Argument } from 'commander';
+
+import { workspacesUtils } from '@ccms/config';
+
+import { runCommand } from '../utils';
+
+interface Arguments {
+  workspace: string;
+  dependencies: string[];
+}
 
 const PROJECT_ROOT_KEY = 'root';
 
-function action(workspace, dependencies) {
+function action(workspace: Arguments['workspace'], dependencies: Arguments['dependencies']) {
   if (workspace === PROJECT_ROOT_KEY) {
-    runCommand(`pnpm remove -w ${dependencies}`);
+    runCommand(`pnpm remove -w ${dependencies.join(' ')}`);
   }
 
   const workspaceName = workspacesUtils.findOneOrThrow(workspace).moduleName;
@@ -14,7 +22,7 @@ function action(workspace, dependencies) {
   runCommand(`pnpm remove ${dependencies.join(' ')} --filter=${workspaceName}`);
 }
 
-module.exports = (program) => {
+export const removeCommand = (program: Command) => {
   program
     .command('remove')
     .description('Removes dependencies from a specified workspace.')

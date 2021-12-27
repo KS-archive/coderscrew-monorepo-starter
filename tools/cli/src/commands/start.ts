@@ -1,8 +1,14 @@
-const { Argument } = require('commander');
-const { workspacesUtils } = require('@ccms/config');
-const { runCommand, loadEnvVariables } = require('../utils');
+import { Argument, Command } from 'commander';
 
-function action(workspaces) {
+import { workspacesUtils } from '@ccms/config';
+
+import { loadEnvVariables, runCommand } from '../utils';
+
+interface Arguments {
+  workspaces: string[];
+}
+
+function action(workspaces: Arguments['workspaces']) {
   loadEnvVariables();
 
   if (workspaces.length === 0) {
@@ -19,7 +25,7 @@ function action(workspaces) {
   runCommand(`pnpm run --recursive ${filters} start`);
 }
 
-module.exports = (program) => {
+export const startCommand = (program: Command) => {
   program
     .command('start')
     .description('Runs created build locally for specified workspaces.')
