@@ -1,6 +1,7 @@
 import { ExecutionContext, Injectable } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
-import { isBoolean } from 'lodash';
+
+import { isBoolean } from '@ccms/utils';
 
 import type { LocalAuthGuardRequest } from './local.types';
 
