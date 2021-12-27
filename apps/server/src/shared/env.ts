@@ -1,5 +1,5 @@
 import { plainToClass } from 'class-transformer';
-import { validateOrReject } from 'class-validator';
+import { validateSync } from 'class-validator';
 
 import { EnvSchema } from './env.schema';
 
@@ -25,12 +25,20 @@ class Env {
     }
   };
 
-  validate = async () => {
+  validate = () => {
     if (this._isValidated) {
       return;
     }
 
-    await validateOrReject(this._envVariables);
+    const errors = validateSync(this._envVariables);
+
+    if (errors.length > 0) {
+      const messages = errors.map((error) => error.toString()).join(',\n');
+
+      // eslint-disable-next-line no-console
+      console.error('Environment variables validation failed');
+      throw new Error(messages);
+    }
 
     this._isValidated = true;
   };

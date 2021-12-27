@@ -11,5 +11,6 @@ require('./commands/start')(program);
 require('./commands/lint')(program);
 require('./commands/add')(program);
 require('./commands/remove')(program);
+require('./commands/orm')(program);
 
 program.parse(process.argv);

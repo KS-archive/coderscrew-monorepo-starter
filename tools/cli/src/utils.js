@@ -14,4 +14,9 @@ const runCommand = (command) => {
   spawnSync(command, { stdio: 'inherit', shell: true, encoding: 'utf-8' });
 };
 
-module.exports = { runCommand, loadEnvVariables };
+/**
+ * @param {import('commander').Command} program
+ */
+const getRemainingArguments = (program) => program.args.slice(program.processedArgs.length).join(' ');
+
+module.exports = { runCommand, loadEnvVariables, getRemainingArguments };

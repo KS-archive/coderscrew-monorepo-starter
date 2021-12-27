@@ -1,21 +1,16 @@
+import { Logger } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
-
-import { increment } from '@ccms/utils';
-
-import { STR } from '@/utils/string.utils';
 
 import { AppModule } from './app.module';
 import { env } from './shared/env';
 
 async function bootstrap() {
-  await env.validate();
-
   const app = await NestFactory.create(AppModule);
+  const logger = app.get(Logger);
 
-  // eslint-disable-next-line no-console
-  console.log(increment(10), STR, env.get('APP_ENV'));
+  await app.listen(env.get('SERVER_PORT'));
 
-  await app.listen(3000);
+  logger.log(`Application listening at ${await app.getUrl()}`.replace('[::1]', 'localhost'));
 }
 
 bootstrap().catch((error) => {
