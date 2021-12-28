@@ -2,9 +2,13 @@ import './app.css';
 
 import { useState } from 'react';
 
-import { increment } from '@ccms/utils';
+import { Button, styled } from '@ccms/ui';
 
 import logo from './logo.svg';
+
+const Hello = styled.div(({ theme }) => ({
+  ...theme.typography['4xl'],
+}));
 
 export const App = () => {
   const [count, setCount] = useState(0);
@@ -13,11 +17,11 @@ export const App = () => {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>Hello Vite + React!</p>
+        <Hello>Hello Vite + React!</Hello>
         <p>
-          <button type="button" onClick={() => setCount(increment)}>
+          <Button size="xl" color="gray" variant="solid" onClick={() => setCount((previous) => previous + 1)}>
             count is: {count}
-          </button>
+          </Button>
         </p>
         <p>
           Edit <code>App.tsx</code> and save to test HMR updates.

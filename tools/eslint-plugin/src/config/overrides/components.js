@@ -9,5 +9,8 @@ module.exports = {
 
     // To be consistent we want to always use arrow function when creating components.
     'react/function-component-definition': [2, { namedComponents: 'arrow-function' }],
+
+    // No need for prop-types as we have TypeScript types.
+    'react/prop-types': 0,
   },
 };

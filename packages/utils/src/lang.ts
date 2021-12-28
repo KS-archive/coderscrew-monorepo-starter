@@ -1,3 +1,1 @@
-export const isBoolean = (value: unknown): value is boolean => {
-  return typeof value === 'boolean';
-};
+export { default as isBoolean } from 'lodash/isBoolean';
