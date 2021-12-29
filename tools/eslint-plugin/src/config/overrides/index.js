@@ -9,6 +9,6 @@ module.exports = [
   require('./config-files'),
   require('./typescript'),
   require('./stories'),
-  require('./next-pages'),
+  require('./next'),
   require('./nest'),
 ];

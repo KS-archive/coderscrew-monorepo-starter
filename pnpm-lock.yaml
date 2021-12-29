@@ -244,6 +244,7 @@ importers:
     specifiers:
       '@babel/core': 7.16.5
       '@ccms/config': '*'
+      '@next/eslint-plugin-next': 12.0.7
       '@types/eslint': 8.2.1
       '@typescript-eslint/eslint-plugin': 5.8.1
       '@typescript-eslint/parser': 5.8.1
@@ -277,6 +278,7 @@ importers:
     devDependencies:
       '@babel/core': 7.16.5
       '@ccms/config': link:../config
+      '@next/eslint-plugin-next': 12.0.7
       '@types/eslint': 8.2.1
       '@typescript-eslint/eslint-plugin': 5.8.1_3a47348159e115370aa4cba56aba33b6
       '@typescript-eslint/parser': 5.8.1_eslint@8.5.0+typescript@4.5.4

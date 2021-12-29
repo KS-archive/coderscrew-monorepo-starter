@@ -25,6 +25,7 @@ module.exports = {
         'jest-formatting',
         'storybook',
         'unicorn',
+        '@next/next',
         '@ccms',
       ],
       extends: [
