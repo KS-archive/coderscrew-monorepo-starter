@@ -4,13 +4,14 @@ import type { CSSObject } from '@emotion/styled';
 import { styled, Theme } from '@/theme';
 
 type ButtonSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
-type ButtonColor = keyof Pick<Theme['colors'], 'gray' | 'red' | 'blue'>;
+type ButtonColor = keyof Pick<Theme['colors'], 'primary' | 'gray' | 'error' | 'warning' | 'success' | 'info'>;
 type ButtonVariant = 'solid' | 'outline' | 'ghost';
 
 interface CustomProps {
   size?: ButtonSize;
   color?: ButtonColor;
   variant?: ButtonVariant;
+  disabled?: boolean;
 }
 
 const sizesMap = {
@@ -28,28 +29,28 @@ const solidVariant: VariantFc = ({ theme, color }) =>
     ? {
         background: theme.colors.gray[100],
         color: theme.colors.gray[800],
-        '&:hover': { background: theme.colors.gray[200] },
-        '&:active': { background: theme.colors.gray[300] },
+        '&:hover:enabled': { background: theme.colors.gray[200] },
+        '&:active:enabled': { background: theme.colors.gray[300] },
       }
     : {
-        background: theme.colors.gray[500],
+        background: theme.colors[color][500],
         color: theme.colors.white,
-        '&:hover': { background: theme.colors.gray[600] },
-        '&:active': { background: theme.colors.gray[700] },
+        '&:hover:enabled': { background: theme.colors[color][600] },
+        '&:active:enabled': { background: theme.colors[color][700] },
       };
 
 const ghostVariant: VariantFc = ({ theme, color }) =>
   color === 'gray'
     ? {
         color: theme.colors.gray[800],
-        '&:hover': { background: theme.colors.gray[100] },
-        '&:active': { background: theme.colors.gray[200] },
+        '&:hover:enabled': { background: theme.colors.gray[100] },
+        '&:active:enabled': { background: theme.colors.gray[200] },
       }
     : {
         color: theme.colors[color][600],
         background: theme.colors.transparent,
-        '&:hover': { background: theme.colors[color][50] },
-        '&:active': { background: theme.colors[color][100] },
+        '&:hover:enabled': { background: theme.colors[color][50] },
+        '&:active:enabled': { background: theme.colors[color][100] },
       };
 
 const outlineVariant: VariantFc = ({ theme, color }) => ({
@@ -70,24 +71,22 @@ export const Button = styled.button<CustomProps>(
     userSelect: 'none',
     textDecoration: 'none',
     boxSizing: 'border-box',
-    fontWeight: theme.fontWeights.semibold,
+    fontWeight: theme.fontWeights.medium,
     border: '1px solid transparent',
     borderRadius: 6,
-    paddingY: 0,
+    padding: 0,
     display: 'flex',
     alignItems: 'center',
     transition: 'all 0.225s ease-out',
     outline: 'none',
 
-    '&:focus': {
+    '&:focus:enabled': {
       boxShadow: theme.shadows.outline,
     },
 
     '&:disabled': {
       opacity: 0.5,
-      pointerEvents: 'none',
       cursor: 'not-allowed',
-      boxShadow: 'none',
     },
   }),
   ({ theme, size = 'md' }) => {

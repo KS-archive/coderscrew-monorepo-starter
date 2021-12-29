@@ -10,4 +10,7 @@ module.exports = {
     'plugin:testing-library/react',
     'plugin:jest-formatting/recommended',
   ],
+  rules: {
+    'import/no-extraneous-dependencies': [2, { devDependencies: true }],
+  },
 };

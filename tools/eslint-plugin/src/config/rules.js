@@ -1,6 +1,5 @@
 const { workspacesUtils } = require('@ccms/config');
 
-const devDependencies = ['tools/**', '**/scripts/**', '**/*.config.ts', '**/*.spec.ts', '.eslintrc.js'];
 const workspacePrefix = workspacesUtils.getWorkspacePrefix();
 const packageDirectory = [process.cwd(), ...workspacesUtils.getFullPaths()];
 
@@ -80,7 +79,7 @@ module.exports = {
   '@typescript-eslint/explicit-module-boundary-types': 0,
 
   // Additional config to allow dev dependencies in some files.
-  'import/no-extraneous-dependencies': [2, { devDependencies, packageDir: packageDirectory }],
+  'import/no-extraneous-dependencies': [2, { packageDir: packageDirectory }],
 
   // Workspaces transpiled to CommonJS have problems with node protocol in require statements.
   'unicorn/prefer-node-protocol': [0],

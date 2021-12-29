@@ -20,6 +20,7 @@ package-lock.json
 # Output files
 dist
 dist-ssr
+storybook-static
 
 # Tests
 /coverage

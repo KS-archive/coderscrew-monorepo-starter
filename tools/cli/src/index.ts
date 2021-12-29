@@ -8,6 +8,7 @@ import { lintCommand } from './commands/lint';
 import { ormCommand } from './commands/orm';
 import { removeCommand } from './commands/remove';
 import { startCommand } from './commands/start';
+import { storybookCommand } from './commands/storybook';
 
 const program = new Command();
 
@@ -21,5 +22,6 @@ lintCommand(program);
 ormCommand(program);
 removeCommand(program);
 startCommand(program);
+storybookCommand(program);
 
 program.parse(process.argv);

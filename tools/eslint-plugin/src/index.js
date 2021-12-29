@@ -17,7 +17,16 @@ module.exports = {
         project: tsConfigProjects,
         tsconfigRootDir: process.cwd(),
       },
-      plugins: ['simple-import-sort', 'jest', 'jest-dom', 'testing-library', 'jest-formatting', 'unicorn', '@ccms'],
+      plugins: [
+        'simple-import-sort',
+        'jest',
+        'jest-dom',
+        'testing-library',
+        'jest-formatting',
+        'storybook',
+        'unicorn',
+        '@ccms',
+      ],
       extends: [
         'airbnb',
         'airbnb-typescript',

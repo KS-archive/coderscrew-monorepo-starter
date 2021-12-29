@@ -2,9 +2,8 @@
  * @type {import('eslint').Linter.ConfigOverride}
  */
 module.exports = {
-  files: ['apps/server/**'],
-  env: { node: true },
+  files: ['apps/website/pages/**'],
   rules: {
-    'class-methods-use-this': 0,
+    'import/no-default-export': 0,
   },
 };

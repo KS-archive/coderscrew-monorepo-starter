@@ -4,9 +4,11 @@
 module.exports = [
   require('./tests'),
   require('./browser'),
-  require('./server'),
   require('./components'),
   require('./commonjs'),
-  require('./default-export'),
+  require('./config-files'),
   require('./typescript'),
+  require('./stories'),
+  require('./next-pages'),
+  require('./nest'),
 ];

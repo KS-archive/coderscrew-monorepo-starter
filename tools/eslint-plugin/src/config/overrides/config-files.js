@@ -7,9 +7,11 @@ module.exports = {
     '**/tsup.config.ts',
     '**/jest.config.ts',
     '**/jest-e2e.config.ts',
-    'apps/website/pages/**',
+    '**/.storybook/*',
+    '.eslintrc.js',
   ],
   rules: {
     'import/no-default-export': 0,
+    'import/no-extraneous-dependencies': [2, { devDependencies: true }],
   },
 };

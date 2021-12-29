@@ -12,7 +12,9 @@
   "scripts": {
     "dev": "tsup --watch",
     "build": "tsup",
-    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist && rm -rf storybook-static",
+    "storybook:dev": "start-storybook -p 6006",
+    "storybook:build": "build-storybook"
   },
   "dependencies": {
     "@ccms/utils": "*",
@@ -21,10 +23,23 @@
   },
   "devDependencies": {
     "@babel/core": "7.16.5",
+    "@storybook/addon-actions": "^6.4.9",
+    "@storybook/addon-essentials": "^6.4.9",
+    "@storybook/addon-links": "^6.4.9",
+    "@storybook/builder-webpack5": "^6.4.9",
+    "@storybook/manager-webpack5": "^6.4.9",
+    "@storybook/node-logger": "^6.4.9",
+    "@storybook/react": "^6.4.9",
+    "babel-loader": "8.2.3",
     "react": "17.0.2",
-    "tsup": "5.11.9"
+    "react-dom": "17.0.2",
+    "source-map-loader": "3.0.0",
+    "tsconfig-paths-webpack-plugin": "3.5.2",
+    "tsup": "5.11.9",
+    "webpack": "^5.65.0"
   },
   "peerDependencies": {
-    "react": "17.0.2"
+    "react": "17.0.2",
+    "react-dom": "17.0.2"
   }
 }
