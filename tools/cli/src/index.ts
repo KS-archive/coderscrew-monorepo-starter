@@ -9,6 +9,7 @@ import { ormCommand } from './commands/orm';
 import { removeCommand } from './commands/remove';
 import { startCommand } from './commands/start';
 import { storybookCommand } from './commands/storybook';
+import { testCommand } from './commands/test';
 
 const program = new Command();
 
@@ -23,5 +24,6 @@ ormCommand(program);
 removeCommand(program);
 startCommand(program);
 storybookCommand(program);
+testCommand(program);
 
 program.parse(process.argv);
