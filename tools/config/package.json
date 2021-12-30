@@ -12,7 +12,7 @@
   "scripts": {
     "dev": "tsup --watch",
     "build": "tsup",
-    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
+    "clean": "rm -rf .turbo & rm -rf node_modules & rm -rf dist"
   },
   "dependencies": {
     "fast-glob": "3.2.7"

@@ -3,12 +3,12 @@
   "version": "0.0.0",
   "private": true,
   "bin": {
-    "cli": "dist/index.js"
+    "cli": "./bin.js"
   },
   "scripts": {
     "dev": "tsup --watch",
     "build": "tsup",
-    "clean": "rm -rf .turbo && rm -rf node_modules"
+    "clean": "rm -rf .turbo & rm -rf node_modules & rm -rf dist"
   },
   "dependencies": {
     "@ccms/config": "*",

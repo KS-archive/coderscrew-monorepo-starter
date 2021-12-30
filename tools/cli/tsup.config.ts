@@ -5,7 +5,6 @@ export default defineConfig(({ watch }) => ({
   clean: true,
   watch,
   sourcemap: watch ? 'inline' : true,
-  dts: true,
   format: ['cjs'],
   target: 'node16',
 }));

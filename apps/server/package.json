@@ -8,6 +8,7 @@
     "start": "node dist/index.js",
     "test": "jest",
     "test:e2e": "jest --config jest-e2e.config.ts",
+    "clean": "rm -rf .turbo & rm -rf node_modules & rm -rf dist",
     "mikro-orm": "mikro-orm"
   },
   "dependencies": {

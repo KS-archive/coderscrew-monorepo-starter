@@ -16,7 +16,7 @@
     "node": "16.13.1"
   },
   "scripts": {
-    "rebuild": "turbo run build --scope=@ccms/cli --include-dependencies"
+    "prepare": "turbo run build --scope=@ccms/cli --include-dependencies"
   },
   "devDependencies": {
     "@ccms/cli": "*",

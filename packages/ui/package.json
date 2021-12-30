@@ -12,7 +12,7 @@
   "scripts": {
     "dev": "tsup --watch",
     "build": "tsup",
-    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist && rm -rf storybook-static",
+    "clean": "rm -rf .turbo & rm -rf node_modules & rm -rf dist & rm -rf storybook-static",
     "storybook:dev": "start-storybook -p 6006",
     "storybook:build": "build-storybook"
   },
