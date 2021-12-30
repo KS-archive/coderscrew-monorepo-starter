@@ -4,4 +4,4 @@
 
 1. Ensure you have any version of Node.js installed.
 
-2. Invoke `npm run check` script and follow CLI instructions.
+2. Invoke `npm run startup` script and follow CLI instructions.
