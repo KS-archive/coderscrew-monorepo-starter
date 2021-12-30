@@ -9,14 +9,14 @@
     "tools/*"
   ],
   "engines": {
-    "pnpm": "6.24.2",
+    "pnpm": "6.24.4",
     "node": "16.13.1"
   },
   "volta": {
     "node": "16.13.1"
   },
   "scripts": {
-    "prepare": "turbo run build --scope=@ccms/cli --include-dependencies"
+    "startup": "node scripts/startup.js"
   },
   "devDependencies": {
     "@ccms/cli": "*",

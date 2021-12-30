@@ -94,6 +94,7 @@ module.exports = {
         env: false,
         dev: false,
         obj: false,
+        str: false,
         prop: false,
         props: false,
         args: false,

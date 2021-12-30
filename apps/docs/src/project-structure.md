@@ -32,7 +32,7 @@ Workspaces are placed in three directories depending on their purpose in the ove
 
 **apps** - applications and websites that are deployed separately. They can depend on other workspaces but cannot be used as a dependency.
 
-**tools** - internal tools created to enhance the project development. They are CommonJS packages that can be used/imported only in the Node.js environment.
+**tools** - internal tools created to enhance the project development.
 
 **packages** - code shared across many workspaces. They can both depend on other workspaces and be used as a dependency.
 
@@ -52,6 +52,8 @@ Workspaces are placed in three directories depending on their purpose in the ove
 
 **utils** - utility functions that can be used in all environments.
 
+**ui** - styling functions, theming utilities, and reusable components.
+
 ##### Tools
 
 **cli** - command line interface created to simplify our work with the project.
@@ -60,13 +62,29 @@ Workspaces are placed in three directories depending on their purpose in the ove
 
 **eslint-plugin** - plugin used as a way to add our custom rules to ESLint.
 
-#### What are the common conventions across workspaces?
+#### What are the common conventions for workspace package.json file?
 
 Each workspace contains a `package.json` file. It should always has:
 
-- `name` property set to a value written as `@ccms/X`, where X is the name of the workspace's folder.
-- `private` property set to `true` as we don't plan to publish those packages.
-- `version` property set to `"0.0.0"` as we track project version in the root `package.json` file.
+- `name` - value written as `@ccms/X`, where X is the name of the workspace's folder.
+- `private` - set to `true` as we don't plan to publish those packages.
+- `version` - set to `"0.0.0"` as we track project version in the root `package.json` file.
+- `scripts.clean` - script that cleans all artifacts that can by generated in the workspace.
 
+For apps each `package.json` should have:
+
+- `scripts.dev` - script that runs app in local development mode.
+- `scripts.build` - script that builds production version of the app.
+- `scripts.start` - script that runs build created by the previous script locally.
+
+For apps each `package.json` should have:
+
+- `main` - path to the root file with the CommonJS version of the workspace.
+- `module` - path to the root file with the EMS version of the workspace.
+- `types` - path to the root file with type declaration files of the workspace.
+- `sideEffects` - set to `false` so workspace output will be tree-shakeable.
+- `files` - array of the paths of builded workspace (usually `dist/**`).
+- `scripts.dev` - script that rebuilds the workspace every time it's code change.
+- `scripts.build` - script that builds the workspace once.
 
 

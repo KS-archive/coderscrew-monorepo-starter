@@ -95,7 +95,6 @@ importers:
       class-transformer: 0.5.1
       class-validator: 0.13.2
       connect-redis: 6.0.0
-      dotenv: 10.0.0
       esbuild: 0.14.8
       express-session: 1.17.2
       jest: 27.4.5
@@ -124,7 +123,6 @@ importers:
       class-transformer: 0.5.1
       class-validator: 0.13.2
       connect-redis: 6.0.0
-      dotenv: 10.0.0
       express-session: 1.17.2
       passport: 0.5.2
       passport-local: 1.0.0
