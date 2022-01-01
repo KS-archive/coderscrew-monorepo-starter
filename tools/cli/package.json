@@ -16,6 +16,6 @@
     "dotenv": "10.0.0"
   },
   "devDependencies": {
-    "tsup": "5.11.9"
+    "tsup": "5.11.10"
   }
 }

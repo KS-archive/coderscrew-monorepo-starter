@@ -19,10 +19,10 @@
     "lodash": "4.17.21"
   },
   "devDependencies": {
-    "@types/jest": "27.0.3",
+    "@types/jest": "27.4.0",
     "@types/lodash": "4.14.178",
     "jest": "27.4.5",
     "ts-jest": "27.1.2",
-    "tsup": "5.11.9"
+    "tsup": "5.11.10"
   }
 }
