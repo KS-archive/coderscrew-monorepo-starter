@@ -69,6 +69,10 @@ const cssDefaults = (theme: CustomTheme) => css`
     font-weight: ${theme.fontWeights.normal};
     color: ${theme.colors.gray[800]};
   }
+
+  *::placeholder {
+    color: ${theme.colors.gray[400]};
+  }
 `;
 
 export const GlobalStyles = () => {

@@ -1,17 +1,19 @@
-import { ComponentProps } from 'react';
-import type { CSSObject } from '@emotion/styled';
+import type { FunctionComponent, MouseEvent } from 'react';
 
 import { styled, Theme } from '@/theme';
+import type { StyledCallback } from '@/types';
 
 type ButtonSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 type ButtonColor = keyof Pick<Theme['colors'], 'primary' | 'gray' | 'error' | 'warning' | 'success' | 'info'>;
 type ButtonVariant = 'solid' | 'outline' | 'ghost';
 
-interface CustomProps {
+export interface ButtonProps {
   size?: ButtonSize;
   color?: ButtonColor;
   variant?: ButtonVariant;
   disabled?: boolean;
+  className?: string;
+  onClick?: (event: MouseEvent<HTMLButtonElement>) => void;
 }
 
 const sizesMap = {
@@ -22,9 +24,15 @@ const sizesMap = {
   xl: { padding: '0 24px', height: 56, typographyKey: 'lg', minWidth: 56 },
 } as const;
 
-type VariantFc = (props: { color: ButtonColor; theme: Theme }) => CSSObject;
+const sizeStyles: StyledCallback<ButtonProps> = ({ theme, size = 'md' }) => {
+  const { typographyKey, ...properties } = sizesMap[size];
 
-const solidVariant: VariantFc = ({ theme, color }) =>
+  return { ...theme.typography[typographyKey], ...properties };
+};
+
+type VariantFunction = StyledCallback<{ color: ButtonColor }>;
+
+const solidVariant: VariantFunction = ({ theme, color }) =>
   color === 'gray'
     ? {
         background: theme.colors.gray[100],
@@ -39,7 +47,7 @@ const solidVariant: VariantFc = ({ theme, color }) =>
         '&:active:enabled': { background: theme.colors[color][700] },
       };
 
-const ghostVariant: VariantFc = ({ theme, color }) =>
+const ghostVariant: VariantFunction = ({ theme, color }) =>
   color === 'gray'
     ? {
         color: theme.colors.gray[800],
@@ -53,48 +61,42 @@ const ghostVariant: VariantFc = ({ theme, color }) =>
         '&:active:enabled': { background: theme.colors[color][100] },
       };
 
-const outlineVariant: VariantFc = ({ theme, color }) => ({
+const outlineVariant: VariantFunction = ({ theme, color }) => ({
   borderColor: color === 'gray' ? theme.colors.gray[200] : theme.colors.current,
   ...ghostVariant({ theme, color }),
 });
 
-const variantsMap: Record<ButtonVariant, VariantFc> = {
-  solid: solidVariant,
-  outline: outlineVariant,
-  ghost: ghostVariant,
-};
+const variantsMap = { solid: solidVariant, outline: outlineVariant, ghost: ghostVariant };
 
-export const Button = styled.button<CustomProps>(
-  ({ theme }) => ({
-    width: 'fit-content',
-    cursor: 'pointer',
-    userSelect: 'none',
-    textDecoration: 'none',
-    boxSizing: 'border-box',
-    fontWeight: theme.fontWeights.medium,
-    border: '1px solid transparent',
-    borderRadius: 6,
-    padding: 0,
-    display: 'flex',
-    alignItems: 'center',
-    transition: 'all 0.225s ease-out',
-    outline: 'none',
+const variantStyles: StyledCallback<ButtonProps> = ({ theme, variant = 'solid', color = 'gray' }) =>
+  variantsMap[variant]({ theme, color });
 
-    '&:focus:enabled': {
-      boxShadow: theme.shadows.outline,
-    },
+const baseStyles: StyledCallback<ButtonProps> = ({ theme }) => ({
+  width: 'fit-content',
+  cursor: 'pointer',
+  userSelect: 'none',
+  textDecoration: 'none',
+  boxSizing: 'border-box',
+  fontWeight: theme.fontWeights.medium,
+  border: '1px solid transparent',
+  borderRadius: 6,
+  display: 'flex',
+  alignItems: 'center',
+  transition: 'all 0.225s ease-out',
+  outline: 'none',
 
-    '&:disabled': {
-      opacity: 0.5,
-      cursor: 'not-allowed',
-    },
-  }),
-  ({ theme, size = 'md' }) => {
-    const { typographyKey, ...properties } = sizesMap[size];
-
-    return { ...theme.typography[typographyKey], ...properties };
+  '&:focus:enabled': {
+    boxShadow: theme.shadows.outline,
   },
-  ({ theme, variant = 'solid', color = 'gray' }) => variantsMap[variant]({ theme, color })
-);
 
-export type ButtonProps = ComponentProps<typeof Button>;
+  '&:disabled': {
+    opacity: 0.5,
+    cursor: 'not-allowed',
+  },
+});
+
+export const Button = styled.button<ButtonProps>(
+  baseStyles,
+  sizeStyles,
+  variantStyles
+) as FunctionComponent<ButtonProps>;
