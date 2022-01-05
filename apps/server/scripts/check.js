@@ -2,50 +2,34 @@
 
 const { exec, logger } = require('@ccms/config');
 
-const checkPostgresContainer = () => {
-  const containerName = 'postgres';
+const checkIfDockerIsRunning = () => {
+  const { stdout } = exec.query('docker info');
 
-  const { stderr, stdout } = exec.query(`docker inspect -f '{{.State.Running}}' ${containerName}`);
-
-  if (stderr) {
-    return 'Postgres container is not created. To create it and other containers run `docker compose up -d`';
+  if (stdout.includes('Cannot connect to the Docker daemon')) {
+    logger.error('You need to turn on the Docker daemon');
+    process.exit(1);
   }
-
-  if (stdout.trim() === 'false') {
-    return 'Postgres container is not started. To start it and other containers run `docker compose start`';
-  }
-
-  return false;
 };
 
-const checkRedisContainer = () => {
-  const containerName = 'redis';
+const isContainerRunning = (containerName) => {
+  const { stdout } = exec.query(`docker inspect -f '{{.State.Running}}' ${containerName}`);
 
-  const { stderr, stdout } = exec.query(`docker inspect -f '{{.State.Running}}' ${containerName}`);
+  return stdout.trim() === 'true';
+};
 
-  if (stderr) {
-    return 'Redis container is not created. To create it and other containers run `docker compose up -d`';
+const ensureContainerIsRunning = (containerName) => {
+  if (!isContainerRunning(containerName)) {
+    const command = `docker compose up ${containerName} --wait`;
+
+    logger.info(`Container ${containerName} is not running. Executing: ${command}`);
+    exec.command(command);
   }
-
-  if (stdout.trim() === 'false') {
-    return 'Redis container is not started. To start it and other containers run `docker compose start`';
-  }
-
-  return false;
 };
 
 const checkEnvironment = () => {
-  const errors = [checkPostgresContainer(), checkRedisContainer()].filter(Boolean);
-
-  if (errors.length > 0) {
-    for (const error of errors) {
-      logger.error(error);
-    }
-
-    process.exit(1);
-  }
-
-  process.exit(0);
+  checkIfDockerIsRunning();
+  ensureContainerIsRunning('postgres');
+  ensureContainerIsRunning('redis');
 };
 
 checkEnvironment();

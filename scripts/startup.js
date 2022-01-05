@@ -108,15 +108,6 @@ const checkDocker = () => {
     return false;
   }
 
-  const dockerInfoOutput = query('docker info');
-
-  if (dockerInfoOutput.stdout.includes('Is the docker daemon running')) {
-    clearLastLine();
-    log.danger('Docker: You need to turn the Docker daemon on', 1);
-
-    return false;
-  }
-
   clearLastLine();
   log.success('Docker', 1);
 
