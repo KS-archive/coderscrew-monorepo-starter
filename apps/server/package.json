@@ -3,9 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "dev": "node scripts/dev.js",
+    "dev": "node scripts/check.js && node scripts/dev.js",
     "build": "tsup",
-    "start": "node dist/index.js",
+    "start": "node scripts/check.js && node dist/index.js",
     "test": "jest",
     "test:e2e": "jest --config jest-e2e.config.ts",
     "clean": "rm -rf .turbo & rm -rf node_modules & rm -rf dist",

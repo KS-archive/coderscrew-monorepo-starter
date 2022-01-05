@@ -1,1 +1,3 @@
-export { workspacesUtils } from './workspaces/workspaces-utils';
+export * from './exec';
+export * from './logger';
+export * from './workspaces';

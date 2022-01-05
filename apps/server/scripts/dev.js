@@ -1,6 +1,4 @@
-// eslint-disable-next-line unicorn/prevent-abbreviations
-const { spawnSync } = require('child_process');
-const { workspacesUtils } = require('@ccms/config');
+const { workspacesUtils, exec } = require('@ccms/config');
 const path = require('path');
 
 const pathToNodemonWatchArgument = (pathToWatch) => `--watch "${pathToWatch}"`;
@@ -13,7 +11,7 @@ const main = () => {
 
   const command = `tsup --watch & nodemon --exec "node dist/index.js" --watch dist ${nodemonWatchArguments}`.trim();
 
-  spawnSync(command, { stdio: 'inherit', shell: true, encoding: 'utf-8' });
+  exec.command(command);
 };
 
 main();
