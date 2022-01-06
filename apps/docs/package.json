@@ -1,5 +1,6 @@
 {
   "name": "@ccms/docs",
+  "description": "Project documentation created using Docusaurus",
   "version": "0.0.0",
   "private": true,
   "scripts": {

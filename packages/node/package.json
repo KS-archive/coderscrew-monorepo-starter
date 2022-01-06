@@ -1,5 +1,6 @@
 {
-  "name": "@ccms/config",
+  "name": "@ccms/node",
+  "description": "Utility functions that can be used only in Node.js environment",
   "version": "0.0.0",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",

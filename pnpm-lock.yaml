@@ -71,7 +71,7 @@ importers:
   apps/server:
     specifiers:
       '@anatine/esbuild-decorators': 0.2.18
-      '@ccms/config': '*'
+      '@ccms/node': '*'
       '@ccms/utils': '*'
       '@mikro-orm/cli': 4.5.10
       '@mikro-orm/core': 4.5.10
@@ -131,7 +131,7 @@ importers:
       rxjs: 7.5.1
     devDependencies:
       '@anatine/esbuild-decorators': 0.2.18_esbuild@0.14.10
-      '@ccms/config': link:../../tools/config
+      '@ccms/node': link:../../packages/node
       '@nestjs/cli': 8.1.6_esbuild@0.14.10+eslint@8.6.0
       '@nestjs/schematics': 8.0.5_typescript@4.5.4
       '@nestjs/testing': 8.2.4_082e3f1b2c56c6dd88c84927c242c47d
@@ -163,6 +163,17 @@ importers:
     devDependencies:
       '@babel/core': 7.16.7
       '@types/react': 17.0.38
+
+  packages/node:
+    specifiers:
+      colorette: 2.0.16
+      fast-glob: 3.2.7
+      tsup: 5.11.10
+    dependencies:
+      colorette: 2.0.16
+      fast-glob: 3.2.7
+    devDependencies:
+      tsup: 5.11.10_typescript@4.5.4
 
   packages/ui:
     specifiers:
@@ -224,32 +235,21 @@ importers:
 
   tools/cli:
     specifiers:
-      '@ccms/config': '*'
+      '@ccms/node': '*'
       commander: 8.3.0
       dotenv: 10.0.0
       tsup: 5.11.10
     dependencies:
-      '@ccms/config': link:../config
+      '@ccms/node': link:../../packages/node
       commander: 8.3.0
       dotenv: 10.0.0
-    devDependencies:
-      tsup: 5.11.10_typescript@4.5.4
-
-  tools/config:
-    specifiers:
-      colorette: 2.0.16
-      fast-glob: 3.2.7
-      tsup: 5.11.10
-    dependencies:
-      colorette: 2.0.16
-      fast-glob: 3.2.7
     devDependencies:
       tsup: 5.11.10_typescript@4.5.4
 
   tools/eslint-plugin:
     specifiers:
       '@babel/core': 7.16.7
-      '@ccms/config': '*'
+      '@ccms/node': '*'
       '@next/eslint-plugin-next': 12.0.7
       '@types/eslint': 8.2.1
       '@typescript-eslint/eslint-plugin': 5.9.0
@@ -283,7 +283,7 @@ importers:
       colorette: 2.0.16
     devDependencies:
       '@babel/core': 7.16.7
-      '@ccms/config': link:../config
+      '@ccms/node': link:../../packages/node
       '@next/eslint-plugin-next': 12.0.7
       '@types/eslint': 8.2.1
       '@typescript-eslint/eslint-plugin': 5.9.0_bd2fd93dbcc607ad2f21b784bccfe0c8

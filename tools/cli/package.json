@@ -1,5 +1,6 @@
 {
   "name": "@ccms/cli",
+  "description": "command line interface created to simplify our work with the project",
   "version": "0.0.0",
   "private": true,
   "bin": {
@@ -11,7 +12,7 @@
     "clean": "rm -rf .turbo & rm -rf node_modules & rm -rf dist"
   },
   "dependencies": {
-    "@ccms/config": "*",
+    "@ccms/node": "*",
     "commander": "8.3.0",
     "dotenv": "10.0.0"
   },

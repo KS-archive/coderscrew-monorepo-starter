@@ -1,5 +1,6 @@
 {
   "name": "@ccms/eslint-plugin",
+  "description": "Our ESLint configuration and custom plugin that allows to create our own rules",
   "version": "0.0.0",
   "main": "./src/index.js",
   "sideEffects": false,
@@ -12,7 +13,7 @@
   },
   "devDependencies": {
     "@babel/core": "7.16.7",
-    "@ccms/config": "*",
+    "@ccms/node": "*",
     "@next/eslint-plugin-next": "12.0.7",
     "@types/eslint": "8.2.1",
     "@typescript-eslint/eslint-plugin": "5.9.0",

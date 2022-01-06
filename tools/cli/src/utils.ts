@@ -2,7 +2,7 @@ import { Command } from 'commander';
 import dotenv from 'dotenv';
 import path from 'path';
 
-import { exec, logger } from '@ccms/config';
+import { exec, logger } from '@ccms/node';
 
 export const loadEnvVariables = () => {
   dotenv.config({ path: path.resolve(process.cwd(), '.env') });

@@ -1,6 +1,6 @@
 import { Argument, Command, Option } from 'commander';
 
-import { workspacesUtils } from '@ccms/config';
+import { workspacesUtils } from '@ccms/node';
 
 import { loadEnvVariables, runCommand } from '../utils';
 

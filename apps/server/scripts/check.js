@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-const { exec, logger } = require('@ccms/config');
+const { exec, logger } = require('@ccms/node');
 
 const checkIfDockerIsRunning = () => {
   const { stdout } = exec.query('docker info');

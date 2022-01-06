@@ -1,5 +1,6 @@
 {
   "name": "@ccms/client",
+  "description": "SPA application built written in React",
   "version": "0.0.0",
   "private": true,
   "scripts": {

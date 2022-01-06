@@ -1,7 +1,7 @@
 import type { Command } from 'commander';
 import { Argument } from 'commander';
 
-import { workspacesUtils } from '@ccms/config';
+import { workspacesUtils } from '@ccms/node';
 
 import { runCommand } from '../utils';
 

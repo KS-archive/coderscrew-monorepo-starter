@@ -1,4 +1,4 @@
-const { workspacesUtils } = require('@ccms/config');
+const { workspacesUtils } = require('@ccms/node');
 
 const workspacePrefix = workspacesUtils.getWorkspacePrefix();
 const packageDirectory = [process.cwd(), ...workspacesUtils.getFullPaths()];

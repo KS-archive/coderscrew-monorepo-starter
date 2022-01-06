@@ -1,5 +1,6 @@
 {
   "name": "@ccms/server",
+  "description": "REST API server created using NestJS",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -35,7 +36,7 @@
   },
   "devDependencies": {
     "@anatine/esbuild-decorators": "0.2.18",
-    "@ccms/config": "*",
+    "@ccms/node": "*",
     "@nestjs/cli": "8.1.6",
     "@nestjs/schematics": "8.0.5",
     "@nestjs/testing": "8.2.4",

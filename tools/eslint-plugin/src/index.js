@@ -1,5 +1,5 @@
 const path = require('path');
-const { workspacesUtils } = require('@ccms/config');
+const { workspacesUtils } = require('@ccms/node');
 
 const tsConfigProjects = [...workspacesUtils.getTsConfigPaths(), path.resolve(process.cwd(), 'tsconfig.eslint.json')];
 

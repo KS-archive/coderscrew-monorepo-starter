@@ -38,29 +38,7 @@ Workspaces are placed in three directories depending on their purpose in the ove
 
 #### What is the purpose of each workspace?
 
-##### Apps
-
-**client** - SPA application built with React.
-
-**docs** - documentation of the project built with Docusaurus.
-
-**server** - API server built with NestJS.
-
-**website** - static website built with Next.js.
-
-##### Packages
-
-**utils** - utility functions that can be used in all environments.
-
-**ui** - styling functions, theming utilities, and reusable components.
-
-##### Tools
-
-**cli** - command line interface created to simplify our work with the project.
-
-**config** - configuration utilities used across other tools and package-specific scripts.
-
-**eslint-plugin** - plugin used as a way to add our custom rules to ESLint.
+Short description of each workspace is written in its package.json `description` field.
 
 #### What are the common conventions for workspace package.json file?
 

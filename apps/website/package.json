@@ -1,5 +1,6 @@
 {
   "name": "@ccms/website",
+  "description": "Static website created with Next.js",
   "version": "0.0.0",
   "private": true,
   "scripts": {

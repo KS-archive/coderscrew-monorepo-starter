@@ -1,4 +1,4 @@
-const { workspacesUtils, exec } = require('@ccms/config');
+const { workspacesUtils, exec } = require('@ccms/node');
 const path = require('path');
 
 const pathToNodemonWatchArgument = (pathToWatch) => `--watch "${pathToWatch}"`;
