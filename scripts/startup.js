@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 const { spawnSync } = require('child_process');
-const { readFile } = require('fs/promises');
+const { readFile, copyFile } = require('fs/promises');
 const { existsSync } = require('fs');
 const path = require('path');
 const packageJson = require('../package.json');
@@ -114,27 +114,30 @@ const checkDocker = () => {
   return true;
 };
 
+const getDotFileKeys = async (dotEnvFilePath) => {
+  const content = await readFile(dotEnvFilePath, 'utf-8');
+
+  return content
+    .split('\n')
+    .filter((str) => str.trim() && !str.startsWith('#'))
+    .map((str) => str.split('=')[0]);
+};
+
 const checkEnvVariables = async () => {
   log.info('Checking environment variables...', 1);
 
-  if (!existsSync(path.resolve(PROJECT_ROOT, '.env'))) {
-    clearLastLine();
-    log.danger('Env: No env file found. Copy the `.env.example` and rename it to `.env`', 1);
+  const dotEnvPath = path.resolve(PROJECT_ROOT, '.env');
+  const dotEnvExamplePath = path.resolve(PROJECT_ROOT, '.env.example');
 
-    return false;
+  if (!existsSync(dotEnvPath)) {
+    await copyFile(dotEnvExamplePath, dotEnvPath);
   }
 
-  const getDotFileKeys = async (dotEnvFileName) => {
-    const content = await readFile(path.resolve(PROJECT_ROOT, dotEnvFileName), 'utf-8');
-
-    return content
-      .split('\n')
-      .filter((str) => str.trim() && !str.startsWith('#'))
-      .map((str) => str.split('=')[0]);
-  };
-
   const areDotEnvKeysEqual = async () => {
-    const [dotEnvKeys, dotEnvExampleKeys] = await Promise.all([getDotFileKeys('.env'), getDotFileKeys('.env.example')]);
+    const [dotEnvKeys, dotEnvExampleKeys] = await Promise.all([
+      getDotFileKeys(dotEnvPath),
+      getDotFileKeys(dotEnvExamplePath),
+    ]);
 
     const haveSameLength = dotEnvKeys.length === dotEnvExampleKeys.length;
     const haveSameProperties = dotEnvKeys.every((key, index) => key === dotEnvExampleKeys[index]);
