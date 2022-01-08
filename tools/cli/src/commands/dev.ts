@@ -1,4 +1,4 @@
-import { Argument, Command, Option } from 'commander';
+import { Argument, Command } from 'commander';
 
 import { workspacesUtils } from '@ccms/node';
 
@@ -8,40 +8,21 @@ interface Arguments {
   workspaces: string[];
 }
 
-interface Options {
-  turbo: boolean;
-}
-
-function action(workspaces: Arguments['workspaces'], options: Options) {
+function action(workspaces: Arguments['workspaces']) {
   loadEnvVariables();
 
-  if (options.turbo) {
-    if (workspaces.length === 0) {
-      runCommand('turbo run dev');
+  if (workspaces.length === 0) {
+    runCommand('turbo run dev');
 
-      return;
-    }
-
-    const scopes = workspacesUtils
-      .findManyOrThrow(workspaces)
-      .map((workspace) => `--scope=${workspace.moduleName}`)
-      .join(' ');
-
-    runCommand(`turbo run dev ${scopes} --include-dependencies`);
-  } else {
-    if (workspaces.length === 0) {
-      runCommand('pnpm run dev');
-
-      return;
-    }
-
-    const filters = workspacesUtils
-      .findManyOrThrow(workspaces)
-      .map((workspace) => `--filter=${workspace.moduleName}`)
-      .join(' ');
-
-    runCommand(`pnpm run dev ${filters}`);
+    return;
   }
+
+  const scopes = workspacesUtils
+    .findManyOrThrow(workspaces)
+    .map((workspace) => `--scope=${workspace.moduleName}`)
+    .join(' ');
+
+  runCommand(`turbo run dev ${scopes} --include-dependencies`);
 }
 
 export const devCommand = (program: Command) => {
@@ -54,7 +35,5 @@ export const devCommand = (program: Command) => {
         'Names of the workspaces to run. Leave empty to run dev for all workspaces.'
       ).choices(workspacesUtils.getApps().map((workspace) => workspace.directoryName))
     )
-    // Temporary option as for now turbo has issues with displaying errors from Node servers
-    .addOption(new Option('--no-turbo', "Don't use turbo to run this workspace"))
     .action(action);
 };
