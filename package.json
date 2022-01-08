@@ -9,7 +9,7 @@
     "tools/*"
   ],
   "engines": {
-    "pnpm": "6.24.4",
+    "pnpm": "6.25.1",
     "node": "16.13.1"
   },
   "volta": {
