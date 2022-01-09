@@ -95,6 +95,7 @@ module.exports = {
         dev: false,
         obj: false,
         str: false,
+        num: false,
         prop: false,
         props: false,
         args: false,

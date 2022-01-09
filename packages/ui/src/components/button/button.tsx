@@ -1,7 +1,8 @@
 import type { FunctionComponent, MouseEvent } from 'react';
 
-import { styled, Theme } from '@/theme';
+import { Theme } from '@/theme';
 import type { StyledCallback } from '@/types';
+import { styled } from '@/utils';
 
 type ButtonSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 type ButtonColor = keyof Pick<Theme['colors'], 'primary' | 'gray' | 'error' | 'warning' | 'success' | 'info'>;

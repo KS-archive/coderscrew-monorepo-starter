@@ -1,7 +1,7 @@
 import type { FocusEvent, VoidFunctionComponent } from 'react';
 
-import { styled } from '@/theme';
 import type { StyledCallback } from '@/types';
+import { styled } from '@/utils';
 
 type InputSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 type InputVariant = 'filled' | 'outline';

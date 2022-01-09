@@ -1,3 +1,5 @@
+import type { LeavesArray, LeavesString } from '@ccms/typings';
+
 export const colors = {
   inherit: 'inherit',
   transparent: 'transparent',
@@ -109,3 +111,6 @@ export const colors = {
     900: 'rgba(0, 0, 0, 0.92)',
   },
 };
+
+export type ColorKey = LeavesString<typeof colors>;
+export type ColorKeyPath = LeavesArray<typeof colors>;

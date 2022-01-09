@@ -1,6 +1,6 @@
 {
-  "name": "@ccms/utils",
-  "description": "Cross-platform utility functions",
+  "name": "@ccms/typings",
+  "description": "Utilities for TypeScript types",
   "version": "0.0.0",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
@@ -13,18 +13,9 @@
   "scripts": {
     "dev": "tsup --watch",
     "build": "tsup",
-    "test": "jest",
     "clean": "rm -rf .turbo & rm -rf node_modules & rm -rf dist"
   },
-  "dependencies": {
-    "@ccms/typings": "*",
-    "lodash": "4.17.21"
-  },
   "devDependencies": {
-    "@types/jest": "27.4.0",
-    "@types/lodash": "4.14.178",
-    "jest": "27.4.7",
-    "ts-jest": "27.1.2",
     "tsup": "5.11.11"
   }
 }

@@ -1,6 +1,4 @@
-type Equal<Type1, Type2> = (<Type>() => Type extends Type1 ? 1 : 2) extends <Type>() => Type extends Type2 ? 1 : 2
-  ? true
-  : false;
+import type { Equal } from '@ccms/typings';
 
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars */
 
