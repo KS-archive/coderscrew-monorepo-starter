@@ -12,17 +12,17 @@ function action(workspaces: Arguments['workspaces']) {
   loadEnvVariables();
 
   if (workspaces.length === 0) {
-    runCommand('pnpm run build');
+    runCommand('turbo run build');
 
     return;
   }
 
-  const filters = workspacesUtils
+  const scopes = workspacesUtils
     .findManyOrThrow(workspaces)
-    .map((workspace) => `--filter=${workspace.moduleName}`)
+    .map((workspace) => `--scope=${workspace.moduleName}`)
     .join(' ');
 
-  runCommand(`pnpm run build ${filters}`);
+  runCommand(`turbo run build ${scopes} --include-dependencies`);
 }
 
 export const buildCommand = (program: Command) => {
