@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "colorette": "2.0.16",
-    "fast-glob": "3.2.9"
+    "fast-glob": "3.2.10"
   },
   "devDependencies": {
     "tsup": "5.11.11"
