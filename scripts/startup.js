@@ -178,11 +178,9 @@ const systemCheckup = async () => {
   }
 };
 
-const SUCCESS_MESSAGE = `
-Project set up successfully!
-  - To start all workspaces in development mode run 'pnpm exec cli dev'.
-  - To start only the project documentation run 'pnpm exec cli dev docs'.
-`.trim();
+const SUCCESS_MESSAGE = `Project set up successfully!
+   To see all apps run 'pnpm exec cli showcase' and go to localhost: followed by a correct port number.
+   You can find all ports numbers in the ./.env file.`.trim();
 
 const main = async () => {
   log.info('Performing system checkup...');

@@ -4,9 +4,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --port $WEBSITE_PORT",
     "build": "next build",
-    "start": "next start",
+    "start": "next start --port $WEBSITE_PORT",
     "clean": "rm -rf .turbo & rm -rf node_modules & rm -rf .next"
   },
   "dependencies": {

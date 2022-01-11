@@ -1,5 +1,6 @@
 const { resolveEsmImports } = require('./resolve-esm-imports');
 const { resolveTsPaths } = require('./resolve-ts-paths');
+const { silentLogging } = require('./silent-logging');
 
 /**
  * @type {import('@storybook/core-common').StorybookConfig}
@@ -18,6 +19,7 @@ module.exports = {
   webpackFinal: (config) => {
     resolveEsmImports(config);
     resolveTsPaths(config);
+    silentLogging(config);
 
     return config;
   },

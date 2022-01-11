@@ -4,9 +4,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "dev": "vite --clearScreen false",
+    "dev": "vite --clearScreen false --port $CLIENT_PORT",
     "build": "vite build",
-    "start": "vite preview --port 3000",
+    "start": "vite preview --port $CLIENT_PORT",
     "clean": "rm -rf .turbo & rm -rf node_modules & rm -rf dist"
   },
   "dependencies": {

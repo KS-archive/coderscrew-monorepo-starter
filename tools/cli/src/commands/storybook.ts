@@ -2,22 +2,28 @@ import { Argument, Command } from 'commander';
 
 import { workspacesUtils } from '@ccms/node';
 
-import { runCommand } from '../utils';
+import { loadEnvVariables, runCommand } from '../utils';
 
-const STORYBOOK_WORKSPACE = workspacesUtils.findOneOrThrow('ui').moduleName;
+export const STORYBOOK_WORKSPACE = workspacesUtils.findOneOrThrow('ui').moduleName;
+export const storybookCommands = {
+  dev: 'storybook:dev',
+  build: 'storybook:build',
+};
 
 interface Arguments {
-  script: 'dev' | 'build';
+  script: keyof typeof storybookCommands;
 }
 
 function action(script: Arguments['script']) {
-  runCommand(`pnpm run storybook:${script} --filter=${STORYBOOK_WORKSPACE}`);
+  loadEnvVariables();
+
+  runCommand(`pnpm run ${storybookCommands[script]} --filter=${STORYBOOK_WORKSPACE}`);
 }
 
 export const storybookCommand = (program: Command) => {
   program
     .command('storybook')
     .description('Runs Storybook related scripts.')
-    .addArgument(new Argument('<script>', 'Script to run for the Storybook').choices(['dev', 'build']))
+    .addArgument(new Argument('<script>', 'Script to run for the Storybook').choices(Object.keys(storybookCommands)))
     .action(action);
 };
