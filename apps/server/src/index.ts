@@ -5,9 +5,10 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { AppModule } from './app.module';
 import { env } from './shared/env';
 
+const logger = new Logger('bootstrap');
+
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  const logger = app.get(Logger);
 
   const config = new DocumentBuilder()
     .setTitle('CCMS API Docs')
@@ -23,6 +24,5 @@ async function bootstrap() {
 }
 
 bootstrap().catch((error) => {
-  // eslint-disable-next-line no-console
-  console.error(error);
+  logger.error(error);
 });

@@ -24,12 +24,13 @@ const createLogger =
   (colorCode, symbol) =>
   (message, indent = 0) =>
     // eslint-disable-next-line no-console
-    console.log(`\u001B[${colorCode};1m${createIndent(indent * 4)}${symbol} ${message}\u001B[0m`);
+    console.log(`\u001B[${colorCode};1m${createIndent(indent * 4)}${symbol}${message}\u001B[0m`);
 
 const log = {
-  success: createLogger('32', '✅'),
-  info: createLogger('36', '▶️'),
-  danger: createLogger('31', '🚨'),
+  success: createLogger('32', '✅ '),
+  info: createLogger('36', '▶️ '),
+  danger: createLogger('31', '🚨 '),
+  error: createLogger('31', ''),
 };
 
 const clearLastLine = () => {
@@ -172,8 +173,7 @@ const systemCheckup = async () => {
   }
 
   if (!isSuccess) {
-    // eslint-disable-next-line no-console
-    console.error('\nTo move further fix errors displayed above and run the command again');
+    log.error('To move further fix errors displayed above and run the command again');
     process.exit(0);
   }
 };

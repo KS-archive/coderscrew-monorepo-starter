@@ -1,5 +1,5 @@
 import { MikroOrmModule } from '@mikro-orm/nestjs';
-import { Inject, Logger, MiddlewareConsumer, Module, NestModule, ValidationPipe } from '@nestjs/common';
+import { Inject, MiddlewareConsumer, Module, NestModule, ValidationPipe } from '@nestjs/common';
 import { APP_PIPE } from '@nestjs/core';
 import RedisStore from 'connect-redis';
 import session from 'express-session';
@@ -20,7 +20,6 @@ import { env } from './shared/env';
       provide: APP_PIPE,
       useValue: new ValidationPipe({ whitelist: true }),
     },
-    Logger,
   ],
 })
 export class AppModule implements NestModule {

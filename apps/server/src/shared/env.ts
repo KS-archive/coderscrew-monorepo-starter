@@ -1,3 +1,4 @@
+import { Logger } from '@nestjs/common';
 import { plainToClass } from 'class-transformer';
 import { validateSync } from 'class-validator';
 
@@ -7,6 +8,8 @@ class Env {
   private _envVariables: EnvSchema;
 
   private _isValidated = false;
+
+  private readonly logger = new Logger(Env.name);
 
   constructor() {
     this.assignEnvVariables();
@@ -35,8 +38,7 @@ class Env {
     if (errors.length > 0) {
       const messages = errors.map((error) => error.toString()).join(',\n');
 
-      // eslint-disable-next-line no-console
-      console.error('Environment variables validation failed');
+      this.logger.error('Environment variables validation failed');
       throw new Error(messages);
     }
 

@@ -24,8 +24,6 @@ import {
 } from '@nestjs/swagger';
 import type { Request, Response } from 'express';
 
-import { omit } from '@ccms/utils';
-
 import { ConflictRestApiError, UnauthorizedRestApiError, ValidationRestApiError } from '@/shared/rest-api-errors';
 
 import { AccountRepository } from '../account/account.repository';
@@ -67,7 +65,9 @@ export class AuthController {
       throw new InternalServerErrorException();
     }
 
-    return omit(account, ['password']);
+    const { password, ...restAccount } = account;
+
+    return restAccount;
   }
 
   @Post(LOGIN_ENDPOINT)
@@ -89,8 +89,7 @@ export class AuthController {
       return undefined;
     }
 
-    const fullAccount = await this.accountRepository.findOneOrFail({ id: req.user.id });
-    const account = omit(fullAccount, ['password']);
+    const { password, ...account } = await this.accountRepository.findOneOrFail({ id: req.user.id });
 
     res.status(200).send(account);
 

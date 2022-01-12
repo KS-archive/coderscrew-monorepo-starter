@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import Redis from 'redis';
+import Redis from 'ioredis';
 
 import { env } from '@/shared/env';
 
@@ -9,7 +9,7 @@ import { REDIS } from './redis.constants';
   providers: [
     {
       provide: REDIS,
-      useValue: Redis.createClient({
+      useValue: new Redis({
         port: env.get('REDIS_DB_PORT'),
         host: env.get('REDIS_DB_HOST'),
       }),
