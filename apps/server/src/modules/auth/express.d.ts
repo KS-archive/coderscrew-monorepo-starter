@@ -1,4 +1,4 @@
-import type { DeserializedAccount } from './serialization/serialization.types';
+import { DeserializedAccount } from './session/session.types';
 
 declare global {
   namespace Express {

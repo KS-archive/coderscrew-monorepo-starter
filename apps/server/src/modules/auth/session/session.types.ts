@@ -8,7 +8,3 @@ export interface DeserializedAccount {
   id: string;
   status: AccountStatus;
 }
-
-export interface IsAuthenticatedGuardRequest extends Express.Request {
-  user: DeserializedAccount;
-}

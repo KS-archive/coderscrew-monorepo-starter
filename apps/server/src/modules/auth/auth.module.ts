@@ -3,7 +3,7 @@ import { Module } from '@nestjs/common';
 import { PassportModule } from '@nestjs/passport';
 
 import { Account } from './account/account.entity';
-import { AuthController } from './auth.controller';
+import { AuthController } from './controller/auth.controller';
 import { LocalStrategy } from './local/local.strategy';
 import { SessionSerializer } from './session/session.serializer';
 
