@@ -21,7 +21,7 @@
   },
   "devDependencies": {
     "@types/react": "17.0.38",
-    "webpack": "5.65.0"
+    "webpack": "5.66.0"
   },
   "browserslist": {
     "production": [
