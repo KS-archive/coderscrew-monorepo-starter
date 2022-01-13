@@ -41,17 +41,19 @@ class WorkspacesUtils {
     workspaceNames.map((workspaceName) => this.findOneOrThrow(workspaceName));
 
   getRelatedWorkspacesRelativePaths = (packageJsonAbsolutePath: string) => {
-    const packageJsonContent = fs.readFileSync(packageJsonAbsolutePath, { encoding: 'utf-8' });
+    const directoryPath = packageJsonAbsolutePath.replace('/package.json', '');
 
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-    const { dependencies, devDependencies } = JSON.parse(packageJsonContent);
+    const { dependencies, devDependencies } = JSON.parse(
+      fs.readFileSync(path.join(directoryPath, 'package.json')).toString()
+    );
 
     // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
     return Object.keys({ ...dependencies, ...devDependencies })
       .filter((dependencyName) => dependencyName.startsWith(WORKSPACE_PREFIX))
       .map((element) => this.findOneOrThrow(element))
       .filter((workspace) => workspace.isPackage)
-      .map((workspace) => path.relative(packageJsonAbsolutePath, workspace.fullPath));
+      .map((workspace) => path.relative(directoryPath, workspace.fullPath));
   };
 }
 

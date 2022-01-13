@@ -1,7 +1,6 @@
 {
   "name": "ccms",
   "version": "0.0.0",
-  "workspacePrefix": "@ccms",
   "author": "KonradSzwarc<konrad.szwarc.dev@gmail.com>",
   "workspaces": [
     "apps/*",
