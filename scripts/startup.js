@@ -50,7 +50,7 @@ const checkNode = () => {
     clearLastLine();
     log.danger(
       `Node.js: You need ${requiredNodeVersion} version of Node.js. Detected version: ${userNodeVersion}.
-      You can install Volta (https://volta.sh) or NVM (https://github.com/nvm-sh/nvm) to manage your Node versions`,
+      You can install Volta (https://volta.sh) or n (https://github.com/tj/n) to manage your Node versions`,
       1
     );
 
