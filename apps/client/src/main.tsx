@@ -1,6 +1,6 @@
 import './index.css';
 
-import React from 'react';
+import { StrictMode } from 'react';
 import ReactDOM from 'react-dom';
 
 import { ThemeProvider } from '@ccms/ui';
@@ -8,10 +8,10 @@ import { ThemeProvider } from '@ccms/ui';
 import { App } from './app';
 
 ReactDOM.render(
-  <React.StrictMode>
+  <StrictMode>
     <ThemeProvider>
       <App />
     </ThemeProvider>
-  </React.StrictMode>,
+  </StrictMode>,
   document.querySelector('#root')
 );
