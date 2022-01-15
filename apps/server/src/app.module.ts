@@ -3,8 +3,8 @@ import { Inject, MiddlewareConsumer, Module, NestModule, ValidationPipe } from '
 import { APP_PIPE } from '@nestjs/core';
 import RedisStore from 'connect-redis';
 import session from 'express-session';
+import type { Redis } from 'ioredis';
 import passport from 'passport';
-import type { RedisClient } from 'redis';
 
 import mikroOrmConfig from './mikro-orm.config';
 import { AuthModule } from './modules/auth/auth.module';
@@ -23,7 +23,7 @@ import { env } from './shared/env';
   ],
 })
 export class AppModule implements NestModule {
-  constructor(@Inject(REDIS) private readonly redis: RedisClient) {}
+  constructor(@Inject(REDIS) private readonly redis: Redis) {}
 
   configure(consumer: MiddlewareConsumer) {
     consumer
