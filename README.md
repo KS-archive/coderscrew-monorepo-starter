@@ -24,6 +24,9 @@ Installation:
   - Run `code .`
 - In new vscode window install missing extensions
 
+![Zrzut ekranu 2022-01-15 064907](https://user-images.githubusercontent.com/32983854/149611111-c4116f69-70b1-4e68-a3f5-d973c009f271.jpg)
+
+
 If you are having problems with permissions, to start repo try restarting your container by closing it with `wsl --shutdown`.
 
 Useful links:
