@@ -73,6 +73,7 @@ importers:
       '@anatine/esbuild-decorators': 0.2.18
       '@ccms/node': '*'
       '@ccms/utils': '*'
+      '@golevelup/ts-jest': 0.3.2
       '@mikro-orm/cli': 4.5.10
       '@mikro-orm/core': 4.5.10
       '@mikro-orm/migrations': 4.5.10
@@ -138,6 +139,7 @@ importers:
     devDependencies:
       '@anatine/esbuild-decorators': 0.2.18_esbuild@0.14.11
       '@ccms/node': link:../../packages/node
+      '@golevelup/ts-jest': 0.3.2
       '@nestjs/cli': 8.2.0_esbuild@0.14.11+eslint@8.6.0
       '@nestjs/schematics': 8.0.5_typescript@4.5.4
       '@nestjs/testing': 8.2.5_859bf813e0a1f12e1f364627fa1dbf9e
@@ -4279,6 +4281,10 @@ packages:
 
   /@gar/promisify/1.1.2:
     resolution: {integrity: sha512-82cpyJyKRoQoRi+14ibCeGPu0CwypgtBAdBhq1WfvagpCZNKqwXbKwXllYSMG91DhmG4jt9gN8eP6lGOtozuaw==}
+    dev: true
+
+  /@golevelup/ts-jest/0.3.2:
+    resolution: {integrity: sha512-hv+j/vau2oj5CuhY1CrTs48Qu+ZVXpm/56OzKcL2KVN8+yc0ZIMbvTIld1wbrT1RrvAuwfDmUM2s3aSy7veuwg==}
     dev: true
 
   /@hapi/hoek/9.2.1:

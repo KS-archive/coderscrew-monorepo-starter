@@ -3,7 +3,11 @@ import { AuthGuard } from '@nestjs/passport';
 
 import { isBoolean } from '@ccms/utils';
 
-import type { LocalAuthGuardRequest } from './local.types';
+import type { LocalStrategy } from './local.strategy';
+
+interface LocalAuthGuardRequest extends Express.Request {
+  user: Awaited<ReturnType<LocalStrategy['validate']>>;
+}
 
 @Injectable()
 export class LocalAuthGuard extends AuthGuard('local') {
