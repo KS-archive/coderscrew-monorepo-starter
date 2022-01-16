@@ -100,4 +100,7 @@ module.exports = {
       },
     },
   ],
+
+  // Enforce consistent type of emotion styles.
+  '@emotion/syntax-preference': [2, 'object'],
 };

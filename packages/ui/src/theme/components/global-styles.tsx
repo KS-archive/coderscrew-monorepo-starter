@@ -2,6 +2,7 @@ import { css, Global, useTheme } from '@emotion/react';
 
 import type { CustomTheme } from '../theme';
 
+/* eslint-disable @emotion/syntax-preference */
 const cssImports = css`
   @import url('https://rsms.me/inter/inter.css');
 `;
@@ -74,6 +75,7 @@ const cssDefaults = (theme: CustomTheme) => css`
     color: ${theme.colors.gray[400]};
   }
 `;
+/* eslint-enable @emotion/syntax-preference */
 
 export const GlobalStyles = () => {
   const theme = useTheme();

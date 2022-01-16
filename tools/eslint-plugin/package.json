@@ -12,6 +12,7 @@
   "devDependencies": {
     "@babel/core": "7.16.7",
     "@ccms/node": "*",
+    "@emotion/eslint-plugin": "11.7.0",
     "@types/eslint": "8.2.2",
     "@typescript-eslint/eslint-plugin": "5.9.1",
     "@typescript-eslint/parser": "5.9.1",

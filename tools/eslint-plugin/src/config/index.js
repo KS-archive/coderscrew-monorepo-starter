@@ -14,7 +14,7 @@ module.exports = {
     project: tsConfigProjects,
     tsconfigRootDir: process.cwd(),
   },
-  plugins: ['simple-import-sort', 'unicorn', '@ccms'],
+  plugins: ['simple-import-sort', 'unicorn', '@emotion', '@ccms'],
   extends: [
     'airbnb',
     'airbnb-typescript',
