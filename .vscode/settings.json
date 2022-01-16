@@ -1,6 +1,6 @@
 {
   "cSpell.language": "en",
-  "cSpell.words": ["ccms", "mikro", "pnpm", "vite"],
+  "cSpell.words": ["ccms", "mikro", "pnpm", "typecheck", "vite"],
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },

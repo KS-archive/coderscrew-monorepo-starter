@@ -11,6 +11,7 @@ import { showcaseCommand } from './commands/showcase';
 import { startCommand } from './commands/start';
 import { storybookCommand } from './commands/storybook';
 import { testCommand } from './commands/test';
+import { typecheckCommand } from './commands/typecheck';
 
 const program = new Command();
 
@@ -27,5 +28,6 @@ showcaseCommand(program);
 startCommand(program);
 storybookCommand(program);
 testCommand(program);
+typecheckCommand(program);
 
 program.parse(process.argv);

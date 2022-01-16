@@ -13,6 +13,7 @@
   "scripts": {
     "dev": "tsup --watch & tsc --declaration --declarationMap --emitDeclarationOnly --watch",
     "build": "rm -rf dist && tsup & tsc --declaration --declarationMap --emitDeclarationOnly",
+    "typecheck": "tsc --noEmit",
     "clean": "rm -rf .turbo & rm -rf node_modules & rm -rf dist & rm -rf storybook-static",
     "storybook:dev": "start-storybook --port $STORYBOOK_PORT --no-open",
     "storybook:build": "build-storybook"

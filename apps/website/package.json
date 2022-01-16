@@ -7,6 +7,7 @@
     "dev": "next dev --port $WEBSITE_PORT",
     "build": "next build",
     "start": "next start --port $WEBSITE_PORT",
+    "typecheck": "tsc --noEmit",
     "clean": "rm -rf .turbo & rm -rf node_modules & rm -rf .next"
   },
   "dependencies": {
