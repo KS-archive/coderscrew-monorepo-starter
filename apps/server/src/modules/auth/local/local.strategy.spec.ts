@@ -3,10 +3,10 @@ import { UnauthorizedException } from '@nestjs/common';
 import { Account, AccountStatus } from '../account/account.entity';
 import { AccountRepository } from '../account/account.repository';
 import { DeserializedAccount } from '../session/session.types';
-import { encodePassword } from '../utils/password.utils';
+import { hashPassword } from '../utils/password.utils';
 import { LocalStrategy } from './local.strategy';
 
-describe('[Auth] Local strategy', () => {
+describe('[Auth] LocalStrategy', () => {
   let strategy: LocalStrategy;
   let accountRepository: AccountRepository;
   let existingAccount: Account;
@@ -17,7 +17,7 @@ describe('[Auth] Local strategy', () => {
   };
 
   beforeAll(async () => {
-    const encodedPassword = await encodePassword(userCredentials.password);
+    const encodedPassword = await hashPassword(userCredentials.password);
 
     existingAccount = {
       id: '0164e436-4ae9-4abe-be8b-932beca73032',

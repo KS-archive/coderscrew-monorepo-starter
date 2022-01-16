@@ -28,7 +28,7 @@ import { ConflictRestApiError, UnauthorizedRestApiError, ValidationRestApiError 
 
 import { AccountRepository } from '../account/account.repository';
 import { LocalAuthGuard } from '../local/local-auth.guard';
-import { encodePassword } from '../utils/password.utils';
+import { hashPassword } from '../utils/password.utils';
 import { LOGIN_ENDPOINT, LoginBody } from './login.route';
 import { LOGOUT_ENDPOINT } from './logout.route';
 import { ME_ENDPOINT, MeResponse } from './me.route';
@@ -48,7 +48,7 @@ export class AuthController {
   @ApiBadRequestResponse({ type: ValidationRestApiError })
   @ApiConflictResponse({ type: ConflictRestApiError })
   async register(@Body() registerBody: RegisterBody): Promise<RegisterResponse> {
-    const encodedPassword = await encodePassword(registerBody.password);
+    const encodedPassword = await hashPassword(registerBody.password);
     const account = this.accountRepository.create({
       ...registerBody,
       password: encodedPassword,

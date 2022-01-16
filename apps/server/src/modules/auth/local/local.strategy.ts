@@ -25,7 +25,7 @@ export class LocalStrategy extends PassportStrategy(Strategy) {
       throw new UnauthorizedException();
     }
 
-    const isPasswordCorrect = await checkPasswordsMatch(password, account.password);
+    const isPasswordCorrect = await checkPasswordsMatch(account.password, password);
 
     if (!isPasswordCorrect) {
       throw new UnauthorizedException();

@@ -12,17 +12,21 @@ export class SessionSerializer extends PassportSerializer {
 
   serializeUser(
     deserializedAccount: DeserializedAccount,
-    done: (error: Error | undefined, serializedAccount: SerializedAccount) => void
+    done: (error: undefined, serializedAccount: SerializedAccount) => void
   ) {
     done(undefined, { id: deserializedAccount.id });
   }
 
   async deserializeUser(
     serializedAccount: SerializedAccount,
-    done: (error: Error | undefined, deserializedAccount: DeserializedAccount) => void
+    done: (error: unknown, deserializedAccount?: DeserializedAccount) => void
   ) {
-    const account = await this.accountRepository.findOneOrFail({ id: serializedAccount.id });
+    try {
+      const account = await this.accountRepository.findOneOrFail({ id: serializedAccount.id });
 
-    done(undefined, { id: account.id, status: account.status });
+      done(undefined, { id: account.id, status: account.status });
+    } catch (error) {
+      done(error);
+    }
   }
 }

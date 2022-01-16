@@ -6,11 +6,11 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { Account, AccountStatus } from '../account/account.entity';
 import { AccountRepository } from '../account/account.repository';
 import { SessionSerializer } from '../session/session.serializer';
-import { encodePassword } from '../utils/password.utils';
+import { hashPassword } from '../utils/password.utils';
 import { LocalStrategy } from './local.strategy';
 import { LocalAuthGuard } from './local-auth.guard';
 
-describe('[Auth] Local auth guard', () => {
+describe('[Auth] LocalAuthGuard', () => {
   let guard: LocalAuthGuard;
   let accountRepository: AccountRepository;
   let existingAccount: Account;
@@ -23,7 +23,7 @@ describe('[Auth] Local auth guard', () => {
   };
 
   beforeEach(async () => {
-    const encodedPassword = await encodePassword(userCredentials.password);
+    const encodedPassword = await hashPassword(userCredentials.password);
 
     existingAccount = {
       id: '0164e436-4ae9-4abe-be8b-932beca73032',
@@ -60,7 +60,7 @@ describe('[Auth] Local auth guard', () => {
       body: userCredentials,
     });
 
-    await expect(guard.canActivate(context)).resolves.toBeTruthy();
+    await expect(guard.canActivate(context)).resolves.toBe(true);
   });
 
   describe('throws unauthorized exception when incorrect credentials provided', () => {
