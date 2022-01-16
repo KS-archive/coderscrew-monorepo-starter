@@ -1,4 +1,4 @@
-import { createIdentityFunction } from '@ccms/utils';
+import { createStrictIdentity } from '@ccms/utils';
 
 type TypographyVariant = {
   fontSize: string;
@@ -6,7 +6,7 @@ type TypographyVariant = {
   letterSpacing: string;
 };
 
-const createVariant = createIdentityFunction<TypographyVariant>();
+const createVariant = createStrictIdentity<TypographyVariant>();
 
 /* eslint-disable prettier/prettier */
 export const typography = {

@@ -1,5 +1,5 @@
 // Assertions exported from the utils workspace.
-const utilsAssertions = ['expectReturnTypeOf', 'expectTypeOf'];
+const utilsAssertions = ['expectFunction', 'expectTypeOf'];
 
 // Assertions used in server e2e tests.
 const supertestAssertions = ['request.**.expect'];

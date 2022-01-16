@@ -1,6 +1,6 @@
 import type { FunctionComponent } from 'react';
 
-import { get } from '@ccms/utils';
+import { createExtendableIdentity, get } from '@ccms/utils';
 
 import type { ColorKeyPath, Theme } from '@/theme';
 import type { StyledCallback } from '@/types';
@@ -21,7 +21,7 @@ export interface TypographyProps {
   as?: TypographyAs;
 }
 
-const createColorsMap = <Colors extends Record<TypographyColor, ColorKeyPath>>(colors: Colors) => colors;
+const createColorsMap = createExtendableIdentity<Record<TypographyColor, ColorKeyPath>>();
 const colorsMap = createColorsMap({
   title: ['gray', 900],
   primary: ['gray', 700],
