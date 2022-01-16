@@ -13,9 +13,6 @@ module.exports = {
   // Disallow some JS syntax features that are considered anti-patterns.
   'no-restricted-syntax': [2, 'WithStatement', 'LabeledStatement'],
 
-  // We use underscore to indicate private class properties and unused function params.
-  'no-underscore-dangle': 0,
-
   // Automatically sorts exports to ensure their consistency.
   'simple-import-sort/exports': 2,
 

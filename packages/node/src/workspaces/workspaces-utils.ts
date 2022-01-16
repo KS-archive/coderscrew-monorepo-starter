@@ -6,10 +6,10 @@ import { WORKSPACE_FOLDERS, WORKSPACE_PREFIX } from './constants';
 import { Workspace } from './workspace';
 
 class WorkspacesUtils {
-  private _workspaces: Workspace[];
+  private workspaces: Workspace[];
 
   constructor() {
-    this._workspaces = fastGlob
+    this.workspaces = fastGlob
       .sync(WORKSPACE_FOLDERS, { onlyDirectories: true, absolute: true })
       .map((absolutePath) => new Workspace(absolutePath));
   }
@@ -17,18 +17,18 @@ class WorkspacesUtils {
   // eslint-disable-next-line class-methods-use-this
   getWorkspacePrefix = () => WORKSPACE_PREFIX;
 
-  getFullPaths = () => this._workspaces.map((w) => w.fullPath);
+  getFullPaths = () => this.workspaces.map((w) => w.fullPath);
 
-  getDirectoryNames = () => this._workspaces.map((w) => w.directoryName);
+  getDirectoryNames = () => this.workspaces.map((w) => w.directoryName);
 
-  getTsConfigPaths = () => this._workspaces.map((w) => w.tsConfigPath).filter(Boolean);
+  getEslintTsConfigPaths = () => this.workspaces.map((w) => w.eslintTsConfigPath).filter(Boolean);
 
-  getApps = () => this._workspaces.filter((w) => w.isApp);
+  getApps = () => this.workspaces.filter((w) => w.isApp);
 
-  getPackages = () => this._workspaces.filter((w) => w.isPackage);
+  getPackages = () => this.workspaces.filter((w) => w.isPackage);
 
   findOneOrThrow = (workspaceName: string) => {
-    const result = this._workspaces.find((w) => w.match(workspaceName));
+    const result = this.workspaces.find((w) => w.match(workspaceName));
 
     if (!result) {
       throw new Error(`Workspace ${workspaceName} doesn't exist`);

@@ -122,7 +122,7 @@ describe('Auth controller (e2e)', () => {
       expect(response.statusCode).toBe(401);
       expect(response.body.statusCode).toBe(401);
       expect(response.body.error).toBe('Unauthorized');
-      expect(response.body.message).toEqual('Incorrect e-mail address or password');
+      expect(response.body.message).toBe('Incorrect e-mail address or password');
     });
 
     it("returns error when user with provided email doesn't exist", async () => {
@@ -143,7 +143,7 @@ describe('Auth controller (e2e)', () => {
       expect(response.statusCode).toBe(401);
       expect(response.body.statusCode).toBe(401);
       expect(response.body.error).toBe('Unauthorized');
-      expect(response.body.message).toEqual('Incorrect e-mail address or password');
+      expect(response.body.message).toBe('Incorrect e-mail address or password');
     });
 
     it("returns error when user's password is incorrect", async () => {

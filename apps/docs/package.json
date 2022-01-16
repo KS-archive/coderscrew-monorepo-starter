@@ -7,6 +7,7 @@
     "dev": "docusaurus start --port $DOCUMENTATION_PORT --no-open",
     "build": "docusaurus build --out-dir dist",
     "start": "docusaurus serve --port $DOCUMENTATION_PORT",
+    "lint": "eslint . --ext .js,.ts,.tsx",
     "clean": "rm -rf .turbo & docusaurus clear && rm -rf node_modules"
   },
   "dependencies": {

@@ -1,20 +1,25 @@
 /**
- * @type {import('eslint').Linter.ConfigOverride}
+ * @type {import('eslint').Linter.Config}
  */
 module.exports = {
-  files: ['apps/server/**'],
-  extends: ['plugin:storybook/recommended'],
   rules: {
     // In NestJS many kinds of classes contain methods that doesn't use `this` keyword (e.g. controllers, guards).
     'class-methods-use-this': 0,
   },
   overrides: [
     {
-      files: ['apps/server/**/*.route.ts'],
+      files: ['*.route.ts'],
       rules: {
         // Routes can define many response types as classes.
         'max-classes-per-file': 0,
       },
     },
+    {
+      files: ['jest-e2e.config.ts'],
+      rules: {
+        'import/no-default-export': 0,
+      },
+    },
   ],
+  ignorePatterns: ['migrations'],
 };

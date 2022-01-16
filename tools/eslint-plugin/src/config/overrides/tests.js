@@ -10,8 +10,10 @@ const supertestAssertions = ['request.**.expect'];
 module.exports = {
   files: ['*.spec.ts?(x)'],
   env: { jest: true, node: true },
+  plugins: ['jest', 'jest-dom', 'testing-library', 'jest-formatting'],
   extends: [
     'plugin:jest/recommended',
+    'plugin:jest/style',
     'plugin:jest-dom/recommended',
     'plugin:testing-library/react',
     'plugin:jest-formatting/recommended',
@@ -19,5 +21,8 @@ module.exports = {
   rules: {
     'import/no-extraneous-dependencies': [2, { devDependencies: true }],
     'jest/expect-expect': [2, { assertFunctionNames: ['expect', ...utilsAssertions, ...supertestAssertions] }],
+  },
+  settings: {
+    jest: { version: require('../../../package.json').devDependencies.jest },
   },
 };
