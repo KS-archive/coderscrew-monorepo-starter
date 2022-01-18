@@ -1,4 +1,4 @@
-import type { FunctionComponent, MouseEvent } from 'react';
+import type { FunctionComponent, MouseEvent, RefObject } from 'react';
 
 import { Theme } from '@/theme';
 import type { StyledCallback } from '@/types';
@@ -14,6 +14,7 @@ export interface ButtonProps {
   variant?: ButtonVariant;
   disabled?: boolean;
   className?: string;
+  ref?: RefObject<HTMLButtonElement>;
   onClick?: (event: MouseEvent<HTMLButtonElement>) => void;
 }
 

@@ -94,6 +94,7 @@ module.exports = {
         str: false,
         num: false,
         prop: false,
+        ref: false,
         props: false,
         args: false,
         vars: false,

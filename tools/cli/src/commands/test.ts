@@ -17,9 +17,11 @@ function action(this: Command, workspace: Arguments['workspace'], options: Optio
 
   const scriptName = options.e2e ? 'test:e2e' : 'test';
 
-  const workspaceName = workspacesUtils.findOneOrThrow(workspace).moduleName;
+  const filter = `--filter=${workspacesUtils.findOneOrThrow(workspace).moduleName}`;
+  const remainingArgs = getRemainingArguments(this);
+  const innerArgs = remainingArgs.trim() ? `-- ${remainingArgs}` : '';
 
-  runCommand(`pnpm run --filter=${workspaceName} ${scriptName} -- ${getRemainingArguments(this)}`);
+  runCommand(['pnpm run', scriptName, filter, innerArgs].filter(Boolean).join(' '));
 }
 
 export const testCommand = (program: Command) => {
