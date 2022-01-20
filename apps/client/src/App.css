@@ -1,7 +1,20 @@
 .App {
   text-align: center;
 }
+.Nav {
+  font-size: 18px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid gray;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  cursor: pointer;
+}
+.Nav > a {
+    margin-right: 20px
 
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;

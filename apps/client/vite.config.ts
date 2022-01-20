@@ -1,5 +1,6 @@
 import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
+import tsconfigPaths from 'vite-tsconfig-paths';
 
 export default defineConfig({
   plugins: [
@@ -7,6 +8,7 @@ export default defineConfig({
       // Automatic runtime breaks the builded version of the app.
       jsxRuntime: 'classic',
     }),
+    tsconfigPaths(),
   ],
   esbuild: {
     jsxInject: `import React from 'react'`,
