@@ -1,5 +1,5 @@
 import { MikroOrmModule } from '@mikro-orm/nestjs';
-import { Inject, MiddlewareConsumer, Module, NestModule, ValidationPipe } from '@nestjs/common';
+import { Inject, MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { APP_PIPE } from '@nestjs/core';
 import RedisStore from 'connect-redis';
 import session from 'express-session';
@@ -11,6 +11,7 @@ import { AuthModule } from './modules/auth/auth.module';
 import { REDIS } from './modules/redis/redis.constants';
 import { RedisModule } from './modules/redis/redis.module';
 import { env } from './shared/env';
+import { HttpValidationPipe } from './shared/http/validation.pipe';
 
 @Module({
   imports: [AuthModule, RedisModule, MikroOrmModule.forRoot(mikroOrmConfig)],
@@ -18,7 +19,7 @@ import { env } from './shared/env';
   providers: [
     {
       provide: APP_PIPE,
-      useValue: new ValidationPipe({ whitelist: true }),
+      useValue: HttpValidationPipe,
     },
   ],
 })

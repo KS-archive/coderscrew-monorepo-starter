@@ -1,24 +1,12 @@
-import { paths } from '@/generated/schema';
-import { httpClient, isAxiosError } from '@/http-client';
-import { BadRequestError, ConflictError, InternalServerError, OkSuccess } from '@/responses';
+import { ResultAsync } from 'neverthrow';
 
-type Endpoint = paths['/auth/register']['post'];
+import { httpClient } from '@/http-client';
+import { CreatedSuccess, handleApiErrors } from '@/responses';
 
-export const registerRequest = async (body: Endpoint['requestBody']['content']['application/json']) => {
-  try {
-    const { data } = await httpClient.post<Endpoint['responses']['201']['content']['application/json']>(
-      '/auth/register',
-      body
-    );
+const register = httpClient.path('/auth/register').method('post').create();
 
-    return new OkSuccess(data);
-  } catch (error) {
-    if (isAxiosError(error)) {
-      if (error.code === '400') return new BadRequestError(error.message);
-
-      if (error.code === '409') return new ConflictError(error.message);
-    }
-
-    return new InternalServerError();
-  }
-};
+export const registerRequest = async (...args: Parameters<typeof register>) =>
+  ResultAsync.fromPromise(
+    register(...args).then((response) => new CreatedSuccess(response.data, response)),
+    handleApiErrors(register)
+  );

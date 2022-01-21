@@ -1,8 +1,10 @@
-import axios, { AxiosError } from 'axios';
+import { Fetcher } from 'openapi-typescript-fetch';
 
-export const httpClient = axios.create({
-  baseURL: 'http://localhost:4000',
-  withCredentials: true,
+import { paths } from '@/generated/schema';
+
+export const httpClient = Fetcher.for<paths>();
+
+httpClient.configure({
+  baseUrl: 'http://localhost:4000',
+  init: { credentials: 'include' },
 });
-
-export const isAxiosError = (value: unknown): value is AxiosError => axios.isAxiosError(value);
