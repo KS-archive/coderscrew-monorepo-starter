@@ -11,18 +11,23 @@
     "dist/**"
   ],
   "scripts": {
+    "dev": "tsup --watch & tsc --declaration --declarationMap --emitDeclarationOnly --watch",
+    "build": "rm -rf dist && tsup & tsc --declaration --declarationMap --emitDeclarationOnly",
     "test": "jest",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint . --ext .js,.ts,.tsx",
+    "clean": "rm -rf .turbo & rm -rf node_modules & rm -rf dist",
     "generate": "node scripts/generate.js"
   },
   "dependencies": {
-    "@ccms/typings": "*"
+    "@ccms/typings": "*",
+    "tsup": "5.11.11"
   },
   "devDependencies": {
     "@ccms/node": "*",
     "cross-fetch": "3.1.4",
     "fetch-cookie": "1.0.0",
     "jest": "27.4.7",
-    "nanoid": "3.2.0",
     "neverthrow": "4.3.1",
     "openapi-typescript": "5.1.0",
     "openapi-typescript-fetch": "1.1.1",

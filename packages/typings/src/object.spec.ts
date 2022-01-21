@@ -1,5 +1,4 @@
-import { Values } from '.';
-import type { LeavesArray, LeavesString } from './object';
+import type { LeavesArray, LeavesString, Values } from './object';
 import type { Equal, Expect } from './tests';
 
 type Obj = {
