@@ -1,0 +1,24 @@
+{
+  "name": "@ccms/api",
+  "description": "Tools allowing to connect with the project API",
+  "version": "0.0.0",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "sideEffects": false,
+  "private": true,
+  "files": [
+    "dist/**"
+  ],
+  "scripts": {
+    "generate": "node scripts/generate.js"
+  },
+  "dependencies": {
+    "axios": "0.24.0",
+    "neverthrow": "4.3.1"
+  },
+  "devDependencies": {
+    "@ccms/node": "*",
+    "openapi-typescript": "5.1.0"
+  }
+}
