@@ -35,30 +35,14 @@ export interface components {
       /** Format: date-time */
       readonly updatedAt: string;
     };
-    readonly ValidationRestApiError: {
-      /** @default 400 */
-      readonly statusCode: number;
-      readonly message: readonly string[];
-      /** @default Bad Request */
-      readonly error: string;
-    };
-    readonly ConflictRestApiError: {
-      /** @default 409 */
+    readonly HttpErrorBody: {
       readonly statusCode: number;
       readonly message: string;
-      /** @default Conflict */
       readonly error: string;
     };
     readonly LoginBody: {
       readonly email: string;
       readonly password: string;
-    };
-    readonly UnauthorizedRestApiError: {
-      /** @default 401 */
-      readonly statusCode: number;
-      readonly message: string;
-      /** @default Unauthorized */
-      readonly error: string;
     };
     readonly MeResponse: {
       readonly id: string;
@@ -83,12 +67,17 @@ export interface operations {
       };
       readonly 400: {
         readonly content: {
-          readonly 'application/json': components['schemas']['ValidationRestApiError'];
+          readonly 'application/json': components['schemas']['HttpErrorBody'];
         };
       };
       readonly 409: {
         readonly content: {
-          readonly 'application/json': components['schemas']['ConflictRestApiError'];
+          readonly 'application/json': components['schemas']['HttpErrorBody'];
+        };
+      };
+      readonly 500: {
+        readonly content: {
+          readonly 'application/json': components['schemas']['HttpErrorBody'];
         };
       };
     };
@@ -104,7 +93,7 @@ export interface operations {
       readonly 204: never;
       readonly 401: {
         readonly content: {
-          readonly 'application/json': components['schemas']['UnauthorizedRestApiError'];
+          readonly 'application/json': components['schemas']['HttpErrorBody'];
         };
       };
     };

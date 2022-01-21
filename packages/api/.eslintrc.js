@@ -4,7 +4,7 @@
 module.exports = {
   overrides: [
     {
-      files: 'src/schema.ts',
+      files: 'src/generated/schema.ts',
       rules: {
         '@typescript-eslint/naming-convention': 'off',
         '@typescript-eslint/ban-types': 'off',
