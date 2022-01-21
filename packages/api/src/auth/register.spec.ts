@@ -1,37 +1,26 @@
-import { nanoid } from 'nanoid';
-
 import { BadRequestError, ConflictError, CreatedSuccess } from '@/responses';
+import { getDescribeFor } from '@/utils';
 
+import { createAccountCredentials } from './auth.test-helpers';
 import { registerRequest } from './register';
 
-type Credentials = {
-  email: string;
-  password: string;
-};
-
-const createUserCredentials = (overwrite: Partial<Credentials> = {}): Credentials => ({
-  email: `test-mail-${nanoid()}@e2e.com`,
-  password: nanoid(),
-  ...overwrite,
-});
-
-describe('register', () => {
+describe(getDescribeFor(registerRequest), () => {
   it('returns a new account if correct credentials provided', async () => {
-    const userCredentials = createUserCredentials();
-    const response = await registerRequest(userCredentials);
+    const body = createAccountCredentials();
+    const response = await registerRequest(body);
 
     expect(response.isOk()).toBe(true);
 
     if (response.isOk()) {
       expect(response.value).toBeInstanceOf(CreatedSuccess);
-      expect(response.value.data.email).toBe(userCredentials.email);
+      expect(response.value.data.email).toBe(body.email);
       expect(response.value.data.status).toBe('inactive');
     }
   });
 
   it('returns error when no email provided', async () => {
-    const userCredentials = createUserCredentials({ email: undefined });
-    const response = await registerRequest(userCredentials);
+    const body = createAccountCredentials({ email: undefined });
+    const response = await registerRequest(body);
 
     expect(response.isErr()).toBe(true);
 
@@ -42,8 +31,8 @@ describe('register', () => {
   });
 
   it('returns error when email has incorrect format', async () => {
-    const userCredentials = createUserCredentials({ email: 'wrong@email' });
-    const response = await registerRequest(userCredentials);
+    const body = createAccountCredentials({ email: 'wrong@email' });
+    const response = await registerRequest(body);
 
     expect(response.isErr()).toBe(true);
 
@@ -54,11 +43,11 @@ describe('register', () => {
   });
 
   it('returns error when user with a particular email already exist', async () => {
-    const userCredentials = createUserCredentials();
+    const body = createAccountCredentials();
 
-    await registerRequest(userCredentials);
+    await registerRequest(body);
 
-    const response = await registerRequest(userCredentials);
+    const response = await registerRequest(body);
 
     expect(response.isErr()).toBe(true);
 
@@ -69,8 +58,8 @@ describe('register', () => {
   });
 
   it('returns error when no password provided', async () => {
-    const userCredentials = createUserCredentials({ password: undefined });
-    const response = await registerRequest(userCredentials);
+    const body = createAccountCredentials({ password: undefined });
+    const response = await registerRequest(body);
 
     expect(response.isErr()).toBe(true);
 

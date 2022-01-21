@@ -14,9 +14,13 @@
     "test": "jest",
     "generate": "node scripts/generate.js"
   },
+  "dependencies": {
+    "@ccms/typings": "*"
+  },
   "devDependencies": {
     "@ccms/node": "*",
     "cross-fetch": "3.1.4",
+    "fetch-cookie": "1.0.0",
     "jest": "27.4.7",
     "nanoid": "3.2.0",
     "neverthrow": "4.3.1",

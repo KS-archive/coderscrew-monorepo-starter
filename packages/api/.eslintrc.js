@@ -4,7 +4,7 @@
 module.exports = {
   overrides: [
     {
-      files: 'src/generated/schema.ts',
+      files: 'schema.ts',
       rules: {
         '@typescript-eslint/naming-convention': 0,
         '@typescript-eslint/ban-types': 0,
@@ -12,10 +12,20 @@ module.exports = {
       },
     },
     {
-      files: 'src/**/*.spec.ts',
+      files: '*.spec.ts',
       rules: {
-        // We use conditionals to narrow types.
+        // We use conditionals to narrow types (isOk, isErr).
         'jest/no-conditional-expect': 0,
+
+        // We have a custom function to generate describe title.
+        'jest/valid-title': [2, { ignoreTypeOfDescribeName: true }],
+      },
+    },
+    {
+      files: '*.responses.ts',
+      rules: {
+        // Responses files groups many classes for responses of similar type.
+        'max-classes-per-file': 0,
       },
     },
   ],

@@ -8,20 +8,14 @@ interface Arguments {
   workspace: string;
 }
 
-interface Options {
-  e2e: boolean;
-}
-
-function action(this: Command, workspace: Arguments['workspace'], options: Options) {
+function action(this: Command, workspace: Arguments['workspace']) {
   loadEnvVariables();
-
-  const scriptName = options.e2e ? 'test:e2e' : 'test';
 
   const filter = `--filter=${workspacesUtils.findOneOrThrow(workspace).moduleName}`;
   const remainingArgs = getRemainingArguments(this);
   const innerArgs = remainingArgs.trim() ? `-- ${remainingArgs}` : '';
 
-  runCommand(['pnpm run', scriptName, filter, innerArgs].filter(Boolean).join(' '));
+  runCommand(['pnpm run test', filter, innerArgs].filter(Boolean).join(' '));
 }
 
 export const testCommand = (program: Command) => {
