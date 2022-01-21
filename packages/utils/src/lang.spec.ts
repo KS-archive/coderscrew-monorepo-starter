@@ -1,5 +1,5 @@
-import { expectTypeOf } from '.';
 import { isBoolean } from './lang';
+import { expectTypeOf } from './tests';
 
 const getStringNumberOrBoolean = () => {
   const values = [true, 'hello', 1];

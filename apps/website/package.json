@@ -7,6 +7,8 @@
     "dev": "next dev --port $WEBSITE_PORT",
     "build": "next build",
     "start": "next start --port $WEBSITE_PORT",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint . --ext .js,.ts,.tsx",
     "clean": "rm -rf .turbo & rm -rf node_modules & rm -rf .next"
   },
   "dependencies": {
@@ -16,6 +18,7 @@
   },
   "devDependencies": {
     "@babel/core": "7.16.7",
+    "@next/eslint-plugin-next": "12.0.8",
     "@types/react": "17.0.38"
   }
 }

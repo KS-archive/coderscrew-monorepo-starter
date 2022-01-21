@@ -22,13 +22,13 @@ export class LocalStrategy extends PassportStrategy(Strategy) {
     const account = await this.accountRepository.findOne({ email });
 
     if (!account) {
-      throw new UnauthorizedException('Incorrect e-mail address or password');
+      throw new UnauthorizedException();
     }
 
-    const isPasswordCorrect = await checkPasswordsMatch(password, account.password);
+    const isPasswordCorrect = await checkPasswordsMatch(account.password, password);
 
     if (!isPasswordCorrect) {
-      throw new UnauthorizedException('Incorrect e-mail address or password');
+      throw new UnauthorizedException();
     }
 
     return { id: account.id, status: account.status };

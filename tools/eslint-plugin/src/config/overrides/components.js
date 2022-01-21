@@ -8,7 +8,10 @@ module.exports = {
     'react/jsx-props-no-spreading': 0,
 
     // To be consistent we want to always use arrow function when creating components.
-    'react/function-component-definition': [2, { namedComponents: 'arrow-function' }],
+    'react/function-component-definition': [
+      2,
+      { namedComponents: 'arrow-function', unnamedComponents: 'arrow-function' },
+    ],
 
     // No need for prop-types as we have TypeScript types.
     'react/prop-types': 0,

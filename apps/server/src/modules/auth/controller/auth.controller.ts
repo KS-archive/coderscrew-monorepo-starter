@@ -2,9 +2,7 @@ import { UniqueConstraintViolationException } from '@mikro-orm/core';
 import {
   Body,
   ConflictException,
-  Controller,
   Get,
-  HttpCode,
   InternalServerErrorException,
   Logger,
   Post,
@@ -12,43 +10,37 @@ import {
   Res,
   UseGuards,
 } from '@nestjs/common';
-import {
-  ApiBadRequestResponse,
-  ApiBody,
-  ApiConflictResponse,
-  ApiCreatedResponse,
-  ApiNoContentResponse,
-  ApiOkResponse,
-  ApiTags,
-  ApiUnauthorizedResponse,
-} from '@nestjs/swagger';
 import type { Request, Response } from 'express';
 
-import { ConflictRestApiError, UnauthorizedRestApiError, ValidationRestApiError } from '@/shared/rest-api-errors';
+import {
+  HttpBody,
+  HttpController,
+  HttpCreatedResponse,
+  HttpErrors,
+  HttpNoContentResponse,
+  HttpOkResponse,
+} from '@/shared/http';
 
 import { AccountRepository } from '../account/account.repository';
 import { LocalAuthGuard } from '../local/local-auth.guard';
-import { encodePassword } from '../utils/password.utils';
+import { hashPassword } from '../utils/password.utils';
 import { LOGIN_ENDPOINT, LoginBody } from './login.route';
 import { LOGOUT_ENDPOINT } from './logout.route';
 import { ME_ENDPOINT, MeResponse } from './me.route';
 import { REGISTER_ENDPOINT, RegisterBody, RegisterResponse } from './register.route';
 
-@Controller()
-@ApiTags('Auth')
+@HttpController('Auth')
 export class AuthController {
   constructor(private readonly accountRepository: AccountRepository) {}
 
   private readonly logger = new Logger(AuthController.name);
 
   @Post(REGISTER_ENDPOINT)
-  @HttpCode(201)
-  @ApiBody({ type: RegisterBody })
-  @ApiCreatedResponse({ type: RegisterResponse })
-  @ApiBadRequestResponse({ type: ValidationRestApiError })
-  @ApiConflictResponse({ type: ConflictRestApiError })
+  @HttpBody(RegisterBody)
+  @HttpCreatedResponse(RegisterResponse)
+  @HttpErrors('BadRequest', 'Conflict', 'InternalServerError')
   async register(@Body() registerBody: RegisterBody): Promise<RegisterResponse> {
-    const encodedPassword = await encodePassword(registerBody.password);
+    const encodedPassword = await hashPassword(registerBody.password);
     const account = this.accountRepository.create({
       ...registerBody,
       password: encodedPassword,
@@ -71,17 +63,16 @@ export class AuthController {
   }
 
   @Post(LOGIN_ENDPOINT)
-  @HttpCode(204)
   @UseGuards(LocalAuthGuard)
-  @ApiBody({ type: LoginBody })
-  @ApiNoContentResponse()
-  @ApiUnauthorizedResponse({ type: UnauthorizedRestApiError })
+  @HttpBody(LoginBody)
+  @HttpNoContentResponse()
+  @HttpErrors('Unauthorized')
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   async login(): Promise<void> {}
 
   @Get(ME_ENDPOINT)
-  @ApiOkResponse({ type: MeResponse })
-  @ApiNoContentResponse()
+  @HttpOkResponse(MeResponse)
+  @HttpNoContentResponse()
   async me(@Req() req: Request, @Res() res: Response): Promise<MeResponse | undefined> {
     if (!req.isAuthenticated()) {
       res.sendStatus(204);
@@ -97,8 +88,7 @@ export class AuthController {
   }
 
   @Post(LOGOUT_ENDPOINT)
-  @HttpCode(204)
-  @ApiNoContentResponse()
+  @HttpNoContentResponse()
   async logout(@Req() req: Request): Promise<void> {
     req.logout();
     req.session.destroy(() => {});

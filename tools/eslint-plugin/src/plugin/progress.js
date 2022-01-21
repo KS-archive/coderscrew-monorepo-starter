@@ -1,11 +1,10 @@
-const { blue, cyan } = require('colorette');
 const { logger } = require('@ccms/node');
 
 const ROOT_PATH = `${process.cwd()}/`;
 
 process.on('exit', (exitCode) => {
   if (exitCode === 0) {
-    logger.info(blue('Linting finished!'));
+    logger.success('Linting finished!');
   }
 });
 
@@ -17,7 +16,7 @@ const create = (context) => {
   const filename = context.getFilename();
   const relativeFilePath = filename.replace(ROOT_PATH, '');
 
-  logger.info(cyan(`Linting: ${relativeFilePath}`));
+  logger.info(`Linting: ${relativeFilePath}`);
 
   return {};
 };

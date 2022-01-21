@@ -7,6 +7,8 @@
     "dev": "vite --clearScreen false --port $CLIENT_PORT",
     "build": "vite build",
     "start": "vite preview --port $CLIENT_PORT",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint . --ext .js,.ts,.tsx",
     "clean": "rm -rf .turbo & rm -rf node_modules & rm -rf dist"
   },
   "dependencies": {

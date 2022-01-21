@@ -5,14 +5,14 @@ import url from 'url';
 import { APPS_FOLDER, PACKAGES_FOLDER, WORKSPACE_PREFIX } from './constants';
 
 export class Workspace {
-  private _absolutePath: string;
+  private absolutePath: string;
 
   constructor(absolutePath: string) {
-    this._absolutePath = absolutePath;
+    this.absolutePath = absolutePath;
   }
 
   get fullPath() {
-    return this._absolutePath;
+    return this.absolutePath;
   }
 
   get projectPath() {
@@ -33,10 +33,10 @@ export class Workspace {
     return `${WORKSPACE_PREFIX}/${this.directoryName}`;
   }
 
-  get tsConfigPath() {
-    const tsConfigPath = path.resolve(this.fullPath, 'tsconfig.json');
+  get eslintTsConfigPath() {
+    const eslintTsConfigPath = path.resolve(this.fullPath, 'tsconfig.eslint.json');
 
-    return fs.existsSync(tsConfigPath) ? tsConfigPath : undefined;
+    return fs.existsSync(eslintTsConfigPath) ? eslintTsConfigPath : undefined;
   }
 
   get isPackage() {

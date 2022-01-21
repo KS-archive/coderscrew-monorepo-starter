@@ -8,7 +8,7 @@ interface Options {
 }
 
 function action(options: Options) {
-  let command = 'eslint --format=pretty "**/*.{js,ts,tsx}"';
+  let command = 'eslint . --format=pretty --ext .js,.ts,.tsx';
 
   if (options.cache) {
     command = `${command} --cache`;

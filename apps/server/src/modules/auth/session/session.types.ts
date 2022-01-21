@@ -1,10 +1,10 @@
-import type { AccountStatus } from '../account/account.entity';
+import type { Account } from '../account/account.entity';
 
 export interface SerializedAccount {
-  id: string;
+  id: Account['id'];
 }
 
 export interface DeserializedAccount {
-  id: string;
-  status: AccountStatus;
+  id: Account['id'];
+  status: Account['status'];
 }

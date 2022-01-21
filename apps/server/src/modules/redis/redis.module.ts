@@ -1,5 +1,5 @@
-import { Module } from '@nestjs/common';
-import Redis from 'ioredis';
+import { Inject, Module, OnModuleDestroy, OnModuleInit } from '@nestjs/common';
+import Redis, { Redis as RedisClient } from 'ioredis';
 
 import { env } from '@/shared/env';
 
@@ -17,4 +17,18 @@ import { REDIS } from './redis.constants';
   ],
   exports: [REDIS],
 })
-export class RedisModule {}
+export class RedisModule implements OnModuleInit, OnModuleDestroy {
+  constructor(@Inject(REDIS) private readonly redis: RedisClient) {}
+
+  async onModuleInit() {
+    if (this.redis.status !== 'ready') {
+      await this.redis.connect();
+    }
+  }
+
+  async onModuleDestroy() {
+    if (this.redis.status !== 'end') {
+      await this.redis.quit();
+    }
+  }
+}

@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsDate, IsEmail, IsEnum, IsNotEmpty } from 'class-validator';
+import { IsDateString, IsEmail, IsEnum, IsNotEmpty } from 'class-validator';
 
 import { AccountStatus } from '../account/account.entity';
 
@@ -18,11 +18,11 @@ export class MeResponse {
   @ApiProperty({ enum: AccountStatus, enumName: 'AccountStatus' })
   status: AccountStatus;
 
-  @IsDate()
+  @IsDateString()
   @ApiProperty()
   createdAt: Date;
 
-  @IsDate()
+  @IsDateString()
   @ApiProperty()
   updatedAt: Date;
 }
