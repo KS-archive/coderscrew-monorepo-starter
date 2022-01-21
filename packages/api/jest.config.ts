@@ -1,24 +1,19 @@
-// eslint-disable-next-line unicorn/prevent-abbreviations
 import type { Config } from '@jest/types';
 import { pathsToModuleNameMapper } from 'ts-jest';
 
-import { compilerOptions } from './tsconfig.e2e.json';
+import { compilerOptions } from './tsconfig.json';
 
 const jestConfig: Config.InitialOptions = {
-  globals: {
-    'ts-jest': {
-      tsconfig: 'tsconfig.e2e.json',
-    },
-  },
   moduleFileExtensions: ['js', 'json', 'ts'],
-  modulePathIgnorePatterns: ['dist'],
   moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, { prefix: '<rootDir>/' }),
-  rootDir: 'e2e',
+  rootDir: 'src',
   testRegex: '.*\\.spec\\.ts$',
   transform: {
     '^.+\\.(t|j)s$': 'ts-jest',
   },
+  setupFilesAfterEnv: ['<rootDir>/../setup-tests.ts'],
   testEnvironment: 'node',
+  collectCoverageFrom: ['**/*.(t|j)s'],
 };
 
 export default jestConfig;

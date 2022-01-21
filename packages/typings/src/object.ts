@@ -12,3 +12,5 @@ export type LeavesArray<Obj, MaxDepth extends number = 10> = [MaxDepth] extends 
   : Obj extends object
   ? { [K in keyof Obj]-?: [K, ...LeavesArray<Obj[K], Previous<MaxDepth>>] }[keyof Obj]
   : [];
+
+export type Values<ObjectType, ValueType extends keyof ObjectType = keyof ObjectType> = ObjectType[ValueType];

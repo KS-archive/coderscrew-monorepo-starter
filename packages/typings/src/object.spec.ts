@@ -1,4 +1,4 @@
-import type { LeavesArray, LeavesString } from './object';
+import type { LeavesArray, LeavesString, Values } from './object';
 import type { Equal, Expect } from './tests';
 
 type Obj = {
@@ -21,4 +21,8 @@ export type LeavesArrayDescribe = {
   'Lists all paths to end properties of the object in a form of array': [
     Expect<Equal<LeavesArray<Obj>, ['a'] | ['b', 'b1', 100] | ['b', 'b2']>>
   ];
+};
+
+export type ValuesDescribe = {
+  'Returns an union of object values': [Expect<Equal<Values<Obj>, Obj['a'] | Obj['b']>>];
 };
