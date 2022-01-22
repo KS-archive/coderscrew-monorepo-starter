@@ -1,4 +1,4 @@
-import { Argument, Command, Option } from 'commander';
+import { Argument, Command } from 'commander';
 
 import { workspacesUtils } from '@ccms/node';
 
@@ -25,7 +25,6 @@ export const testCommand = (program: Command) => {
     .addArgument(
       new Argument('<workspace>', 'Name of the workspace to test.').choices(workspacesUtils.getDirectoryNames())
     )
-    .addOption(new Option('--e2e', 'Run e2e tests instead of the unit ones'))
     .allowExcessArguments()
     .allowUnknownOption()
     .action(action);
