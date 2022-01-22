@@ -1,9 +1,8 @@
 const path = require('path');
 
-/**
- * @type {import('eslint').Linter.Config}
- */
-module.exports = {
+const { createPackageEslintConfig } = require('@ccms/node');
+
+module.exports = createPackageEslintConfig({ dir: __dirname })({
   env: { browser: true },
   plugins: ['@next/next'],
   extends: ['plugin:@next/next/core-web-vitals'],
@@ -19,4 +18,4 @@ module.exports = {
       },
     },
   ],
-};
+});

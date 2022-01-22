@@ -23,6 +23,7 @@
     "lodash": "4.17.21"
   },
   "devDependencies": {
+    "@ccms/node": "*",
     "@types/jest": "27.4.0",
     "@types/lodash": "4.14.178",
     "jest": "27.4.7",

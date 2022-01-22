@@ -1,6 +1,5 @@
-/**
- * @type {import('eslint').Linter.Config}
- */
-module.exports = {
+const { createPackageEslintConfig } = require('./dist');
+
+module.exports = createPackageEslintConfig({ dir: __dirname })({
   env: { node: true },
-};
+});

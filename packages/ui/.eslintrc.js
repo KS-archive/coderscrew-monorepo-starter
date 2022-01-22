@@ -1,20 +1,7 @@
-const path = require('path');
+const { createPackageEslintConfig } = require('@ccms/node');
 
-const project = path.resolve(__dirname, 'tsconfig.eslint.json');
-
-/**
- * @type {import('eslint').Linter.Config}
- */
-module.exports = {
+module.exports = createPackageEslintConfig({ dir: __dirname })({
   env: { browser: true },
-  parserOptions: {
-    project,
-  },
-  settings: {
-    'import/resolver': {
-      typescript: { project },
-    },
-  },
   overrides: [
     {
       files: ['*.stories.tsx'],
@@ -27,4 +14,4 @@ module.exports = {
     },
   ],
   ignorePatterns: ['storybook-static', '!.storybook'],
-};
+});

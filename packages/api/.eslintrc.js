@@ -1,7 +1,7 @@
-/**
- * @type {import('eslint').Linter.Config}
- */
-module.exports = {
+const { createPackageEslintConfig } = require('@ccms/node');
+
+module.exports = createPackageEslintConfig({ dir: __dirname })({
+  env: { browser: true },
   overrides: [
     {
       files: 'schema.ts',
@@ -29,4 +29,4 @@ module.exports = {
       },
     },
   ],
-};
+});
