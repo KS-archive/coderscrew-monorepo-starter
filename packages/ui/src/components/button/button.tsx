@@ -23,7 +23,7 @@ const sizesMap = {
   sm: { padding: '0 12px', height: 32, typographyKey: 'sm', minWidth: 32 },
   md: { padding: '0 16px', height: 40, typographyKey: 'md', minWidth: 40 },
   lg: { padding: '0 20px', height: 48, typographyKey: 'lg', minWidth: 48 },
-  xl: { padding: '0 24px', height: 56, typographyKey: 'lg', minWidth: 56 },
+  xl: { padding: '0 24px', height: 56, typographyKey: 'xl', minWidth: 56 },
 } as const;
 
 const sizeStyles: StyledCallback<ButtonProps> = ({ theme, size = 'md' }) => {

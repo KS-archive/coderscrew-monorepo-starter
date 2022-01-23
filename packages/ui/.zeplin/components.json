@@ -1,0 +1,35 @@
+{
+  "projects": ["61ed8c77bb39ce10d82dc187"],
+  "github": {
+    "repository": "KonradSzwarc/coderscrew-monorepo-starter",
+    "path": "packages/ui",
+    "branch": "main"
+  },
+  "plugins": [
+    {
+      "name": "@zeplin/cli-connect-react-plugin",
+      "config": {
+        "tsDocgen": "react-docgen-typescript"
+      }
+    },
+    {
+      "name": "@zeplin/cli-connect-storybook-plugin",
+      "config": {
+        "url": "http://localhost:3002",
+        "targetUrl": "https://ccms-storybook.netlify.app",
+        "format": "new",
+        "command": "cd ../.. && pnpm exec cli storybook dev"
+      }
+    }
+  ],
+  "components": [
+    {
+      "path": "src/components/button/button.tsx",
+      "zeplinNames": ["Button / *"]
+    },
+    {
+      "path": "src/components/input/input.tsx",
+      "zeplinNames": ["Input / *"]
+    }
+  ]
+}

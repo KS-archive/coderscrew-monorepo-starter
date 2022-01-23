@@ -32,7 +32,7 @@ const sizesMap = {
   sm: { padding: '0 12px', height: 32, typographyKey: 'sm' },
   md: { padding: '0 16px', height: 40, typographyKey: 'md' },
   lg: { padding: '0 16px', height: 48, typographyKey: 'lg' },
-  xl: { padding: '0 20px', height: 56, typographyKey: 'lg' },
+  xl: { padding: '0 20px', height: 56, typographyKey: 'xl' },
 } as const;
 
 const sizeStyles: StyledCallback<StyledInputProps> = ({ theme, size = 'md' }) => {
@@ -45,8 +45,8 @@ type VariantFunction = StyledCallback<{ invalid: StyledInputProps['invalid'] }>;
 
 const filledVariant: VariantFunction = ({ theme, invalid }) => ({
   backgroundColor: theme.colors.gray[100],
-  border: '2px solid',
   borderColor: invalid ? theme.colors.error[500] : 'transparent',
+  boxShadow: invalid ? `0 0 0 1px ${theme.colors.error[500]}` : 'none',
 
   '&:hover:enabled': {
     backgroundColor: theme.colors.gray[200],
@@ -55,22 +55,22 @@ const filledVariant: VariantFunction = ({ theme, invalid }) => ({
   '&:focus:enabled': {
     backgroundColor: 'transparent',
     borderColor: theme.colors.primary[500],
+    boxShadow: `0 0 0 1px ${theme.colors.primary[500]}`,
   },
 });
 
 const outlineVariant: VariantFunction = ({ theme, invalid }) => ({
   backgroundColor: 'inherit',
-  border: '1px solid',
   borderColor: invalid ? theme.colors.error[500] : theme.colors.gray[300],
   boxShadow: invalid ? `0 0 0 1px ${theme.colors.error[500]}` : 'none',
 
-  '&:hover:enabled': {
+  '&:hover:enabled:not(:focus)': {
     borderColor: invalid ? theme.colors.error[600] : theme.colors.gray[400],
   },
 
   '&:focus:enabled': {
-    borderColor: invalid ? theme.colors.error[500] : theme.colors.primary[500],
-    boxShadow: `0 0 0 1px ${invalid ? theme.colors.error[500] : theme.colors.primary[500]}`,
+    borderColor: theme.colors.primary[500],
+    boxShadow: `0 0 0 1px ${theme.colors.primary[500]}`,
   },
 });
 
@@ -85,6 +85,8 @@ const baseStyles: StyledCallback<StyledInputProps> = ({ theme }) => ({
   position: 'relative',
   appearance: 'none',
   boxSizing: 'border-box',
+  border: '1px solid',
+  color: theme.colors.gray[800],
   fontWeight: theme.fontWeights.normal,
   borderRadius: 6,
   display: 'flex',

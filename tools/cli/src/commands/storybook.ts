@@ -8,6 +8,8 @@ export const STORYBOOK_WORKSPACE = workspacesUtils.findOneOrThrow('ui').moduleNa
 export const storybookCommands = {
   dev: 'storybook:dev',
   build: 'storybook:build',
+  synchronize: 'zeplin:connect',
+  'synchronize-dev': 'zeplin:connect-dev',
 };
 
 interface Arguments {
