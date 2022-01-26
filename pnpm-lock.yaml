@@ -27,7 +27,9 @@ importers:
   apps/client:
     specifiers:
       '@ccms/node': '*'
+      '@ccms/typings': '*'
       '@ccms/ui': '*'
+      '@ccms/utils': '*'
       '@types/react': 17.0.38
       '@types/react-dom': 17.0.11
       '@vitejs/plugin-react': 1.1.4
@@ -35,14 +37,18 @@ importers:
       react-dom: 17.0.2
       react-location: 3.3.3
       react-location-devtools: 3.3.3
+      react-location-jsurl: 3.3.3
       vite: 2.7.13
       vite-tsconfig-paths: 3.3.17
     dependencies:
+      '@ccms/typings': link:../../packages/typings
       '@ccms/ui': link:../../packages/ui
+      '@ccms/utils': link:../../packages/utils
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
       react-location: 3.3.3_react-dom@17.0.2+react@17.0.2
       react-location-devtools: 3.3.3_react-dom@17.0.2+react@17.0.2
+      react-location-jsurl: 3.3.3_react-dom@17.0.2+react@17.0.2
     devDependencies:
       '@ccms/node': link:../../packages/node
       '@types/react': 17.0.38
@@ -16272,6 +16278,10 @@ packages:
       promise: 7.3.1
     dev: true
 
+  /jsurl/0.1.5:
+    resolution: {integrity: sha1-KlyHQd45ysr8EvRIkIvzTpYNzug=}
+    dev: false
+
   /jsx-ast-utils/3.2.1:
     resolution: {integrity: sha512-uP5vu8xfy2F9A6LGC22KO7e2/vGTS1MhP+18f++ZNlf0Ohaxbc9nIEwHAsejlJKyzfZzU5UIhe5ItYkitcZnZA==}
     engines: {node: '>=4.0'}
@@ -19229,6 +19239,11 @@ packages:
     resolution: {integrity: sha512-TIRk4aqYLNoJUbd+g2lEdz5kLWIuTMRagAXxl78Q0RiVjAOugHmeKNGdd3cwo/ktpf9aL9epCfFqWDEKysUlLQ==}
     engines: {node: '>=0.6'}
 
+  /qss/2.0.3:
+    resolution: {integrity: sha512-j48ZBT5IZbSqJiSU8EX4XrN8nXiflHvmMvv2XpFc31gh7n6EpSs75bNr6+oj3FOLWyT8m09pTmqLNl34L7/uPQ==}
+    engines: {node: '>=4'}
+    dev: false
+
   /query-string/6.14.1:
     resolution: {integrity: sha512-XDxAeVmpfu1/6IjyT/gXHOl+S0vQ9owggJ30hhWKdHAsNPOcasn5o9BW0eejZqL2e4vMjhAxoW3jVHcD6mbcYw==}
     engines: {node: '>=6'}
@@ -19540,6 +19555,22 @@ packages:
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
       react-location: 3.3.3_react-dom@17.0.2+react@17.0.2
+      ts-toolbelt: 9.6.0
+    dev: false
+
+  /react-location-jsurl/3.3.3_react-dom@17.0.2+react@17.0.2:
+    resolution: {integrity: sha512-lRoebtBbkI/ScFV3YU/bHa0VqZOpmNxP9/GmeK+9f9IojkPAB5oXuSWuygGQ2xH1XIMvtPr/uXUppoRcY07NkA==}
+    peerDependencies:
+      react: '>=16'
+      react-dom: '>=16'
+    dependencies:
+      '@babel/runtime': 7.16.7
+      core-js: 3.20.3
+      fast-async: 7.0.6
+      jsurl: 0.1.5
+      qss: 2.0.3
+      react: 17.0.2
+      react-dom: 17.0.2_react@17.0.2
       ts-toolbelt: 9.6.0
     dev: false
 

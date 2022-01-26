@@ -81,26 +81,8 @@ module.exports = {
   // Workspaces transpiled to CommonJS have problems with node protocol in require statements.
   'unicorn/prefer-node-protocol': [0],
 
-  // Customizes abbreviations allowed for variables.
-  'unicorn/prevent-abbreviations': [
-    2,
-    {
-      replacements: {
-        res: false,
-        req: false,
-        env: false,
-        dev: false,
-        obj: false,
-        str: false,
-        num: false,
-        prop: false,
-        ref: false,
-        props: false,
-        args: false,
-        vars: false,
-      },
-    },
-  ],
+  // We allow to use abbreviations for variables.
+  'unicorn/prevent-abbreviations': [0],
 
   // Enforce consistent type of emotion styles.
   '@emotion/syntax-preference': [2, 'object'],

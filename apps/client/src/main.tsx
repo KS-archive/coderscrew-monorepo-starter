@@ -5,12 +5,14 @@ import ReactDOM from 'react-dom';
 
 import { ThemeProvider } from '@ccms/ui';
 
-import { App } from './app';
+import { RoutingProvider } from '@/services/routing';
+
+import { routes } from './routes';
 
 ReactDOM.render(
   <StrictMode>
     <ThemeProvider>
-      <App />
+      <RoutingProvider routes={routes} />
     </ThemeProvider>
   </StrictMode>,
   document.querySelector('#root')
