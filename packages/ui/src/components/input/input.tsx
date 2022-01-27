@@ -1,4 +1,4 @@
-import { ChangeEvent, FocusEvent, ForwardedRef, forwardRef, VoidFunctionComponent } from 'react';
+import { ChangeEvent, FocusEvent, ForwardedRef, VoidFunctionComponent } from 'react';
 
 import type { StyledCallback } from '@/types';
 import { styled } from '@/utils';
@@ -6,7 +6,7 @@ import { styled } from '@/utils';
 type InputSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 type InputVariant = 'filled' | 'outline';
 
-interface BaseInputProps {
+export interface InputProps {
   size?: InputSize;
   variant?: InputVariant;
   disabled?: boolean;
@@ -14,17 +14,11 @@ interface BaseInputProps {
   className?: string;
   placeholder?: string;
   value?: string;
+  width?: number | string;
   ref?: ForwardedRef<HTMLInputElement>;
   onBlur?: (event: FocusEvent<HTMLInputElement>) => void;
   onFocus?: (event: FocusEvent<HTMLInputElement>) => void;
-}
-
-interface StyledInputProps extends BaseInputProps {
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
-}
-
-export interface InputProps extends BaseInputProps {
-  onChange?: (value: string) => void;
 }
 
 const sizesMap = {
@@ -35,13 +29,13 @@ const sizesMap = {
   xl: { padding: '0 20px', height: 56, typographyKey: 'xl' },
 } as const;
 
-const sizeStyles: StyledCallback<StyledInputProps> = ({ theme, size = 'md' }) => {
+const sizeStyles: StyledCallback<InputProps> = ({ theme, size = 'md' }) => {
   const { typographyKey, ...properties } = sizesMap[size];
 
   return { ...theme.typography[typographyKey], ...properties };
 };
 
-type VariantFunction = StyledCallback<{ invalid: StyledInputProps['invalid'] }>;
+type VariantFunction = StyledCallback<{ invalid: InputProps['invalid'] }>;
 
 const filledVariant: VariantFunction = ({ theme, invalid }) => ({
   backgroundColor: theme.colors.gray[100],
@@ -76,11 +70,11 @@ const outlineVariant: VariantFunction = ({ theme, invalid }) => ({
 
 const variantsMap = { filled: filledVariant, outline: outlineVariant };
 
-const variantStyles: StyledCallback<StyledInputProps> = ({ theme, variant = 'filled', invalid }) =>
+const variantStyles: StyledCallback<InputProps> = ({ theme, variant = 'filled', invalid }) =>
   variantsMap[variant]({ theme, invalid });
 
-const baseStyles: StyledCallback<StyledInputProps> = ({ theme }) => ({
-  width: '100%',
+const baseStyles: StyledCallback<InputProps> = ({ theme, width = '100%' }) => ({
+  width,
   minWidth: 0,
   position: 'relative',
   appearance: 'none',
@@ -100,20 +94,8 @@ const baseStyles: StyledCallback<StyledInputProps> = ({ theme }) => ({
   },
 });
 
-const StyledInput = styled.input<StyledInputProps>(
+export const Input = styled.input<InputProps>(
   baseStyles,
   sizeStyles,
   variantStyles
-) as VoidFunctionComponent<StyledInputProps>;
-
-const InnerInput = ({ onChange, ...props }: InputProps, ref: ForwardedRef<HTMLInputElement>) => {
-  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    if (onChange) {
-      onChange(event.target.value);
-    }
-  };
-
-  return <StyledInput {...props} onChange={handleChange} ref={ref} />;
-};
-
-export const Input = forwardRef(InnerInput);
+) as VoidFunctionComponent<InputProps>;

@@ -35,6 +35,7 @@ importers:
       '@vitejs/plugin-react': 1.1.4
       react: 17.0.2
       react-dom: 17.0.2
+      react-hook-form: 7.25.1
       react-location: 3.3.3
       react-location-devtools: 3.3.3
       react-location-jsurl: 3.3.3
@@ -46,6 +47,7 @@ importers:
       '@ccms/utils': link:../../packages/utils
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
+      react-hook-form: 7.25.1_react@17.0.2
       react-location: 3.3.3_react-dom@17.0.2+react@17.0.2
       react-location-devtools: 3.3.3_react-dom@17.0.2+react@17.0.2
       react-location-jsurl: 3.3.3_react-dom@17.0.2+react@17.0.2
@@ -19492,6 +19494,15 @@ packages:
       react: 17.0.2
       react-fast-compare: 3.2.0
       react-side-effect: 2.1.1_react@17.0.2
+    dev: false
+
+  /react-hook-form/7.25.1_react@17.0.2:
+    resolution: {integrity: sha512-AVE/kFtOQ6GEC5TBDNzZrVO8k4QRMi5RNhUWeBq6Koc9V/luBrP1xybWByl4n1yLFL8/2H3p0VM7wp3CW7t8JQ==}
+    engines: {node: '>=12.22.0'}
+    peerDependencies:
+      react: ^16.8.0 || ^17
+    dependencies:
+      react: 17.0.2
     dev: false
 
   /react-inspector/5.1.1_react@17.0.2:

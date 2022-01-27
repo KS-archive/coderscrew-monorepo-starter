@@ -4,7 +4,7 @@ import { useNavigate as useNavigateLocation } from 'react-location';
 import type { TypeSafePath } from './define-routes';
 
 interface Options {
-  to?: TypeSafePath;
+  to: TypeSafePath;
   replace?: boolean;
 }
 

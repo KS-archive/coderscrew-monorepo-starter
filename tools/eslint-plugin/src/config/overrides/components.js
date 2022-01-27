@@ -15,5 +15,8 @@ module.exports = {
 
     // No need for prop-types as we have TypeScript types.
     'react/prop-types': 0,
+
+    // In case of many props `undefined` is a correct value.
+    'react/require-default-props': 0,
   },
 };

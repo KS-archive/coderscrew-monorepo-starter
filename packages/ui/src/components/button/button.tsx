@@ -1,12 +1,12 @@
-import type { FunctionComponent, MouseEvent, RefObject } from 'react';
+import type { ForwardedRef, FunctionComponent, MouseEvent } from 'react';
 
-import { Theme } from '@/theme';
 import type { StyledCallback } from '@/types';
 import { styled } from '@/utils';
 
 type ButtonSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
-type ButtonColor = keyof Pick<Theme['colors'], 'primary' | 'gray' | 'error' | 'warning' | 'success' | 'info'>;
+type ButtonColor = 'primary' | 'gray' | 'error' | 'warning' | 'success' | 'info';
 type ButtonVariant = 'solid' | 'outline' | 'ghost';
+type ButtonType = 'button' | 'reset' | 'submit';
 
 export interface ButtonProps {
   size?: ButtonSize;
@@ -14,8 +14,10 @@ export interface ButtonProps {
   variant?: ButtonVariant;
   disabled?: boolean;
   className?: string;
-  ref?: RefObject<HTMLButtonElement>;
+  ref?: ForwardedRef<HTMLButtonElement>;
   onClick?: (event: MouseEvent<HTMLButtonElement>) => void;
+  type?: ButtonType;
+  width?: number | string;
 }
 
 const sizesMap = {
@@ -73,8 +75,8 @@ const variantsMap = { solid: solidVariant, outline: outlineVariant, ghost: ghost
 const variantStyles: StyledCallback<ButtonProps> = ({ theme, variant = 'solid', color = 'gray' }) =>
   variantsMap[variant]({ theme, color });
 
-const baseStyles: StyledCallback<ButtonProps> = ({ theme }) => ({
-  width: 'fit-content',
+const baseStyles: StyledCallback<ButtonProps> = ({ theme, width = 'fit-content' }) => ({
+  width,
   cursor: 'pointer',
   userSelect: 'none',
   textDecoration: 'none',
@@ -84,6 +86,7 @@ const baseStyles: StyledCallback<ButtonProps> = ({ theme }) => ({
   borderRadius: 6,
   display: 'flex',
   alignItems: 'center',
+  justifyContent: 'center',
   transition: 'all 0.225s ease-out',
   outline: 'none',
 
@@ -102,3 +105,7 @@ export const Button = styled.button<ButtonProps>(
   sizeStyles,
   variantStyles
 ) as FunctionComponent<ButtonProps>;
+
+Button.defaultProps = {
+  type: 'button',
+};
