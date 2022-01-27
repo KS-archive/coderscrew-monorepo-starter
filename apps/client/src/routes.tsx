@@ -7,10 +7,10 @@ import { signUpRoute } from './pages/sign-up';
 import { defineRoutes } from './services/routing';
 
 export const routes = defineRoutes([
-  dashboardRoute.use('/'),
-  accountRoute.use('/account/:accountId'),
-  searchRoute.use('/search'),
-  nestedRoute.use('/nested'),
-  signInRoute.use('/sign-in'),
-  signUpRoute.use('/sign-up'),
+  dashboardRoute.use(),
+  accountRoute.use(),
+  searchRoute.use(),
+  nestedRoute.use(),
+  signInRoute.use(),
+  signUpRoute.use(),
 ]);

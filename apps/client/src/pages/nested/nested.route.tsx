@@ -7,5 +7,5 @@ export const nestedRoute = defineRoute({
   path: '/nested',
   element: () => import('./nested').then((module) => <module.Nested />),
   createPath: createNestedRoutePath,
-  children: [childRoute.use('/child')],
+  children: [childRoute.use()],
 });
