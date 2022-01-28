@@ -32,11 +32,17 @@ describe('Button', () => {
     expect(handleClick).toHaveBeenCalledTimes(1);
   });
 
-  it('passes ref to the button element', () => {
-    const ref = createRef<HTMLButtonElement>();
+  it('renders HTML element provided in the `as` prop and passes a correct ref to it', () => {
+    const buttonRef = createRef<HTMLButtonElement>();
 
-    render(<Button ref={ref} />);
+    const { rerender } = render(<Button ref={buttonRef} />);
 
-    expect(ref.current).toBeInstanceOf(HTMLButtonElement);
+    expect(buttonRef.current).toBeInstanceOf(HTMLButtonElement);
+
+    const divRef = createRef<HTMLDivElement>();
+
+    rerender(<Button as="div" ref={divRef} />);
+
+    expect(divRef.current).toBeInstanceOf(HTMLDivElement);
   });
 });

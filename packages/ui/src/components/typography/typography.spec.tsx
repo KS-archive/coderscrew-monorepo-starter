@@ -1,10 +1,11 @@
+import { createRef } from 'react';
 import { screen } from '@testing-library/react';
 
 import { render } from '@/utils/tests';
 
 import { Typography } from './typography';
 
-describe('Button', () => {
+describe('Typography', () => {
   it('displays text provided as the `children` prop', () => {
     const text = 'Some text';
 
@@ -15,25 +16,17 @@ describe('Button', () => {
     expect(typography).toBeInTheDocument();
   });
 
-  it('renders HTMl element provided as the `as` prop (div by default)', () => {
-    const text = 'Some text';
+  it('renders HTML element provided in the `as` prop and passes a correct ref to it', () => {
+    const divRef = createRef<HTMLDivElement>();
 
-    const { rerender } = render(<Typography>{text}</Typography>);
+    const { rerender } = render(<Typography ref={divRef} />);
 
-    let typography = screen.getByText(text);
+    expect(divRef.current).toBeInstanceOf(HTMLDivElement);
 
-    expect(typography).toBeInstanceOf(HTMLDivElement);
+    const paragraphRef = createRef<HTMLParagraphElement>();
 
-    rerender(<Typography as="span">{text}</Typography>);
+    rerender(<Typography as="p" ref={paragraphRef} />);
 
-    typography = screen.getByText(text);
-
-    expect(typography).toBeInstanceOf(HTMLSpanElement);
-
-    rerender(<Typography as="h1">{text}</Typography>);
-
-    typography = screen.getByRole('heading');
-
-    expect(typography).toBeInstanceOf(HTMLHeadingElement);
+    expect(paragraphRef.current).toBeInstanceOf(HTMLParagraphElement);
   });
 });

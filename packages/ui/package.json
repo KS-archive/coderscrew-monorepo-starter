@@ -11,8 +11,8 @@
     "dist/**"
   ],
   "scripts": {
-    "dev": "tsup --watch & tsc --declaration --declarationMap --emitDeclarationOnly --watch",
-    "build": "rm -rf dist && tsup & tsc --declaration --declarationMap --emitDeclarationOnly",
+    "dev": "tsup --watch & tsc --declaration --declarationMap --emitDeclarationOnly --watch & tsc-alias --watch",
+    "build": "rm -rf dist && tsup & tsc --declaration --declarationMap --emitDeclarationOnly && tsc-alias",
     "test": "jest",
     "typecheck": "tsc --noEmit",
     "lint": "eslint . --ext .js,.ts,.tsx",
@@ -52,6 +52,7 @@
     "react-dom": "17.0.2",
     "source-map-loader": "3.0.1",
     "ts-jest": "27.1.3",
+    "tsc-alias": "1.5.0",
     "tsconfig-paths-webpack-plugin": "3.5.2",
     "tsup": "5.11.11",
     "webpack": "5.67.0"

@@ -1,4 +1,4 @@
-import { ChangeEvent, FocusEvent, ForwardedRef, VoidFunctionComponent } from 'react';
+import type { ComponentPropsWithRef, VoidFunctionComponent } from 'react';
 
 import type { StyledCallback } from '@/types';
 import { styled } from '@/utils';
@@ -6,19 +6,11 @@ import { styled } from '@/utils';
 type InputSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 type InputVariant = 'filled' | 'outline';
 
-export interface InputProps {
+export interface InputProps extends Omit<ComponentPropsWithRef<'input'>, 'size'> {
   size?: InputSize;
   variant?: InputVariant;
-  disabled?: boolean;
   invalid?: boolean;
-  className?: string;
-  placeholder?: string;
-  value?: string;
   width?: number | string;
-  ref?: ForwardedRef<HTMLInputElement>;
-  onBlur?: (event: FocusEvent<HTMLInputElement>) => void;
-  onFocus?: (event: FocusEvent<HTMLInputElement>) => void;
-  onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
 const sizesMap = {

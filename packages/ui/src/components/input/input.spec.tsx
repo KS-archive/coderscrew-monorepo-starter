@@ -35,7 +35,7 @@ describe('Input', () => {
     expect(input).toBeInTheDocument();
   });
 
-  it('calls `onChange` with the new value when user write something', () => {
+  it('calls `onChange` with the change event when user write something', () => {
     const handleChange = jest.fn();
     const textToType = 'Hello world!';
 
@@ -47,7 +47,7 @@ describe('Input', () => {
 
     userEvent.type(input, textToType);
 
-    expect(handleChange).toHaveBeenCalledWith(textToType);
+    expect(handleChange.mock.calls[0][0].target.value).toBe(textToType);
     expect(handleChange).toHaveBeenCalledTimes(textToType.length);
   });
 

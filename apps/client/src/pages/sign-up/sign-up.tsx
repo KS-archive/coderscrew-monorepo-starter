@@ -64,7 +64,10 @@ export const SignUp = () => {
         </Button>
       </Form>
       <Typography size="lg" weight="normal" color="primary">
-        Already have account? <Link to={signInRoute.path()}>Sign in</Link>
+        Already have account?{' '}
+        <Link to={signInRoute.path()} size="lg" weight="medium">
+          Sign in
+        </Link>
       </Typography>
     </PageContainer>
   );
