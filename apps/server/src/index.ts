@@ -10,6 +10,8 @@ const logger = new Logger('bootstrap');
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
+  app.enableCors({ credentials: true, origin: 'http://localhost:3000' });
+
   const config = new DocumentBuilder()
     .setTitle('CCMS API Docs')
     .setDescription('API Documentation for the CodersCrew Monorepo Starter')

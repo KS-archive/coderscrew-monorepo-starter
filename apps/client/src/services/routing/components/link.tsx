@@ -3,7 +3,7 @@ import { Link as LocationLink } from 'react-location';
 
 import { Link as UiLink, LinkProps as UiLinkProps } from '@ccms/ui';
 
-import type { TypeSafePath } from './define-routes';
+import type { TypeSafePath } from '../routing.types';
 
 interface LinkProps extends Omit<UiLinkProps, 'href' | 'hrefLang'> {
   children: ReactNode;

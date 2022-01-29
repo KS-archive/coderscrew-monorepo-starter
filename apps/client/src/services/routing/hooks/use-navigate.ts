@@ -1,7 +1,7 @@
 import { useCallback } from 'react';
 import { useNavigate as useNavigateLocation } from 'react-location';
 
-import type { TypeSafePath } from './define-routes';
+import type { TypeSafePath } from '../routing.types';
 
 interface Options {
   to: TypeSafePath;

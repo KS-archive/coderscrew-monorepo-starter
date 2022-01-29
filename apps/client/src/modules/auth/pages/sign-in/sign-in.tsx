@@ -3,7 +3,8 @@ import { Button, Input, styled, Typography } from '@ccms/ui';
 import { useForm } from '@/services/forms';
 import { Link } from '@/services/routing';
 
-import { signInRoute } from '../sign-in';
+import { authActions } from '../../store/auth.actions';
+import { signUpRoute } from '../sign-up';
 
 type FormValues = {
   email: string;
@@ -44,15 +45,15 @@ const FormFields = styled.div({
   },
 });
 
-export const SignUp = () => {
+export const SignIn = () => {
   const { register, handleSubmit } = useForm<FormValues>();
 
-  const onSubmit = handleSubmit((data) => console.log(data));
+  const onSubmit = handleSubmit((data) => authActions.login(data));
 
   return (
     <PageContainer>
       <Typography size="3xl" weight="bold" color="title">
-        Create an account
+        Sign in to the app
       </Typography>
       <Form onSubmit={onSubmit}>
         <FormFields>
@@ -60,13 +61,13 @@ export const SignUp = () => {
           <Input {...register('password')} placeholder="Password" size="lg" variant="filled" />
         </FormFields>
         <Button type="submit" size="xl" color="primary" variant="solid" width={280}>
-          Create account
+          Sign in
         </Button>
       </Form>
       <Typography size="lg" weight="normal" color="primary">
-        Already have account?{' '}
-        <Link to={signInRoute.path()} size="lg" weight="medium">
-          Sign in
+        Don&apos;t have account?{' '}
+        <Link to={signUpRoute.path()} size="lg" weight="medium">
+          Create one
         </Link>
       </Typography>
     </PageContainer>
