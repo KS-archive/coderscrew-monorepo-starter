@@ -19,11 +19,11 @@
     "clean": "rm -rf .turbo & rm -rf node_modules & rm -rf dist"
   },
   "dependencies": {
-    "@ccms/typings": "*",
+    "@ccms/typings": "workspace:*",
     "lodash": "4.17.21"
   },
   "devDependencies": {
-    "@ccms/node": "*",
+    "@ccms/node": "workspace:*",
     "@types/jest": "27.4.0",
     "@types/lodash": "4.14.178",
     "jest": "27.4.7",

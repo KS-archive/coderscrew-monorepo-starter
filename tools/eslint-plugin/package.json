@@ -11,7 +11,7 @@
   },
   "devDependencies": {
     "@babel/core": "7.16.12",
-    "@ccms/node": "*",
+    "@ccms/node": "workspace:*",
     "@emotion/eslint-plugin": "11.7.0",
     "@types/eslint": "8.4.1",
     "@typescript-eslint/eslint-plugin": "5.10.1",

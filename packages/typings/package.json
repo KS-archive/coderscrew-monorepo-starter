@@ -18,7 +18,7 @@
     "clean": "rm -rf .turbo & rm -rf node_modules & rm -rf dist"
   },
   "devDependencies": {
-    "@ccms/node": "*",
+    "@ccms/node": "workspace:*",
     "tsup": "5.11.11"
   }
 }

@@ -23,14 +23,14 @@
     "zeplin:connect-dev": "zeplin connect --dev"
   },
   "dependencies": {
-    "@ccms/typings": "*",
-    "@ccms/utils": "*",
+    "@ccms/typings": "workspace:*",
+    "@ccms/utils": "workspace:*",
     "@emotion/react": "11.7.1",
     "@emotion/styled": "11.6.0"
   },
   "devDependencies": {
     "@babel/core": "7.16.12",
-    "@ccms/node": "*",
+    "@ccms/node": "workspace:*",
     "@storybook/addon-actions": "6.4.16",
     "@storybook/addon-essentials": "6.4.16",
     "@storybook/addon-links": "6.4.16",

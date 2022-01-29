@@ -18,7 +18,7 @@
   },
   "devDependencies": {
     "@babel/core": "7.16.12",
-    "@ccms/node": "*",
+    "@ccms/node": "workspace:*",
     "@next/eslint-plugin-next": "12.0.9",
     "@types/react": "17.0.38"
   }

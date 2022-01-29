@@ -14,7 +14,7 @@
     "mikro-orm": "mikro-orm"
   },
   "dependencies": {
-    "@ccms/utils": "*",
+    "@ccms/utils": "workspace:*",
     "@mikro-orm/cli": "4.5.10",
     "@mikro-orm/core": "4.5.10",
     "@mikro-orm/migrations": "4.5.10",
@@ -42,7 +42,7 @@
   },
   "devDependencies": {
     "@anatine/esbuild-decorators": "0.2.18",
-    "@ccms/node": "*",
+    "@ccms/node": "workspace:*",
     "@golevelup/ts-jest": "0.3.2",
     "@nestjs/cli": "8.2.0",
     "@nestjs/schematics": "8.0.5",

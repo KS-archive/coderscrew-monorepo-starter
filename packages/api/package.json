@@ -20,11 +20,11 @@
     "generate": "node scripts/generate.js"
   },
   "dependencies": {
-    "@ccms/typings": "*",
+    "@ccms/typings": "workspace:*",
     "tsup": "5.11.11"
   },
   "devDependencies": {
-    "@ccms/node": "*",
+    "@ccms/node": "workspace:*",
     "cross-fetch": "3.1.5",
     "fetch-cookie": "1.0.0",
     "jest": "27.4.7",

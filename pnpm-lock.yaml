@@ -4,8 +4,8 @@ importers:
 
   .:
     specifiers:
-      '@ccms/cli': '*'
-      '@ccms/eslint-plugin': '*'
+      '@ccms/cli': workspace:*
+      '@ccms/eslint-plugin': workspace:*
       '@rushstack/eslint-patch': 1.1.0
       '@types/node': 17.0.13
       cross-env: 7.0.3
@@ -26,10 +26,11 @@ importers:
 
   apps/client:
     specifiers:
-      '@ccms/node': '*'
-      '@ccms/typings': '*'
-      '@ccms/ui': '*'
-      '@ccms/utils': '*'
+      '@ccms/api': workspace:*
+      '@ccms/node': workspace:*
+      '@ccms/typings': workspace:*
+      '@ccms/ui': workspace:*
+      '@ccms/utils': workspace:*
       '@types/react': 17.0.38
       '@types/react-dom': 17.0.11
       '@vitejs/plugin-react': 1.1.4
@@ -42,6 +43,7 @@ importers:
       vite: 2.7.13
       vite-tsconfig-paths: 3.3.17
     dependencies:
+      '@ccms/api': link:../../packages/api
       '@ccms/typings': link:../../packages/typings
       '@ccms/ui': link:../../packages/ui
       '@ccms/utils': link:../../packages/utils
@@ -62,7 +64,7 @@ importers:
   apps/docs:
     specifiers:
       '@algolia/client-search': 4.12.1
-      '@ccms/node': '*'
+      '@ccms/node': workspace:*
       '@docusaurus/core': 2.0.0-beta.15
       '@docusaurus/preset-classic': 2.0.0-beta.15
       '@mdx-js/react': 1.6.22
@@ -89,8 +91,8 @@ importers:
   apps/server:
     specifiers:
       '@anatine/esbuild-decorators': 0.2.18
-      '@ccms/node': '*'
-      '@ccms/utils': '*'
+      '@ccms/node': workspace:*
+      '@ccms/utils': workspace:*
       '@golevelup/ts-jest': 0.3.2
       '@mikro-orm/cli': 4.5.10
       '@mikro-orm/core': 4.5.10
@@ -176,7 +178,7 @@ importers:
   apps/website:
     specifiers:
       '@babel/core': 7.16.12
-      '@ccms/node': '*'
+      '@ccms/node': workspace:*
       '@next/eslint-plugin-next': 12.0.9
       '@types/react': 17.0.38
       next: 12.0.9
@@ -194,8 +196,8 @@ importers:
 
   packages/api:
     specifiers:
-      '@ccms/node': '*'
-      '@ccms/typings': '*'
+      '@ccms/node': workspace:*
+      '@ccms/typings': workspace:*
       cross-fetch: 3.1.5
       fetch-cookie: 1.0.0
       jest: 27.4.7
@@ -230,7 +232,7 @@ importers:
 
   packages/typings:
     specifiers:
-      '@ccms/node': '*'
+      '@ccms/node': workspace:*
       tsup: 5.11.11
     devDependencies:
       '@ccms/node': link:../node
@@ -239,9 +241,9 @@ importers:
   packages/ui:
     specifiers:
       '@babel/core': 7.16.12
-      '@ccms/node': '*'
-      '@ccms/typings': '*'
-      '@ccms/utils': '*'
+      '@ccms/node': workspace:*
+      '@ccms/typings': workspace:*
+      '@ccms/utils': workspace:*
       '@emotion/react': 11.7.1
       '@emotion/styled': 11.6.0
       '@storybook/addon-actions': 6.4.16
@@ -305,8 +307,8 @@ importers:
 
   packages/utils:
     specifiers:
-      '@ccms/node': '*'
-      '@ccms/typings': '*'
+      '@ccms/node': workspace:*
+      '@ccms/typings': workspace:*
       '@types/jest': 27.4.0
       '@types/lodash': 4.14.178
       jest: 27.4.7
@@ -326,7 +328,7 @@ importers:
 
   tools/cli:
     specifiers:
-      '@ccms/node': '*'
+      '@ccms/node': workspace:*
       commander: 9.0.0
       concurrently: 7.0.0
       dotenv: 14.3.2
@@ -342,7 +344,7 @@ importers:
   tools/eslint-plugin:
     specifiers:
       '@babel/core': 7.16.12
-      '@ccms/node': '*'
+      '@ccms/node': workspace:*
       '@emotion/eslint-plugin': 11.7.0
       '@types/eslint': 8.4.1
       '@typescript-eslint/eslint-plugin': 5.10.1
