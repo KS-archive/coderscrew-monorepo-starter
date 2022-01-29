@@ -11,9 +11,9 @@
     "clean": "rm -rf .turbo & docusaurus clear && rm -rf node_modules"
   },
   "dependencies": {
-    "@algolia/client-search": "4.12.0",
-    "@docusaurus/core": "2.0.0-beta.14",
-    "@docusaurus/preset-classic": "2.0.0-beta.14",
+    "@algolia/client-search": "4.12.1",
+    "@docusaurus/core": "2.0.0-beta.15",
+    "@docusaurus/preset-classic": "2.0.0-beta.15",
     "@mdx-js/react": "1.6.22",
     "clsx": "1.1.1",
     "prism-react-renderer": "1.2.1",

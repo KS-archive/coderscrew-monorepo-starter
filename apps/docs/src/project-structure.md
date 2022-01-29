@@ -55,7 +55,7 @@ For apps each `package.json` should have:
 - `scripts.build` - script that builds production version of the app.
 - `scripts.start` - script that runs build created by the previous script locally.
 
-For apps each `package.json` should have:
+For packages each `package.json` should have:
 
 - `main` - path to the root file with the CommonJS version of the workspace.
 - `module` - path to the root file with the EMS version of the workspace.

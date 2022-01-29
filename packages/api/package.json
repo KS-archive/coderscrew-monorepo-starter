@@ -29,8 +29,8 @@
     "fetch-cookie": "1.0.0",
     "jest": "27.4.7",
     "neverthrow": "4.3.1",
-    "openapi-typescript": "5.1.0",
-    "openapi-typescript-fetch": "1.1.1",
+    "openapi-typescript": "5.1.1",
+    "openapi-typescript-fetch": "1.1.2",
     "ts-jest": "27.1.3"
   }
 }
