@@ -8,7 +8,6 @@ import { i18nSelectors } from '../store/i18n.selectors';
 
 const LanguagePickerContainer = styled.div({
   display: 'flex',
-  justifyContent: 'center',
 
   '* + *': {
     marginLeft: 16,
@@ -21,7 +20,7 @@ export const LanguagePicker = (props: ComponentPropsWithoutRef<'div'>) => {
   return (
     <LanguagePickerContainer {...props}>
       {LANGUAGES.map((lang) => (
-        <Button onClick={() => i18nActions.setLanguage(lang)} color={language === lang ? 'primary' : 'gray'}>
+        <Button key={lang} onClick={() => i18nActions.setLanguage(lang)} color={language === lang ? 'primary' : 'gray'}>
           {lang.toUpperCase()}
         </Button>
       ))}

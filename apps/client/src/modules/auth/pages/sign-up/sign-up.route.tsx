@@ -1,8 +1,8 @@
-import { Routing } from '@/services/routing';
+import { defineRoute } from '@/services/routing';
 
 import { UnauthorizedGuard } from '../../guards/unauthorized.guard';
 
-export const signUpRoute = Routing.defineRoute({
+export const signUpRoute = defineRoute({
   path: '/sign-up',
   element: () =>
     import('./sign-up').then((module) => (

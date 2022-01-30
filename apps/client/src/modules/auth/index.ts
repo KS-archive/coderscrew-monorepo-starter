@@ -1,15 +1,10 @@
 import { authModuleConfig } from './auth.config';
-import { AuthorizedGuard } from './guards/authorized.guard';
-import { UnauthorizedGuard } from './guards/unauthorized.guard';
-import { signInRoute } from './pages/sign-in';
-import { signUpRoute } from './pages/sign-up';
-import { authActions } from './store/auth.actions';
-import { authSelectors } from './store/auth.selectors';
 
-export const Auth = {
-  initialize: authModuleConfig.initialize,
-  Guard: { Authorized: AuthorizedGuard, Unauthorized: UnauthorizedGuard },
-  routes: { signIn: signInRoute, signUp: signUpRoute },
-  selectors: authSelectors,
-  actions: authActions,
-};
+export { AuthorizedGuard } from './guards/authorized.guard';
+export { UnauthorizedGuard } from './guards/unauthorized.guard';
+export { signInRoute } from './pages/sign-in';
+export { signUpRoute } from './pages/sign-up';
+export { authActions } from './store/auth.actions';
+export { authSelectors } from './store/auth.selectors';
+
+export const initializeAuthModule = authModuleConfig.initialize;

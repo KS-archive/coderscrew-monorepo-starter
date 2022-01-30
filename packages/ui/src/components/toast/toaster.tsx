@@ -11,7 +11,7 @@ const DEFAULT_DURATION = 1000 * 3;
 const ToastsContainer = styled.div({
   position: 'fixed',
   zIndex: 9999,
-  top: 8,
+  top: 16,
   left: 0,
   right: 0,
   pointerEvents: 'none',

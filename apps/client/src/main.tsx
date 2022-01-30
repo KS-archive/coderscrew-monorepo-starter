@@ -3,24 +3,23 @@ import ReactDOM from 'react-dom';
 
 import { ThemeProvider } from '@ccms/ui';
 
-import { Auth } from '@/modules/auth';
-import { Routing } from '@/services/routing';
+import { initializeAuthModule } from '@/modules/auth';
+import { RoutingProvider } from '@/services/routing';
+import { ToastProvider } from '@/services/toasts';
 
 import { dashboardRoute } from './pages/dashboard/dashboard.route';
 import { routes } from './routes';
-import { I18n } from './services/i18n';
-import { Toasts } from './services/toasts';
+import { initializeI18nService } from './services/i18n';
 
-Auth.initialize({ unauthorizedPath: dashboardRoute.path() });
+initializeI18nService();
+initializeAuthModule({ unauthorizedPath: dashboardRoute.path() });
 
 ReactDOM.render(
   <StrictMode>
     <ThemeProvider>
-      <I18n.Provider>
-        <Toasts.Provider>
-          <Routing.Provider routes={routes} />
-        </Toasts.Provider>
-      </I18n.Provider>
+      <ToastProvider>
+        <RoutingProvider routes={routes} />
+      </ToastProvider>
     </ThemeProvider>
   </StrictMode>,
   document.querySelector('#root')

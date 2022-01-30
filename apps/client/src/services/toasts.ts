@@ -1,6 +1,1 @@
-import { toast, ToastProvider } from '@ccms/ui';
-
-export const Toasts = {
-  Provider: ToastProvider,
-  ...toast,
-};
+export { toast, ToastProvider } from '@ccms/ui';

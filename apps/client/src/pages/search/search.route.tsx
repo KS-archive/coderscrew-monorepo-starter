@@ -1,11 +1,11 @@
-import { Routing } from '@/services/routing';
+import { defineRoute } from '@/services/routing';
 
 export type SearchRouteQueryParams = {
   param1?: string;
   param2?: string;
 };
 
-export const searchRoute = Routing.defineRoute({
+export const searchRoute = defineRoute({
   path: '/search',
   element: () => import('./search').then((module) => <module.Search />),
   createPath: (params?: SearchRouteQueryParams) => {

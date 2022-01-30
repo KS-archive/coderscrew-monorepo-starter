@@ -2,10 +2,15 @@ import { useTranslation as i18nUseTranslation, UseTranslationOptions } from 'rea
 import i18n, { Callback, TOptionsBase } from 'i18next';
 
 import { DEFAULT_LANGUAGE } from './i18n.constants';
-import type { DefaultLanguage, Language, TranslationResources } from './i18n.types';
+import type { Language } from './i18n.types';
+
+type TranslationResources = Record<Language, Record<string, string>>;
 
 type IntlReturnType<Translation extends TranslationResources> = {
-  t: (key: keyof Translation[DefaultLanguage], options?: TOptionsBase | Record<string, string | number>) => string;
+  t: (
+    key: keyof Translation[typeof DEFAULT_LANGUAGE],
+    options?: TOptionsBase | Record<string, string | number>
+  ) => string;
   i18n: Omit<typeof i18n, 'changeLanguage'> & {
     changeLanguage: (language: Language, callback?: Callback | undefined) => void;
   };

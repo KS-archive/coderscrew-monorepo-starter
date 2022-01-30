@@ -1,7 +1,7 @@
 import { Button, Input, styled, Typography } from '@ccms/ui';
 
 import { useForm } from '@/services/forms';
-import { Routing } from '@/services/routing';
+import { Link } from '@/services/routing';
 
 import { authActions } from '../../store/auth.actions';
 import { signUpRoute } from '../sign-up';
@@ -66,9 +66,9 @@ export const SignIn = () => {
       </Form>
       <Typography size="lg" weight="normal" color="primary">
         Don&apos;t have account?{' '}
-        <Routing.Link to={signUpRoute.path()} size="lg" weight="medium">
+        <Link to={signUpRoute.path()} size="lg" weight="medium">
           Create one
-        </Routing.Link>
+        </Link>
       </Typography>
     </PageContainer>
   );

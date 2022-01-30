@@ -1,7 +1,7 @@
 import { Button, styled, Typography } from '@ccms/ui';
 
-import { Auth } from '@/modules/auth';
-import { I18n } from '@/services/i18n';
+import { authActions, authSelectors } from '@/modules/auth';
+import { LanguagePicker } from '@/services/i18n';
 
 import { useDashboardTranslations } from './locales';
 
@@ -23,16 +23,15 @@ const StyledButton = styled(Button)({
   marginTop: 80,
 });
 
-const StyledLanguagePicker = styled(I18n.LanguagePicker)({
+const StyledLanguagePicker = styled(LanguagePicker)({
   position: 'fixed',
   top: 16,
-  left: 0,
-  right: 0,
+  right: 16,
 });
 
 export const Dashboard = () => {
   const { t } = useDashboardTranslations();
-  const user = Auth.selectors.useAuthorizedUser();
+  const user = authSelectors.useAuthorizedUser();
 
   return (
     <PageContainer>
@@ -43,7 +42,7 @@ export const Dashboard = () => {
         {t('content')}
       </Typography>
       <StyledLanguagePicker />
-      <StyledButton size="xl" variant="solid" color="primary" onClick={() => Auth.actions.logout()}>
+      <StyledButton size="xl" variant="solid" color="primary" onClick={() => authActions.logout()}>
         {t('logOut')}
       </StyledButton>
     </PageContainer>

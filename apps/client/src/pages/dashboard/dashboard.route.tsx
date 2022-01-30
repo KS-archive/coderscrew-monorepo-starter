@@ -1,13 +1,13 @@
-import { Auth } from '@/modules/auth';
-import { Routing } from '@/services/routing';
+import { AuthorizedGuard } from '@/modules/auth';
+import { defineRoute } from '@/services/routing';
 
-export const dashboardRoute = Routing.defineRoute({
+export const dashboardRoute = defineRoute({
   path: '/',
   element: () =>
     import('./dashboard').then((module) => (
-      <Auth.Guard.Authorized>
+      <AuthorizedGuard>
         <module.Dashboard />
-      </Auth.Guard.Authorized>
+      </AuthorizedGuard>
     )),
   createPath: () => '/',
 });

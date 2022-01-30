@@ -1,9 +1,9 @@
-import { Routing } from '@/services/routing';
+import { useQueryParams } from '@/services/routing';
 
 import type { SearchRouteQueryParams } from './search.route';
 
 export const Search = () => {
-  const [queryParams, setQueryParams] = Routing.useQueryParams<SearchRouteQueryParams>();
+  const [queryParams, setQueryParams] = useQueryParams<SearchRouteQueryParams>();
 
   return (
     <div>

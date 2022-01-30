@@ -1,13 +1,5 @@
-import { LanguagePicker } from './components/language-picker';
-import { createTranslationsHook } from './create-translations-hook';
-import { I18nProvider } from './i18n.provider';
-import { i18nActions } from './store/i18n.actions';
-import { i18nSelectors } from './store/i18n.selectors';
-
-export const I18n = {
-  Provider: I18nProvider,
-  LanguagePicker,
-  createHook: createTranslationsHook,
-  selectors: i18nSelectors,
-  actions: i18nActions,
-};
+export { LanguagePicker } from './components/language-picker';
+export { createTranslationsHook } from './create-translations-hook';
+export { initializeI18nService } from './i18n.config';
+export { i18nActions } from './store/i18n.actions';
+export { i18nSelectors } from './store/i18n.selectors';
