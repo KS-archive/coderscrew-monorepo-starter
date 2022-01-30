@@ -1,7 +1,7 @@
 import { Auth } from '@/modules/auth';
-import { defineRoute } from '@/services/routing';
+import { Routing } from '@/services/routing';
 
-export const dashboardRoute = defineRoute({
+export const dashboardRoute = Routing.defineRoute({
   path: '/',
   element: () =>
     import('./dashboard').then((module) => (

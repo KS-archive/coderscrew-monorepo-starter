@@ -1,6 +1,6 @@
 import type { ReactElement } from 'react';
 
-import { Redirect } from '@/services/routing';
+import { Routing } from '@/services/routing';
 
 import { authModuleConfig } from '../auth.config';
 import { authSelectors } from '../store/auth.selectors';
@@ -10,4 +10,8 @@ interface UnauthorizedGuardProps {
 }
 
 export const UnauthorizedGuard = ({ children }: UnauthorizedGuardProps) =>
-  authSelectors.useIsUserAuthorized() ? <Redirect to={authModuleConfig.get('unauthorizedPath')} replace /> : children;
+  authSelectors.useIsUserAuthorized() ? (
+    <Routing.Redirect to={authModuleConfig.get('unauthorizedPath')} replace />
+  ) : (
+    children
+  );

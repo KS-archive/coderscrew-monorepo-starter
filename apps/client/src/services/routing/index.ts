@@ -1,9 +1,21 @@
-export { Link } from './components/link';
-export { Redirect } from './components/redirect';
-export { useNavigate } from './hooks/use-navigate';
-export { useParams } from './hooks/use-params';
-export { useQueryParams } from './hooks/use-query-params';
-export { RoutingProvider } from './routing.provider';
+import { Link } from './components/link';
+import { Redirect } from './components/redirect';
+import { useNavigate } from './hooks/use-navigate';
+import { useParams } from './hooks/use-params';
+import { useQueryParams } from './hooks/use-query-params';
+import { RoutingProvider } from './routing.provider';
+import { defineRoute } from './utils/define-route';
+import { defineRoutes } from './utils/define-routes';
+
 export type { TypeSafePath } from './routing.types';
-export { defineRoute } from './utils/define-route';
-export { defineRoutes } from './utils/define-routes';
+
+export const Routing = {
+  Provider: RoutingProvider,
+  Link,
+  Redirect,
+  useNavigate,
+  useParams,
+  useQueryParams,
+  defineRoute,
+  defineRoutes,
+};
