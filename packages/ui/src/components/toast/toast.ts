@@ -10,6 +10,7 @@ interface ToastFunction {
   error: ToastHandler;
   success: ToastHandler;
   loading: ToastHandler;
+  dismiss(toastId: string): void;
 }
 
 export const toast = reactHotToast as ToastFunction;
