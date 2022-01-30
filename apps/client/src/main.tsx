@@ -1,5 +1,3 @@
-import './index.css';
-
 import { StrictMode } from 'react';
 import ReactDOM from 'react-dom';
 
@@ -11,12 +9,12 @@ import { RoutingProvider } from '@/services/routing';
 import { dashboardRoute } from './pages/dashboard/dashboard.route';
 import { routes } from './routes';
 
+Auth.initialize({ unauthorizedPath: dashboardRoute.path() });
+
 ReactDOM.render(
   <StrictMode>
     <ThemeProvider>
-      <Auth.Provider unauthorizedPath={dashboardRoute.path()}>
-        <RoutingProvider routes={routes} />
-      </Auth.Provider>
+      <RoutingProvider routes={routes} />
     </ThemeProvider>
   </StrictMode>,
   document.querySelector('#root')
