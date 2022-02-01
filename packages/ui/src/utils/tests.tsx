@@ -10,7 +10,7 @@ const AllTheProviders: WrapperElement = ({ children }) => <ThemeProvider>{childr
 export function customRender<
   CustomQueries extends Queries = typeof queries,
   Container extends Element | DocumentFragment = HTMLElement
->(ui: React.ReactElement, options?: RenderOptions<CustomQueries, Container>): RenderResult<CustomQueries, Container> {
+>(ui: ReactElement, options?: RenderOptions<CustomQueries, Container>): RenderResult<CustomQueries, Container> {
   let wrapper: WrapperElement = AllTheProviders;
 
   if (options?.wrapper) {

@@ -1,8 +1,7 @@
+import i18next from 'i18next';
+
 import type { Language } from '../i18n.types';
-import { translationSlice } from './i18n.slice';
 
-const setLanguage = (language: Language) => {
-  translationSlice.setState({ language });
-};
+const setCurrentLanguage = (language: Language) => i18next.changeLanguage(language);
 
-export const i18nActions = { setLanguage };
+export const i18nActions = { setCurrentLanguage };

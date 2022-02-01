@@ -1,8 +1,8 @@
-import type { ComponentPropsWithoutRef } from 'react';
+import { ComponentPropsWithoutRef, Suspense } from 'react';
 
 import { Button, styled } from '@ccms/ui';
 
-import { LANGUAGES } from '../i18n.constants';
+import { supportedLngs } from '../i18n.config';
 import { i18nActions } from '../store/i18n.actions';
 import { i18nSelectors } from '../store/i18n.selectors';
 
@@ -14,16 +14,26 @@ const LanguagePickerContainer = styled.div({
   },
 });
 
-export const LanguagePicker = (props: ComponentPropsWithoutRef<'div'>) => {
+const LanguagePickerComponent = (props: ComponentPropsWithoutRef<'div'>) => {
   const language = i18nSelectors.useCurrentLanguage();
 
   return (
     <LanguagePickerContainer {...props}>
-      {LANGUAGES.map((lang) => (
-        <Button key={lang} onClick={() => i18nActions.setLanguage(lang)} color={language === lang ? 'primary' : 'gray'}>
+      {supportedLngs.map((lang) => (
+        <Button
+          key={lang}
+          onClick={() => i18nActions.setCurrentLanguage(lang)}
+          color={language === lang ? 'primary' : 'gray'}
+        >
           {lang.toUpperCase()}
         </Button>
       ))}
     </LanguagePickerContainer>
   );
 };
+
+export const LanguagePicker = (props: ComponentPropsWithoutRef<'div'>) => (
+  <Suspense fallback={false}>
+    <LanguagePickerComponent {...props} />
+  </Suspense>
+);

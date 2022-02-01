@@ -1,3 +1,5 @@
+import { Suspense } from 'react';
+
 import { defineRoute } from '@/services/routing';
 
 import { UnauthorizedGuard } from '../../guards/unauthorized.guard';
@@ -7,7 +9,9 @@ export const signInRoute = defineRoute({
   element: () =>
     import('./sign-in').then((module) => (
       <UnauthorizedGuard>
-        <module.SignIn />
+        <Suspense fallback={false}>
+          <module.SignIn />
+        </Suspense>
       </UnauthorizedGuard>
     )),
   createPath: () => '/sign-in',

@@ -1,6 +1,7 @@
 import { Button, Input, styled, Typography } from '@ccms/ui';
 
 import { useForm } from '@/services/forms';
+import { Trans, useTranslation } from '@/services/i18n';
 import { Link } from '@/services/routing';
 
 import { authActions } from '../../store/auth.actions';
@@ -46,6 +47,7 @@ const FormFields = styled.div({
 });
 
 export const SignUp = () => {
+  const { t } = useTranslation('auth', { keyPrefix: 'signUp' });
   const { register, handleSubmit } = useForm<FormValues>();
 
   const onSubmit = handleSubmit((data) => authActions.register(data));
@@ -53,22 +55,24 @@ export const SignUp = () => {
   return (
     <PageContainer>
       <Typography size="3xl" weight="bold" color="title">
-        Create an account
+        {t('title')}
       </Typography>
       <Form onSubmit={onSubmit}>
         <FormFields>
-          <Input {...register('email')} placeholder="E-mail address" size="lg" variant="filled" />
-          <Input {...register('password')} placeholder="Password" size="lg" variant="filled" />
+          <Input {...register('email')} placeholder={t('emailPlaceholder')} size="lg" variant="filled" />
+          <Input {...register('password')} placeholder={t('passwordPlaceholder')} size="lg" variant="filled" />
         </FormFields>
         <Button type="submit" size="xl" color="primary" variant="solid" width={280}>
-          Create account
+          {t('signInButtonLabel')}
         </Button>
       </Form>
       <Typography size="lg" weight="normal" color="primary">
-        Already have account?{' '}
-        <Link to={signInRoute.path()} size="lg" weight="medium">
-          Sign in
-        </Link>
+        <Trans i18nKey="signUp.goToSignIn" ns="auth">
+          Already have account?
+          <Link to={signInRoute.path()} size="lg" weight="medium">
+            Sign in
+          </Link>
+        </Trans>
       </Typography>
     </PageContainer>
   );

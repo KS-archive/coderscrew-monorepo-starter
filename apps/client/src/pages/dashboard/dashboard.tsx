@@ -1,9 +1,7 @@
 import { Button, styled, Typography } from '@ccms/ui';
 
 import { authActions, authSelectors } from '@/modules/auth';
-import { LanguagePicker } from '@/services/i18n';
-
-import { useDashboardTranslations } from './locales';
+import { LanguagePicker, useTranslation } from '@/services/i18n';
 
 const PageContainer = styled.div(({ theme }) => ({
   display: 'flex',
@@ -30,7 +28,7 @@ const StyledLanguagePicker = styled(LanguagePicker)({
 });
 
 export const Dashboard = () => {
-  const { t } = useDashboardTranslations();
+  const { t } = useTranslation('dashboard');
   const user = authSelectors.useAuthorizedUser();
 
   return (

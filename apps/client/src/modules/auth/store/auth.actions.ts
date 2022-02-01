@@ -1,5 +1,6 @@
 import { loginRequest, logoutRequest, meRequest, registerRequest } from '@ccms/api';
 
+import { getFixedT } from '@/services/i18n';
 import { toast } from '@/services/toasts';
 
 import { authSlice } from './auth.slice';
@@ -17,7 +18,8 @@ const getCurrentUser = async () => {
 };
 
 const login = async (...args: Parameters<typeof loginRequest>) => {
-  const loginToastId = toast.loading('Logging in...');
+  const t = await getFixedT('auth', { keyPrefix: 'actions.login' });
+  const loginToastId = toast.loading(t('loading'));
 
   const result = await loginRequest(...args);
 
@@ -26,50 +28,42 @@ const login = async (...args: Parameters<typeof loginRequest>) => {
   if (result.isOk()) {
     authSlice.setState({ error: undefined }, false, 'login / success');
     await getCurrentUser();
-    toast.success('Login successful');
+    toast.success(t('success'));
   } else {
     authSlice.setState(() => ({ user: undefined, error: result.error }), true, 'login / failure');
-
-    if (result.error.code === 401) {
-      toast.error("Account with provided e-mail and password doesn't exist");
-    } else {
-      toast.error('Error when logging in');
-    }
+    toast.error(result.error.code === 401 ? t('unauthorizedError') : t('error'));
   }
 };
 
 const logout = async () => {
-  const logoutToastId = toast.loading('Logging out...');
+  const t = await getFixedT('auth', { keyPrefix: 'actions.logout' });
+  const logoutToastId = toast.loading(t('loading'));
   const result = await logoutRequest();
 
   toast.dismiss(logoutToastId);
 
   if (result.isOk()) {
     authSlice.setState(() => ({ user: undefined, error: undefined }), true, 'logout / success');
-    toast.success('Logout successful');
+    toast.success(t('success'));
   } else {
     authSlice.setState(() => ({ user: undefined, error: result.error }), true, 'logout / failure');
-    toast.error('Error when logging out');
+    toast.error(t('error'));
   }
 };
 
 const register = async (...args: Parameters<typeof registerRequest>) => {
-  const registerToastId = toast.loading('Creating account...');
+  const t = await getFixedT('auth', { keyPrefix: 'actions.register' });
+  const registerToastId = toast.loading(t('loading'));
   const result = await registerRequest(...args);
 
   toast.dismiss(registerToastId);
 
   if (result.isOk()) {
     authSlice.setState({ error: undefined }, false, 'register / success');
-    toast.success('Account created. You can now log in to the app');
+    toast.success('success');
   } else {
     authSlice.setState(() => ({ user: undefined, error: result.error }), true, 'register / failure');
-
-    if (result.error.code === 409) {
-      toast.error('Account with provided e-mail already exists');
-    } else {
-      toast.error('Error when creating account');
-    }
+    toast.error(result.error.code === 409 ? t('conflictError') : t('error'));
   }
 };
 

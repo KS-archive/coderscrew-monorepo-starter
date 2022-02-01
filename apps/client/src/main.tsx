@@ -7,6 +7,7 @@ import { initializeAuthModule } from '@/modules/auth';
 import { RoutingProvider } from '@/services/routing';
 import { ToastProvider } from '@/services/toasts';
 
+import { MainLayout } from './layouts/main.layout';
 import { dashboardRoute } from './pages/dashboard/dashboard.route';
 import { routes } from './routes';
 import { initializeI18nService } from './services/i18n';
@@ -18,7 +19,7 @@ ReactDOM.render(
   <StrictMode>
     <ThemeProvider>
       <ToastProvider>
-        <RoutingProvider routes={routes} />
+        <RoutingProvider routes={routes} wrapper={MainLayout} />
       </ToastProvider>
     </ThemeProvider>
   </StrictMode>,

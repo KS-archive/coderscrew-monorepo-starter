@@ -1,5 +1,7 @@
-import { translationSlice } from './i18n.slice';
+import { useTranslation } from 'react-i18next';
 
-const useCurrentLanguage = () => translationSlice((state) => state.language);
+import type { Language } from '../i18n.types';
+
+const useCurrentLanguage = () => useTranslation()[1].languages[0] as Language;
 
 export const i18nSelectors = { useCurrentLanguage };

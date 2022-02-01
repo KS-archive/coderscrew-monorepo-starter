@@ -1,3 +1,5 @@
+import { Suspense } from 'react';
+
 import { AuthorizedGuard } from '@/modules/auth';
 import { defineRoute } from '@/services/routing';
 
@@ -6,7 +8,9 @@ export const dashboardRoute = defineRoute({
   element: () =>
     import('./dashboard').then((module) => (
       <AuthorizedGuard>
-        <module.Dashboard />
+        <Suspense fallback={false}>
+          <module.Dashboard />
+        </Suspense>
       </AuthorizedGuard>
     )),
   createPath: () => '/',
