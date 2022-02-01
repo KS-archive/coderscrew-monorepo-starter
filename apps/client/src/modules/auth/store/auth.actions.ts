@@ -5,8 +5,12 @@ import { toast } from '@/services/toasts';
 
 import { authSlice } from './auth.slice';
 
-const getCurrentUser = async () => {
+const getCurrentUser = async (loadingToastId?: string) => {
   const result = await meRequest();
+
+  if (loadingToastId) {
+    toast.dismiss(loadingToastId);
+  }
 
   if (result.isOk()) {
     const user = result.value.code === 200 ? result.value.data : undefined;
@@ -23,11 +27,9 @@ const login = async (...args: Parameters<typeof loginRequest>) => {
 
   const result = await loginRequest(...args);
 
-  toast.dismiss(loginToastId);
-
   if (result.isOk()) {
     authSlice.setState({ error: undefined }, false, 'login / success');
-    await getCurrentUser();
+    await getCurrentUser(loginToastId);
     toast.success(t('success'));
   } else {
     authSlice.setState(() => ({ user: undefined, error: result.error }), true, 'login / failure');

@@ -1,5 +1,6 @@
-import type { ReactElement } from 'react';
+import { ReactElement } from 'react';
 
+import { useAsync } from '@/hooks';
 import { Redirect } from '@/services/routing';
 
 import { signInRoute } from '../pages/sign-in';
@@ -9,5 +10,12 @@ interface AuthorizedGuardProps {
   children: ReactElement;
 }
 
-export const AuthorizedGuard = ({ children }: AuthorizedGuardProps) =>
-  authSelectors.useIsUserAuthorized() ? children : <Redirect to={signInRoute.path()} replace />;
+const signInPath = signInRoute.path();
+
+export const AuthorizedGuard = ({ children }: AuthorizedGuardProps) => {
+  useAsync(async () => {
+    await signInPath.preload();
+  });
+
+  return authSelectors.useIsUserAuthorized() ? children : <Redirect to={signInPath} replace />;
+};
