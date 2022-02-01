@@ -1,10 +1,10 @@
 import { Navigate } from 'react-location';
 
-import type { TypeSafePath } from '../routing.types';
+import type { RoutePath } from '../route-path';
 
 interface RedirectProps {
-  to: TypeSafePath;
+  to: RoutePath;
   replace?: boolean;
 }
 
-export const Redirect = (props: RedirectProps) => <Navigate {...props} />;
+export const Redirect = ({ to, ...props }: RedirectProps) => <Navigate {...props} to={to.url} />;

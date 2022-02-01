@@ -69,7 +69,7 @@ export const SignIn = () => {
       <Typography size="lg" weight="normal" color="primary">
         <Trans i18nKey="goToSignUp" t={t}>
           Don&apos;t have account?
-          <Link to={signUpRoute.path()} size="lg" weight="medium">
+          <Link preload to={signUpRoute.path()} size="lg" weight="medium">
             Create one
           </Link>
         </Trans>

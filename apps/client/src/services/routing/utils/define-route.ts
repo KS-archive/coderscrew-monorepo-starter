@@ -1,12 +1,12 @@
 import type { ReactElement } from 'react';
 
+import { RoutePath } from '../route-path';
 import type { CreatePathFc, CustomRoute } from '../routing.types';
-import { createTypeSafePath } from './create-type-safe-path';
 import { customRouteToRoute } from './custom-route-to-route';
 
 interface RouteConfig<CreatePath extends CreatePathFc = CreatePathFc> {
   path: string;
-  element: ReactElement | (() => Promise<ReactElement>);
+  element: () => Promise<ReactElement>;
   children?: CustomRoute[];
   createPath: CreatePath;
 }
@@ -16,5 +16,5 @@ export const defineRoute = <CreatePath extends CreatePathFc>({
   ...config
 }: RouteConfig<CreatePath>): CustomRoute<CreatePath> => ({
   use: () => ({ ...config, children: config.children?.map((route) => customRouteToRoute(route)) }),
-  path: (...args) => createTypeSafePath(createPath(...args)),
+  path: (...args) => new RoutePath(createPath(...args), config.element),
 });

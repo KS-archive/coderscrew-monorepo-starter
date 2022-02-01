@@ -1,17 +1,17 @@
-import { Suspense } from 'react';
-
 import { AuthorizedGuard } from '@/modules/auth';
+import { loadNamespace } from '@/services/i18n';
 import { defineRoute } from '@/services/routing';
 
 export const dashboardRoute = defineRoute({
   path: '/',
-  element: () =>
-    import('./dashboard').then((module) => (
-      <AuthorizedGuard>
-        <Suspense fallback={false}>
-          <module.Dashboard />
-        </Suspense>
-      </AuthorizedGuard>
-    )),
   createPath: () => '/',
+  element: async () => {
+    const [module] = await Promise.all([import('./dashboard'), loadNamespace('dashboard')]);
+
+    return (
+      <AuthorizedGuard>
+        <module.Dashboard />
+      </AuthorizedGuard>
+    );
+  },
 });

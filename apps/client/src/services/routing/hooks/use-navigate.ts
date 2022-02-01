@@ -1,15 +1,15 @@
 import { useCallback } from 'react';
 import { useNavigate as useNavigateLocation } from 'react-location';
 
-import type { TypeSafePath } from '../routing.types';
+import type { RoutePath } from '../route-path';
 
 interface Options {
-  to: TypeSafePath;
+  to: RoutePath;
   replace?: boolean;
 }
 
 export const useNavigate = () => {
   const navigate = useNavigateLocation();
 
-  return useCallback((options: Options) => navigate(options), [navigate]);
+  return useCallback(({ to, ...options }: Options) => navigate({ ...options, to: to.url }), [navigate]);
 };
