@@ -1,14 +1,13 @@
 import type { ReactElement } from 'react';
 
 export class RoutePath {
-  readonly preload: () => Promise<void>;
+  constructor(private readonly path: string, private readonly element: () => Promise<ReactElement>) {}
 
-  readonly url: string;
+  get url() {
+    return this.path;
+  }
 
-  constructor(path: string, element: () => Promise<ReactElement>) {
-    this.url = path;
-    this.preload = async () => {
-      await element();
-    };
+  async preload() {
+    await this.element();
   }
 }

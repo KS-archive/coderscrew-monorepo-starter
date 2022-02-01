@@ -1,4 +1,4 @@
-import { Route } from 'react-location';
+import type { Route } from 'react-location';
 
 import type { AnyFunctionWithReturnType } from '@ccms/typings';
 
