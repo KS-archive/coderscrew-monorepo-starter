@@ -12,7 +12,7 @@ import { routes } from './routes';
 import { initializeI18nService } from './services/i18n';
 
 initializeI18nService();
-initializeAuthModule({ unauthorizedPath: dashboardRoute.path() });
+initializeAuthModule({ authorizedPath: dashboardRoute.path() });
 
 ReactDOM.render(
   <StrictMode>

@@ -10,4 +10,4 @@ interface UnauthorizedGuardProps {
 }
 
 export const UnauthorizedGuard = ({ children }: UnauthorizedGuardProps) =>
-  authSelectors.useIsUserAuthorized() ? <Redirect to={authModuleConfig.get('unauthorizedPath')} replace /> : children;
+  authSelectors.useIsUserAuthorized() ? <Redirect to={authModuleConfig.get('authorizedPath')} replace /> : children;

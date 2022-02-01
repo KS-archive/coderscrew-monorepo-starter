@@ -3,7 +3,7 @@ import type { TypeSafePath } from '@/services/routing';
 import { authActions } from './store/auth.actions';
 
 interface AuthModuleConfig {
-  unauthorizedPath: TypeSafePath;
+  authorizedPath: TypeSafePath;
 }
 
 const createAuthModuleConfig = () => {
