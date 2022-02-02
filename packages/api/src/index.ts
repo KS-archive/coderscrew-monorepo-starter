@@ -1,2 +1,2 @@
-export * from './auth';
+export * from './modules/auth';
 export * from './responses';

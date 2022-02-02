@@ -13,25 +13,28 @@
   "scripts": {
     "dev": "tsup --watch & tsc --declaration --declarationMap --emitDeclarationOnly --watch  & tsc-alias --watch",
     "build": "rm -rf dist && tsup & tsc --declaration --declarationMap --emitDeclarationOnly && tsc-alias",
-    "test": "jest",
+    "test": "cross-env MOCKED_SERVER=true jest",
+    "test-e2e": "jest",
     "typecheck": "tsc --noEmit",
     "lint": "eslint . --ext .js,.ts,.tsx",
     "clean": "rm -rf node_modules & rm -rf dist",
     "generate": "node scripts/generate.js"
   },
-  "dependencies": {
-    "@ccms/typings": "workspace:*",
-    "tsup": "5.11.11"
-  },
   "devDependencies": {
     "@ccms/node": "workspace:*",
+    "@ccms/typings": "workspace:*",
+    "@mswjs/data": "0.8.4",
+    "@ngneat/falso": "2.22.0",
+    "class-validator": "0.13.2",
     "cross-fetch": "3.1.5",
     "fetch-cookie": "1.0.0",
     "jest": "27.4.7",
+    "msw": "0.36.8",
     "neverthrow": "4.3.1",
     "openapi-typescript": "5.1.1",
     "openapi-typescript-fetch": "1.1.2",
     "ts-jest": "27.1.3",
-    "tsc-alias": "1.5.0"
+    "tsc-alias": "1.5.0",
+    "tsup": "5.11.11"
   }
 }
