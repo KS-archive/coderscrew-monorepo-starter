@@ -27,6 +27,7 @@
     "@ccms/utils": "workspace:*",
     "@emotion/react": "11.7.1",
     "@emotion/styled": "11.6.0",
+    "nanoid": "3.2.0",
     "react-hot-toast": "2.2.0"
   },
   "devDependencies": {

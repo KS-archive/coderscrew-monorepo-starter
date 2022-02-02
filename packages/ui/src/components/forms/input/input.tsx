@@ -1,13 +1,14 @@
-import type { ComponentPropsWithRef, VoidFunctionComponent } from 'react';
+import { ComponentPropsWithRef, ComponentType, forwardRef, VoidFunctionComponent } from 'react';
 
 import type { StyledCallback } from '@/types';
 import { styled } from '@/utils';
 
-type InputSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+import { DEFAULT_FORM_SIZE, FormFieldContextValue, useFormField } from '../form-field';
+
 type InputVariant = 'filled' | 'outline';
 
 export interface InputProps extends Omit<ComponentPropsWithRef<'input'>, 'size'> {
-  size?: InputSize;
+  size?: FormFieldContextValue['size'];
   variant?: InputVariant;
   invalid?: boolean;
   width?: number | string;
@@ -21,7 +22,7 @@ const sizesMap = {
   xl: { padding: '0 20px', height: 56, typographyKey: 'xl' },
 } as const;
 
-const sizeStyles: StyledCallback<InputProps> = ({ theme, size = 'md' }) => {
+const sizeStyles: StyledCallback<InputProps> = ({ theme, size = DEFAULT_FORM_SIZE }) => {
   const { typographyKey, ...properties } = sizesMap[size];
 
   return { ...theme.typography[typographyKey], ...properties };
@@ -86,8 +87,17 @@ const baseStyles: StyledCallback<InputProps> = ({ theme, width = '100%' }) => ({
   },
 });
 
-export const Input = styled.input<InputProps>(
+const StyledInput = styled.input<InputProps>(
   baseStyles,
   sizeStyles,
   variantStyles
 ) as VoidFunctionComponent<InputProps>;
+
+export const Input: ComponentType<InputProps> = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
+  const fieldData = useFormField();
+
+  const invalid = props.invalid ?? Boolean(fieldData.error);
+  const size = props.size ?? fieldData.size;
+
+  return <StyledInput {...props} invalid={invalid} size={size} ref={ref} />;
+});

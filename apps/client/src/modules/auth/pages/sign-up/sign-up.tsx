@@ -1,4 +1,7 @@
-import { Button, Input, styled, Typography } from '@ccms/ui';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { InferType, object, string } from 'yup';
+
+import { Button, FormField, Input, styled, Typography } from '@ccms/ui';
 
 import { useForm } from '@/services/forms';
 import { Trans, useTranslation } from '@/services/i18n';
@@ -7,9 +10,17 @@ import { Link } from '@/services/routing';
 import { authActions } from '../../store/auth.actions';
 import { signInRoute } from '../sign-in';
 
-type FormValues = {
-  email: string;
-  password: string;
+type FormValues = InferType<ReturnType<typeof useValidationSchema>>;
+
+const useValidationSchema = () => {
+  const { t } = useTranslation('auth', { keyPrefix: 'validation' });
+
+  const formValues = object({
+    email: string().email(t('incorrectEmail')).required(t('emptyEmail')),
+    password: string().required(t('emptyPassword')),
+  });
+
+  return formValues;
 };
 
 const PageContainer = styled.div(({ theme }) => ({
@@ -48,7 +59,8 @@ const FormFields = styled.div({
 
 export const SignUp = () => {
   const { t } = useTranslation('auth', { keyPrefix: 'signUp' });
-  const { register, handleSubmit } = useForm<FormValues>();
+  const validationSchema = useValidationSchema();
+  const { register, handleSubmit, formState } = useForm<FormValues>({ resolver: yupResolver(validationSchema) });
 
   const onSubmit = handleSubmit((data) => authActions.register(data));
 
@@ -59,8 +71,12 @@ export const SignUp = () => {
       </Typography>
       <Form onSubmit={onSubmit}>
         <FormFields>
-          <Input {...register('email')} placeholder={t('emailPlaceholder')} size="lg" variant="filled" />
-          <Input {...register('password')} placeholder={t('passwordPlaceholder')} size="lg" variant="filled" />
+          <FormField size="lg" error={formState.errors.email?.message}>
+            <Input {...register('email')} placeholder={t('emailPlaceholder')} variant="filled" />
+          </FormField>
+          <FormField size="lg" error={formState.errors.password?.message}>
+            <Input {...register('password')} placeholder={t('passwordPlaceholder')} variant="filled" />
+          </FormField>
         </FormFields>
         <Button type="submit" size="xl" color="primary" variant="solid" width={280}>
           {t('signInButtonLabel')}
