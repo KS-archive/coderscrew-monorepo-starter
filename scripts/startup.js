@@ -190,7 +190,7 @@ const main = async () => {
   command('pnpm install');
 
   log.info('Preparing project CLI...');
-  command('turbo run build --scope=@ccms/cli --include-dependencies');
+  command('nx run cli:build');
 
   log.success(SUCCESS_MESSAGE);
 };

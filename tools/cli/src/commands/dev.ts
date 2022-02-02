@@ -11,18 +11,15 @@ interface Arguments {
 function action(workspaces: Arguments['workspaces']) {
   loadEnvVariables();
 
+  const baseCommand = 'nx run-many --target=dev --parallel';
+
   if (workspaces.length === 0) {
-    runCommand('turbo run dev');
+    runCommand(`${baseCommand} --all`);
 
     return;
   }
 
-  const scopes = workspacesUtils
-    .findManyOrThrow(workspaces)
-    .map((workspace) => `--scope=${workspace.moduleName}`)
-    .join(' ');
-
-  runCommand(`turbo run dev ${scopes} --include-dependencies`);
+  runCommand(`${baseCommand} --projects=${workspaces.join(',')}`);
 }
 
 export const devCommand = (program: Command) => {

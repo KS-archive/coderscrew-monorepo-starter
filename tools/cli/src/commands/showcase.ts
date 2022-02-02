@@ -10,11 +10,11 @@ function action() {
   loadEnvVariables();
 
   runCommand(`docker compose up -d`);
-  runCommand(`turbo run build`);
+  runCommand(`nx run-many --target=build --parallel --all`);
 
   const apps = workspacesUtils.getApps().map(
     (app): ConcurrentlyCommandInput => ({
-      command: `pnpm run dev --filter=${app.moduleName}`,
+      command: `nx run ${app.directoryName}:dev`,
       name: app.moduleName,
     })
   );
@@ -22,7 +22,10 @@ function action() {
   concurrently(
     [
       ...apps,
-      { command: `pnpm run ${storybookCommands.dev} --filter=${STORYBOOK_WORKSPACE}`, name: STORYBOOK_WORKSPACE },
+      {
+        command: `nx run ${STORYBOOK_WORKSPACE.directoryName}:${storybookCommands.dev}`,
+        name: STORYBOOK_WORKSPACE.moduleName,
+      },
     ],
     {
       prefixColors: ['red', 'yellow', 'green', 'cyan', 'blue', 'magenta'],

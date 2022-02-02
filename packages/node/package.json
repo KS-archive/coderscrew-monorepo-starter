@@ -15,7 +15,7 @@
     "build": "tsup",
     "typecheck": "tsc --noEmit",
     "lint": "eslint . --ext .js,.ts,.tsx",
-    "clean": "rm -rf .turbo & rm -rf node_modules & rm -rf dist"
+    "clean": "rm -rf node_modules & rm -rf dist"
   },
   "dependencies": {
     "colorette": "2.0.16",

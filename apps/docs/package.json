@@ -8,7 +8,7 @@
     "build": "docusaurus build --out-dir dist",
     "start": "docusaurus serve --port $DOCUMENTATION_PORT",
     "lint": "eslint . --ext .js,.ts,.tsx",
-    "clean": "rm -rf .turbo & docusaurus clear && rm -rf node_modules"
+    "clean": "docusaurus clear && rm -rf node_modules"
   },
   "dependencies": {
     "@algolia/client-search": "4.12.1",

@@ -9,7 +9,7 @@
     "start": "next start --port $WEBSITE_PORT",
     "typecheck": "tsc --noEmit",
     "lint": "eslint . --ext .js,.ts,.tsx",
-    "clean": "rm -rf .turbo & rm -rf node_modules & rm -rf .next"
+    "clean": "rm -rf node_modules & rm -rf .next"
   },
   "dependencies": {
     "next": "12.0.9",

@@ -16,7 +16,7 @@
     "test": "jest",
     "typecheck": "tsc --noEmit",
     "lint": "eslint . --ext .js,.ts,.tsx",
-    "clean": "rm -rf .turbo & rm -rf node_modules & rm -rf dist & rm -rf storybook-static",
+    "clean": "rm -rf node_modules & rm -rf dist & rm -rf storybook-static",
     "storybook:dev": "start-storybook --port $STORYBOOK_PORT --no-open",
     "storybook:build": "build-storybook",
     "zeplin:connect": "zeplin connect",

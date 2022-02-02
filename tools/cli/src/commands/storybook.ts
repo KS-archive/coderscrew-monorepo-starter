@@ -4,12 +4,12 @@ import { workspacesUtils } from '@ccms/node';
 
 import { loadEnvVariables, runCommand } from '../utils';
 
-export const STORYBOOK_WORKSPACE = workspacesUtils.findOneOrThrow('ui').moduleName;
+export const STORYBOOK_WORKSPACE = workspacesUtils.findOneOrThrow('ui');
 export const storybookCommands = {
-  dev: 'storybook:dev',
-  build: 'storybook:build',
-  synchronize: 'zeplin:connect',
-  'synchronize-dev': 'zeplin:connect-dev',
+  dev: 'storybook-dev',
+  build: 'storybook-build',
+  synchronize: 'zeplin-connect',
+  'synchronize-dev': 'zeplin-connect-dev',
 };
 
 interface Arguments {
@@ -19,7 +19,7 @@ interface Arguments {
 function action(script: Arguments['script']) {
   loadEnvVariables();
 
-  runCommand(`pnpm run ${storybookCommands[script]} --filter=${STORYBOOK_WORKSPACE}`);
+  runCommand(`pnpm run ${storybookCommands[script]} --filter=${STORYBOOK_WORKSPACE.moduleName}`);
 }
 
 export const storybookCommand = (program: Command) => {
