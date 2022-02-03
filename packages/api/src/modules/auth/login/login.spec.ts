@@ -1,9 +1,9 @@
 import { NoContentSuccess, UnauthorizedError } from '@/responses';
 import { getDescribeFor } from '@/utils';
 
-import { createAccountCredentials } from './auth.test-helpers';
+import { createAccountCredentials } from '../auth.test-helpers';
+import { registerRequest } from '../register';
 import { loginRequest } from './login';
-import { registerRequest } from './register';
 
 describe(getDescribeFor(loginRequest), () => {
   const accountCredentials = createAccountCredentials();

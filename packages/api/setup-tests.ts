@@ -1,12 +1,12 @@
 import fetch, { Headers, Request, Response } from 'cross-fetch';
-import fetchCookie from 'fetch-cookie';
 
+import { withCookies } from './src/tests/cookies';
 import { server } from './src/tests/msw-server';
 
 const MOCKED_SERVER = process.env.MOCKED_SERVER === 'true';
 
 beforeAll(() => {
-  globalThis.fetch = fetchCookie(fetch);
+  globalThis.fetch = withCookies(fetch);
   global.Response = Response;
   global.Headers = Headers;
   global.Request = Request;
@@ -17,7 +17,7 @@ beforeAll(() => {
 });
 
 beforeEach(() => {
-  globalThis.fetch = fetchCookie(fetch);
+  globalThis.fetch = withCookies(fetch);
 });
 
 if (MOCKED_SERVER) {

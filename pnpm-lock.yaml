@@ -220,7 +220,9 @@ importers:
       '@ccms/typings': workspace:*
       '@mswjs/data': 0.8.4
       '@ngneat/falso': 2.22.0
+      '@types/cookie': 0.4.1
       class-validator: 0.13.2
+      cookie: 0.4.2
       cross-fetch: 3.1.5
       fetch-cookie: 1.0.0
       jest: 27.4.7
@@ -236,7 +238,9 @@ importers:
       '@ccms/typings': link:../typings
       '@mswjs/data': 0.8.4
       '@ngneat/falso': 2.22.0
+      '@types/cookie': 0.4.1
       class-validator: 0.13.2
+      cookie: 0.4.2
       cross-fetch: 3.1.5
       fetch-cookie: 1.0.0
       jest: 27.4.7
@@ -9757,6 +9761,11 @@ packages:
     resolution: {integrity: sha512-ZwrFkGJxUR3EIoXtO+yVE69Eb7KlixbaeAWfBQB9vVsNn/o+Yw69gBWSSDK825hQNdN+wF8zELf3dFNl/kxkUA==}
     engines: {node: '>= 0.6'}
 
+  /cookie/0.4.2:
+    resolution: {integrity: sha512-aSWTXFzaKWkvHO1Ny/s+ePFpvKsPnjc551iI41v3ny/ow6tBG5Vd+FuqGNhh1LxOmVzOlGUriIlOaokOvhaStA==}
+    engines: {node: '>= 0.6'}
+    dev: true
+
   /copy-concurrently/1.0.5:
     resolution: {integrity: sha512-f2domd9fsVDFtaFcbaRZuYXwtdmnzqbADSwhSWYxYB/Q8zsdUUFMXVRwXGDMWmbEzAn1kdRrtI1T/KTFOL4X2A==}
     dependencies:
@@ -16483,7 +16492,7 @@ packages:
       '@types/js-levenshtein': 1.1.1
       chalk: 4.1.1
       chokidar: 3.5.3
-      cookie: 0.4.1
+      cookie: 0.4.2
       graphql: 15.8.0
       headers-utils: 3.0.2
       inquirer: 8.2.0

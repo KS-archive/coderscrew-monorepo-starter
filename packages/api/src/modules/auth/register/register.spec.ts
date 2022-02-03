@@ -1,7 +1,7 @@
 import { BadRequestError, ConflictError, CreatedSuccess } from '@/responses';
 import { getDescribeFor } from '@/utils';
 
-import { createAccountCredentials } from './auth.test-helpers';
+import { createAccountCredentials } from '../auth.test-helpers';
 import { registerRequest } from './register';
 
 describe(getDescribeFor(registerRequest), () => {

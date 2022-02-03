@@ -1,4 +1,4 @@
-export { loginRequest } from './login';
-export { logoutRequest } from './logout';
-export { meRequest } from './me';
-export { registerRequest } from './register';
+export * from './login';
+export * from './logout';
+export * from './me';
+export * from './register';

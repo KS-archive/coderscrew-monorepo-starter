@@ -1,11 +1,11 @@
 import { NoContentSuccess, OkSuccess } from '@/responses';
 import { getDescribeFor } from '@/utils';
 
-import { createAccountCredentials } from './auth.test-helpers';
-import { loginRequest } from './login';
+import { createAccountCredentials } from '../auth.test-helpers';
+import { loginRequest } from '../login';
+import { meRequest } from '../me';
+import { registerRequest } from '../register';
 import { logoutRequest } from './logout';
-import { meRequest } from './me';
-import { registerRequest } from './register';
 
 describe(getDescribeFor(logoutRequest), () => {
   it('logs the current user out and returns 204', async () => {

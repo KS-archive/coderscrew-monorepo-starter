@@ -1,10 +1,10 @@
 import { NoContentSuccess, OkSuccess } from '@/responses';
 import { getDescribeFor } from '@/utils';
 
-import { createAccountCredentials } from './auth.test-helpers';
-import { loginRequest } from './login';
+import { createAccountCredentials } from '../auth.test-helpers';
+import { loginRequest } from '../login';
+import { registerRequest } from '../register';
 import { meRequest } from './me';
-import { registerRequest } from './register';
 
 describe(getDescribeFor(meRequest), () => {
   it('returns the current user and 200 status when user is logged in', async () => {
