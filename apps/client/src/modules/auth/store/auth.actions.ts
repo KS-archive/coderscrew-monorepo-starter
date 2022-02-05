@@ -62,7 +62,7 @@ const register = async (...args: Parameters<typeof registerRequest>) => {
 
   if (result.isOk()) {
     authSlice.setState({ error: undefined }, false, 'register / success');
-    toast.success('success');
+    toast.success(t('success'));
   } else {
     authSlice.setState(() => ({ user: undefined, error: result.error }), true, 'register / failure');
     toast.error(result.error.code === 409 ? t('conflictError') : t('error'));

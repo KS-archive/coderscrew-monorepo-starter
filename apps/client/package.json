@@ -33,10 +33,14 @@
   },
   "devDependencies": {
     "@ccms/node": "workspace:*",
+    "@esbuild-plugins/node-modules-polyfill": "0.1.4",
     "@types/react": "17.0.38",
     "@types/react-dom": "17.0.11",
     "@vitejs/plugin-react": "1.1.4",
     "vite": "2.7.13",
     "vite-tsconfig-paths": "3.3.17"
+  },
+  "msw": {
+    "workerDirectory": "public"
   }
 }

@@ -11,8 +11,8 @@
     "dist/**"
   ],
   "scripts": {
-    "dev": "tsup --watch & tsc --project tsconfig.build.json --declaration --declarationMap --emitDeclarationOnly --watch  & tsc-alias --project tsconfig.build.json --watch",
-    "build": "rm -rf dist && tsup & tsc --project tsconfig.build.json --declaration --declarationMap --emitDeclarationOnly && tsc-alias --project tsconfig.build.json",
+    "dev": "node scripts/dev.js",
+    "build": "node scripts/build.js",
     "test": "cross-env MOCKED_SERVER=true jest",
     "test-e2e": "jest",
     "typecheck": "tsc --noEmit",
@@ -30,6 +30,7 @@
     "cookie": "0.4.2",
     "cross-fetch": "3.1.5",
     "fetch-cookie": "1.0.0",
+    "is-node-process": "1.0.1",
     "jest": "27.4.7",
     "msw": "0.36.8",
     "neverthrow": "4.3.1",

@@ -10,4 +10,5 @@ module.exports = createPackageEslintConfig({ dir: __dirname })({
       },
     },
   ],
+  ignorePatterns: ['public/mockServiceWorker.js'],
 });

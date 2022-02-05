@@ -1,3 +1,4 @@
+import { NodeModulesPolyfillPlugin } from '@esbuild-plugins/node-modules-polyfill';
 import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
 import tsconfigPaths from 'vite-tsconfig-paths';
@@ -12,5 +13,11 @@ export default defineConfig({
   ],
   esbuild: {
     jsxInject: `import React from 'react'`,
+  },
+  envDir: '../..',
+  optimizeDeps: {
+    esbuildOptions: {
+      plugins: [NodeModulesPolyfillPlugin() as any],
+    },
   },
 });

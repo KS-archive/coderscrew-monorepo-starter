@@ -12,16 +12,27 @@ import { dashboardRoute } from './pages/dashboard/dashboard.route';
 import { routes } from './routes';
 import { initializeI18nService } from './services/i18n';
 
-initializeI18nService();
-initializeAuthModule({ authorizedPath: dashboardRoute.path() });
+const renderApp = async () => {
+  await initializeI18nService();
+  initializeAuthModule({ authorizedPath: dashboardRoute.path() });
 
-ReactDOM.render(
-  <StrictMode>
-    <ThemeProvider>
-      <ToastProvider>
-        <RoutingProvider routes={routes} wrapper={MainLayout} />
-      </ToastProvider>
-    </ThemeProvider>
-  </StrictMode>,
-  document.querySelector('#root')
-);
+  ReactDOM.render(
+    <StrictMode>
+      <ThemeProvider>
+        <ToastProvider>
+          <RoutingProvider routes={routes} wrapper={MainLayout} />
+        </ToastProvider>
+      </ThemeProvider>
+    </StrictMode>,
+    document.querySelector('#root')
+  );
+};
+
+if (import.meta.env.VITE_MSW_SERVER === 'true') {
+  import('@ccms/api/dist/worker')
+    .then((module) => module.worker.start())
+    .then(() => renderApp())
+    .catch(console.error);
+} else {
+  renderApp().catch(console.error);
+}

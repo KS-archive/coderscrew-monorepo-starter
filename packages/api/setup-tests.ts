@@ -1,7 +1,7 @@
 import fetch, { Headers, Request, Response } from 'cross-fetch';
 
+import { server } from './src/server';
 import { withCookies } from './src/tests/cookies';
-import { server } from './src/tests/msw-server';
 
 const MOCKED_SERVER = process.env.MOCKED_SERVER === 'true';
 

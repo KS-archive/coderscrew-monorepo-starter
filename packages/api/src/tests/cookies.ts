@@ -26,15 +26,10 @@ export const withCookies = <Fetch extends typeof fetch>(fetch: Fetch): Fetch => 
   return fetchCookie(fetch, getGlobalThis().cookieJar);
 };
 
-export const setCookie = (name: string, value: string, req: RestRequest) => {
-  getGlobalThis().cookieJar.setCookie(cookie.serialize(name, value), req.url.href, { ignoreError: false }, () => {});
-};
+type SerializeParams = Parameters<typeof cookie.serialize>;
 
-export const removeCookie = (name: string, req: RestRequest) => {
-  getGlobalThis().cookieJar.setCookie(
-    cookie.serialize(name, '', { expires: new Date() }),
-    req.url.href,
-    { ignoreError: false },
-    () => {}
-  );
-};
+export const setCookie =
+  (req: RestRequest) =>
+  (...args: SerializeParams) => {
+    getGlobalThis().cookieJar.setCookie(cookie.serialize(...args), req.url.href, { ignoreError: false }, () => {});
+  };
