@@ -22,8 +22,8 @@
   },
   "devDependencies": {
     "@ccms/node": "workspace:*",
-    "@types/react": "17.0.38",
-    "webpack": "5.67.0"
+    "@types/react": "17.0.39",
+    "webpack": "5.68.0"
   },
   "browserslist": {
     "production": [

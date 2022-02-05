@@ -17,10 +17,10 @@
     "typecheck": "tsc --noEmit",
     "lint": "eslint . --ext .js,.ts,.tsx",
     "clean": "rm -rf node_modules & rm -rf dist & rm -rf storybook-static",
-    "storybook:dev": "start-storybook --port $STORYBOOK_PORT --no-open",
-    "storybook:build": "build-storybook",
-    "zeplin:connect": "zeplin connect",
-    "zeplin:connect-dev": "zeplin connect --dev"
+    "storybook-dev": "start-storybook --port $STORYBOOK_PORT --no-open",
+    "storybook-build": "build-storybook",
+    "zeplin-connect": "zeplin connect",
+    "zeplin-connect-dev": "zeplin connect --dev"
   },
   "dependencies": {
     "@ccms/typings": "workspace:*",
@@ -31,17 +31,17 @@
     "react-hot-toast": "2.2.0"
   },
   "devDependencies": {
-    "@babel/core": "7.16.12",
+    "@babel/core": "7.17.0",
     "@ccms/node": "workspace:*",
-    "@storybook/addon-actions": "6.4.16",
-    "@storybook/addon-essentials": "6.4.16",
-    "@storybook/addon-links": "6.4.16",
-    "@storybook/builder-webpack5": "6.4.16",
-    "@storybook/manager-webpack5": "6.4.16",
-    "@storybook/node-logger": "6.4.16",
-    "@storybook/react": "6.4.16",
+    "@storybook/addon-actions": "6.4.18",
+    "@storybook/addon-essentials": "6.4.18",
+    "@storybook/addon-links": "6.4.18",
+    "@storybook/builder-webpack5": "6.4.18",
+    "@storybook/manager-webpack5": "6.4.18",
+    "@storybook/node-logger": "6.4.18",
+    "@storybook/react": "6.4.18",
     "@testing-library/dom": "8.11.3",
-    "@testing-library/jest-dom": "5.16.1",
+    "@testing-library/jest-dom": "5.16.2",
     "@testing-library/react": "12.1.2",
     "@testing-library/user-event": "13.5.0",
     "@zeplin/cli": "1.1.13",
@@ -56,8 +56,8 @@
     "ts-jest": "27.1.3",
     "tsc-alias": "1.5.0",
     "tsconfig-paths-webpack-plugin": "3.5.2",
-    "tsup": "5.11.11",
-    "webpack": "5.67.0"
+    "tsup": "5.11.13",
+    "webpack": "5.68.0"
   },
   "peerDependencies": {
     "react": "17.0.2",
