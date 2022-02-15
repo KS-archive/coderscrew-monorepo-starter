@@ -5,7 +5,7 @@ import { styled } from '@/utils';
 
 import { Typography, TypographyBaseProps } from '../typography/typography';
 
-export type LinkBaseProps = Omit<TypographyBaseProps, 'color'>;
+type LinkBaseProps = Omit<TypographyBaseProps, 'color'>;
 
 export type LinkProps<As extends ElementType = 'a'> = PolymorphicComponentPropsWithRef<As, LinkBaseProps>;
 
