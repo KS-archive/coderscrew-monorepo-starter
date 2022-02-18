@@ -26,7 +26,7 @@
     "@ccms/node": "workspace:*",
     "@types/jest": "27.4.0",
     "@types/lodash": "4.14.178",
-    "jest": "27.4.7",
+    "jest": "27.5.1",
     "ts-jest": "27.1.3",
     "tsup": "5.11.13"
   }

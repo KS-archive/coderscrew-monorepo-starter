@@ -13,12 +13,12 @@ const createIndent = (size = 0) => [...Array.from({ length: size }).keys()].map(
 /**
  * Returns output created by the script without displaying it.
  */
-const query = (script) => spawnSync(script, { stdio: 'pipe', shell: true, encoding: 'utf-8' });
+const query = (script) => spawnSync(script, { stdio: 'pipe', shell: true, encoding: 'utf8' });
 
 /**
  * Displays output created by the script but doesn't return it.
  */
-const command = (script) => spawnSync(script, { stdio: 'inherit', shell: true, encoding: 'utf-8' });
+const command = (script) => spawnSync(script, { stdio: 'inherit', shell: true, encoding: 'utf8' });
 
 const createLogger =
   (colorCode, symbol) =>
@@ -116,7 +116,7 @@ const checkDocker = () => {
 };
 
 const getDotFileKeys = async (dotEnvFilePath) => {
-  const content = await readFile(dotEnvFilePath, 'utf-8');
+  const content = await readFile(dotEnvFilePath, 'utf8');
 
   return content
     .split('\n')

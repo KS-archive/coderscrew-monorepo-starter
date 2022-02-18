@@ -14,7 +14,7 @@ module.exports = createPackageEslintConfig({ dir: __dirname })({
       },
     },
     {
-      files: ['jest-e2e.config.ts'],
+      files: ['jest-e2e.config.ts', 'mikro-orm.config.ts'],
       rules: {
         'import/no-default-export': 0,
       },

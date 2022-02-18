@@ -1,16 +1,18 @@
-import { Entity, EntityRepositoryType, Enum, Property, Unique } from '@mikro-orm/core';
+import { Entity, EntityRepositoryType, Enum, OptionalProps, Property, Unique } from '@mikro-orm/core';
 
-import { BaseEntity } from '@/shared/entity.base';
+import { BaseEntity, BaseEntityOptionalProps } from '@/shared/entity.base';
 
-import type { AccountRepository } from './account.repository';
+import { AccountRepository } from './account.repository';
 
 export enum AccountStatus {
   INACTIVE = 'inactive',
   ACTIVE = 'active',
 }
 
-@Entity()
+@Entity({ customRepository: () => AccountRepository })
 export class Account extends BaseEntity {
+  [OptionalProps]?: BaseEntityOptionalProps | 'status';
+
   [EntityRepositoryType]?: AccountRepository;
 
   @Property()

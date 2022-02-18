@@ -41,10 +41,7 @@ export class AuthController {
   @HttpErrors('BadRequest', 'Conflict', 'InternalServerError')
   async register(@Body() registerBody: RegisterBody): Promise<RegisterResponse> {
     const encodedPassword = await hashPassword(registerBody.password);
-    const account = this.accountRepository.create({
-      ...registerBody,
-      password: encodedPassword,
-    });
+    const account = this.accountRepository.create({ ...registerBody, password: encodedPassword });
 
     try {
       await this.accountRepository.persistAndFlush(account);

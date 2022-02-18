@@ -17,7 +17,7 @@ export default defineConfig({
   envDir: '../..',
   optimizeDeps: {
     esbuildOptions: {
-      plugins: [NodeModulesPolyfillPlugin() as any],
+      plugins: [NodeModulesPolyfillPlugin()],
     },
   },
 });

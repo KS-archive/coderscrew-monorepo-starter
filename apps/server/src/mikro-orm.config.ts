@@ -16,7 +16,7 @@ const mikroOrmConfig: Options = {
   migrations: {
     fileName: (timestamp) => `migration-${timestamp}`,
   },
+  allowGlobalContext: true,
 };
 
-// eslint-disable-next-line import/no-default-export
 export default mikroOrmConfig;
