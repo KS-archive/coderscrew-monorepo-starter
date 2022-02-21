@@ -13,13 +13,13 @@ export const Search = () => {
       <input
         style={{ border: '1px solid gray' }}
         value={queryParams.param1 ?? ''}
-        onChange={(event) => setQueryParams((prev) => ({ ...prev, param1: event.target.value }))}
+        onChange={(event) => setQueryParams({ param1: event.target.value })}
         placeholder="Param 1 value"
       />
       <input
         style={{ border: '1px solid gray' }}
         value={queryParams.param2 ?? ''}
-        onChange={(event) => setQueryParams((prev) => ({ ...prev, param2: event.target.value }))}
+        onChange={(event) => setQueryParams({ param2: event.target.value })}
         placeholder="Param 2 value"
       />
     </div>

@@ -1,9 +1,9 @@
 import { defineRoute } from '@/services/routing';
 
-import { createNestedRoutePath } from '../nested.route-utils';
+import { nestedRoute } from '../nested.route';
 
 export const childRoute = defineRoute({
-  path: '/child',
+  path: `${nestedRoute.path().url}/child`,
+  createPath: () => `${nestedRoute.path().url}/child`,
   element: () => import('./child').then((module) => <module.Child />),
-  createPath: () => `${createNestedRoutePath()}/child`,
 });

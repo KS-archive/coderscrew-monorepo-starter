@@ -9,7 +9,7 @@ import { ToastProvider } from '@/services/toasts';
 
 import { MainLayout } from './layouts/main.layout';
 import { dashboardRoute } from './pages/dashboard/dashboard.route';
-import { routes } from './routes';
+import { Routes } from './routes';
 import { initializeI18nService } from './services/i18n';
 
 const renderApp = async () => {
@@ -20,7 +20,11 @@ const renderApp = async () => {
     <StrictMode>
       <ThemeProvider>
         <ToastProvider>
-          <RoutingProvider routes={routes} wrapper={MainLayout} />
+          <RoutingProvider>
+            <MainLayout>
+              <Routes />
+            </MainLayout>
+          </RoutingProvider>
         </ToastProvider>
       </ThemeProvider>
     </StrictMode>,

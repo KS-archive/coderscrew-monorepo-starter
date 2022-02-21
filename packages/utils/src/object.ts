@@ -2,6 +2,7 @@ import lodashPickBy from 'lodash/pickBy';
 
 import type { Values } from '@ccms/typings';
 
+export { default as fromPairs } from 'lodash/fromPairs';
 export { default as get } from 'lodash/get';
 export { default as pick } from 'lodash/pick';
 

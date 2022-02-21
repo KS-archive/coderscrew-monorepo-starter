@@ -1,5 +1,5 @@
-import type { Route } from 'react-location';
+import type { RouteObject } from 'react-router-dom';
 
 import type { CustomRoute } from '../routing.types';
 
-export const customRouteToRoute = (route: CustomRoute): Route => route.use();
+export const customRouteToRoute = (route: CustomRoute): RouteObject => route.use();

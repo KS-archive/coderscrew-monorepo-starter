@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import { Link as LocationLink } from 'react-location';
+import { Link as RouterLink } from 'react-router-dom';
 
 import { Link as UiLink, LinkProps as UiLinkProps } from '@ccms/ui';
 
@@ -21,5 +21,5 @@ export const Link = ({ preload, to, ...props }: LinkProps) => {
     }
   }, [preload, to.url]);
 
-  return <UiLink as={LocationLink} to={to.url} {...props} />;
+  return <UiLink as={RouterLink} to={to.url} {...props} />;
 };

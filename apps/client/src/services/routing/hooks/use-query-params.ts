@@ -1,20 +1,18 @@
-import { useCallback } from 'react';
-import { MakeGenerics, Updater, useNavigate, useSearch } from 'react-location';
+import { useCallback, useMemo } from 'react';
+import { useSearchParams } from 'react-router-dom';
 
-import { pickBy } from '@ccms/utils';
+import { fromPairs, pickBy } from '@ccms/utils';
 
 export const useQueryParams = <Search extends Record<string, string>>() => {
-  const value = useSearch<MakeGenerics<{ Search: Search }>>();
-  const navigate = useNavigate<MakeGenerics<{ Search: Search }>>();
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const value = useMemo(() => fromPairs([...searchParams.entries()]) as Search, [searchParams]);
 
   const updater = useCallback(
-    (search: Updater<typeof value>) => {
-      navigate({
-        replace: true,
-        search: (prev) => pickBy(typeof search === 'function' ? search(prev) : search, Boolean),
-      });
+    (newValue: Partial<Search>) => {
+      setSearchParams(Object.entries(pickBy({ ...value, ...newValue }, Boolean)));
     },
-    [navigate]
+    [setSearchParams, value]
   );
 
   return [value, updater] as const;

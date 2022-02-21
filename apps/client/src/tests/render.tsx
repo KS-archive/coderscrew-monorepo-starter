@@ -4,13 +4,16 @@ import { Queries, queries, render, RenderOptions, RenderResult } from '@testing-
 import { ThemeProvider, ToastProvider } from '@ccms/ui';
 
 import { I18nProviderMock } from '@/services/i18n';
+import { RoutingProviderMock } from '@/services/routing';
 
 type WrapperElement = JSXElementConstructor<{ children: ReactElement }>;
 
 const AllTheProviders: WrapperElement = ({ children }) => (
   <ThemeProvider>
     <I18nProviderMock>
-      <ToastProvider>{children}</ToastProvider>
+      <ToastProvider>
+        <RoutingProviderMock>{children}</RoutingProviderMock>
+      </ToastProvider>
     </I18nProviderMock>
   </ThemeProvider>
 );

@@ -1,13 +1,13 @@
-import type { ReactElement } from 'react';
+import type { LoadableComponent } from '@loadable/component';
 
 export class RoutePath {
-  constructor(private readonly path: string, private readonly element: () => Promise<ReactElement>) {}
+  constructor(private readonly path: string, private readonly element: LoadableComponent<unknown>) {}
 
   get url() {
     return this.path;
   }
 
   async preload() {
-    await this.element();
+    this.element.preload();
   }
 }
