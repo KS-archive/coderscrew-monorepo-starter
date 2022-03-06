@@ -1,0 +1,19 @@
+{
+  "version": 2,
+  "projects": {
+    "api": "libs/api",
+    "client": "apps/client",
+    "client-auth": "libs/client/auth",
+    "client-e2e": "apps/client-e2e",
+    "client-i18n": "libs/client/i18n",
+    "client-routing": "libs/client/routing",
+    "server": "apps/server",
+    "server-auth": "libs/server/auth",
+    "server-prisma": "libs/server/prisma",
+    "server-redis": "libs/server/redis",
+    "ui": "libs/ui",
+    "ui-e2e": "apps/ui-e2e",
+    "website": "apps/website",
+    "website-e2e": "apps/website-e2e"
+  }
+}

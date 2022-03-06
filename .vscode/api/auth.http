@@ -1,0 +1,32 @@
+@email = test-user@email.test
+@password = password123
+
+###
+
+# Register a new user
+POST {{serverUrl}}/auth/register
+
+{
+  "email": "{{email}}",
+  "password": "{{password}}"
+}
+
+###
+
+# Login the existing user
+POST {{serverUrl}}/auth/login
+
+{
+  "email": "{{email}}",
+  "password": "{{password}}"
+}
+
+###
+
+# Get the current user
+GET {{serverUrl}}/auth/me
+
+###
+
+# Logout the current user
+POST {{serverUrl}}/auth/logout

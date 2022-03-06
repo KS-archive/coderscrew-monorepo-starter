@@ -1,41 +1,12 @@
 {
-  "cSpell.language": "en",
-  "cSpell.words": ["ccms", "mikro", "pnpm", "typecheck", "vite"],
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
+  "rest-client.defaultHeaders": {
+    "Content-Type": "application/json",
+    "User-Agent": "vscode-restclient"
   },
-  "editor.formatOnSave": true,
-  "editor.rulers": [120],
-  "editor.tabSize": 2,
-  "emmet.includeLanguages": {
-    "javascript": "javascriptreact"
+  "rest-client.environmentVariables": {
+    "nurmi-local": {
+      "serverUrl": "http://localhost:3333/api"
+    }
   },
-  "files.eol": "\n",
-  "search.exclude": {
-    "**/dist": true,
-    "pnpm-lock.yaml": true
-  },
-  "typescript.tsdk": "node_modules/typescript/lib",
-  "typescript.workspaceSymbols.scope": "currentProject",
-  "[html]": {
-    "editor.defaultFormatter": "vscode.html-language-features"
-  },
-  "[javascript]": {
-    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
-  },
-  "[json]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[typescript]": {
-    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
-  },
-  "[javascriptreact]": {
-    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
-  },
-  "[typescriptreact]": {
-    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
-  },
-  "[yaml]": {
-    "editor.defaultFormatter": "redhat.vscode-yaml"
-  }
+  "typescript.preferences.importModuleSpecifier": "project-relative"
 }

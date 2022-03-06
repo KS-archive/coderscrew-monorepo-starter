@@ -1,15 +1,10 @@
 {
   "recommendations": [
-    "codezombiech.gitignore",
-    "cssho.vscode-svgviewer",
-    "dbaeumer.vscode-eslint",
+    "nrwl.angular-console",
     "esbenp.prettier-vscode",
-    "mgmcdermott.vscode-language-babel",
-    "mikestead.dotenv",
-    "ms-azuretools.vscode-docker",
-    "naumovs.color-highlight",
-    "redhat.vscode-yaml",
-    "silvenon.mdx",
-    "streetsidesoftware.code-spell-checker"
+    "firsttris.vscode-jest-runner",
+    "dbaeumer.vscode-eslint",
+    "prisma.prisma",
+    "humao.rest-client"
   ]
 }

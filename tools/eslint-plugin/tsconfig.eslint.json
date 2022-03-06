@@ -1,4 +1,0 @@
-{
-  "include": ["**/*.ts", "**/*.tsx", "**/*.js", ".eslintrc.js"],
-  "exclude": []
-}
